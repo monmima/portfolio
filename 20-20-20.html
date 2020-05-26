@@ -242,7 +242,7 @@
         var decompte;
         var appEnMarche = false;
         var tempsDePause = false;
-        var audio = new Audio(`../mp3/20-20-20/clair_de_lune.mp3`);
+        var audio = new Audio(`./mp3/20-20-20/clair_de_lune.mp3`);
 
         // logique du bouton à bascule marche/arrêt
         function activeDesactiveBoutonDecompte() {
@@ -403,7 +403,7 @@
                 
                 modeActuel = "alarme";
                 court("#bouton-mode").innerHTML = `Mode actuel&nbsp;: alarme <i class="fa fa-volume-up"></i>`;
-                audio = new Audio(`../mp3/20-20-20/alarme.mp3`);
+                audio = new Audio(`./mp3/20-20-20/alarme.mp3`);
             } else if (modeActuel === "alarme") {
                 
                 modeActuel = "musique";
