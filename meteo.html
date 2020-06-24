@@ -148,110 +148,137 @@
     <script src="./js/bootstrap.min.js"></script> -->
     
     <script>
-        // METEO POUR PARIS
-        const objetMeteoParis = {
-            ville: 2988507,
-            langue: "it"
-        }
 
-        // METEO POUR QUEBEC
-        const objetMeteoQC = {
-            ville: 6325494,
-            langue: "fr"
-        }
+fetch('http://api.openweathermap.org/data/2.5/weather?id=6325494&lang=fr&units=metric&APPID=0c98af945c8169d1e0fb538cd4ff153f')
+  .then(response => response.json())
+  .then(data => console.log(data));
+
+
+
+        // // METEO POUR PARIS
+        // const objetMeteoParis = {
+        //     ville: 2988507,
+        //     langue: "it"
+        // }
+
+        // // METEO POUR QUEBEC
+        // const objetMeteoQC = {
+        //     ville: 6325494,
+        //     langue: "fr"
+        // }
 
         // CLASSE POUR UNE VILLE DONNÉE
-        class Meteo {
-            constructor(infos) {
-                this.ville = infos.ville;
-                this.langue = infos.langue;
-            }
+        // class Meteo {
+            // constructor(infos) {
+            //     this.ville = infos.ville;
+            //     this.langue = infos.langue;
+            // }
 
-            getMeteoInformations() {
-                console.log("OK cela marche : " + this.ville);
-                console.log("OK cela marche Langue : " + this.langue);
+            // getMeteoInformations() {
+                // console.log("OK cela marche : " + this.ville);
+                // console.log("OK cela marche Langue : " + this.langue);
                 
-                //const monURL = "http://api.openweathermap.org/data/2.5/weather?id=6325494&lang=fr&units=metric&APPID=0c98af945c8169d1e0fb538cd4ff153f";
-                const monURL = `http://api.openweathermap.org/data/2.5/weather?id=${this.ville}&lang=${this.langue}&units=metric&APPID=0c98af945c8169d1e0fb538cd4ff153f`;
+                // const monURL = "http://api.openweathermap.org/data/2.5/weather?id=6325494&lang=fr&units=metric&APPID=0c98af945c8169d1e0fb538cd4ff153f";
+                // const monURL = `http://api.openweathermap.org/data/2.5/weather?id=${this.ville}&lang=${this.langue}&units=metric&APPID=0c98af945c8169d1e0fb538cd4ff153f`;
 
-            $.ajax({
-                    "type": "GET",
-                    "url": monURL,
-                    "crossDomain": true,
-                    "dataType": "json"
-                })
+            // Steve Griffith
+            // https://www.youtube.com/watch?v=zswi0cPMxsU
+            // fetch("https://jsonplaceholder.typicode.com/posts")
+            // .then ((response) => {
+            //     if(response.ok) {
+            //         return response.json();
+            //     } else {
+            //         throw new Error("Bad HTTP stuff");
+            //     }
+            // })
+            // .then((jsonData) => {
+            //     console.log(jsonData);
+            //     p.textContent = JSON.stringify(jsonData, null, 4);
+            // })
+            // .catch((err) => {
+            //     console.log("ERROR:", err.message)
+            // });
 
-                // POUR RENSEIGNER SUR LA NATURE DE LA RÉPONSE DU SERVEUR
-                .done(function(data, textStatus, jqXHR) {
-                    console.dir(data);
+            // Début AJAX
+            // $.ajax({
+            //         "type": "GET",
+            //         "url": monURL,
+            //         "crossDomain": true,
+            //         "dataType": "json"
+            //     })
 
-                    console.log("===");
+            //     // POUR RENSEIGNER SUR LA NATURE DE LA RÉPONSE DU SERVEUR
+            //     .done(function(data, textStatus, jqXHR) {
+            //         console.dir(data);
 
-                    console.log(`Ville: ${data.name} OK`);
-                    console.log(`Température: ${data.main.temp} OK`);
-                    console.log(`Humidité: ${data.main.humidity} OK`);
-                    console.log(`Tendance: ${data.weather[0].main} PAS OK`);
-                    console.log(`ID: ${data.weather[0].id} PAS OK`);
-                    console.log(`Description: ${data.weather[0].description} OK`);
-                    console.log(`Vitesse du vent: ${data.wind.speed} OK`);
-                    console.log(`Icône: ${data.weather[0].icon} OK`);
-                    console.log("===");
+            //         console.log("===");
 
-                    // let maChaine = `Vous êtes à ${data.name}. La cité du froid. Il fait actuellement ${data.main.temp}`;
+            //         console.log(`Ville: ${data.name} OK`);
+            //         console.log(`Température: ${data.main.temp} OK`);
+            //         console.log(`Humidité: ${data.main.humidity} OK`);
+            //         console.log(`Tendance: ${data.weather[0].main} PAS OK`);
+            //         console.log(`ID: ${data.weather[0].id} PAS OK`);
+            //         console.log(`Description: ${data.weather[0].description} OK`);
+            //         console.log(`Vitesse du vent: ${data.wind.speed} OK`);
+            //         console.log(`Icône: ${data.weather[0].icon} OK`);
+            //         console.log("===");
 
-                    // document.querySelector("#bloc-affichage").innerHTML = maChaine;
+            //         // let maChaine = `Vous êtes à ${data.name}. La cité du froid. Il fait actuellement ${data.main.temp}`;
 
-                    let conversionNomVilleQuebec = (data.name == "Quebec") ? 'Québec' : data.name;
+            //         // document.querySelector("#bloc-affichage").innerHTML = maChaine;
 
-                    $("#div-ville").html(conversionNomVilleQuebec);
-                    $("#div-temperature").html(`${ponctueCaEnFrancais(data.main.temp)}&nbsp;°C`);
-                    $("#div-humidite").html(`${data.main.humidity}&nbsp;%`);
+            //         let conversionNomVilleQuebec = (data.name == "Quebec") ? 'Québec' : data.name;
 
-                    $("#div-tendance-description").html(`${data.weather[0].description}`);
+            //         $("#div-ville").html(conversionNomVilleQuebec);
+            //         $("#div-temperature").html(`${ponctueCaEnFrancais(data.main.temp)}&nbsp;°C`);
+            //         $("#div-humidite").html(`${data.main.humidity}&nbsp;%`);
+
+            //         $("#div-tendance-description").html(`${data.weather[0].description}`);
 
 
-                    $("#div-tendance-wind-speed").html(`${ponctueCaEnFrancais(data.wind.speed)}&nbsp;km/h`);
+            //         $("#div-tendance-wind-speed").html(`${ponctueCaEnFrancais(data.wind.speed)}&nbsp;km/h`);
 
 
-                    // $("#div-tendance-icon").html(determineIconeAafficher(data.weather[0].icon));
+            //         // $("#div-tendance-icon").html(determineIconeAafficher(data.weather[0].icon));
 
-                    let lien = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+            //         let lien = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
                     
-                    $("#div-tendance-icon").attr("src", lien);
+            //         $("#div-tendance-icon").attr("src", lien);
 
-                })
+            //     })
 
-                // TEXTSTATUS RENSEIGNE SUR LA NATURE DE LA RÉPONSE DU SERVEUR
-                .fail(function(jqXHR, textStatus, errorThrown) {
-                    console.log("errorThrown");
-                    console.log(errorThrown);
-                    console.log(textStatus);
-                    console.log(jqXHR);
-                })
+            //     // TEXTSTATUS RENSEIGNE SUR LA NATURE DE LA RÉPONSE DU SERVEUR
+            //     .fail(function(jqXHR, textStatus, errorThrown) {
+            //         console.log("errorThrown");
+            //         console.log(errorThrown);
+            //         console.log(textStatus);
+            //         console.log(jqXHR);
+            //     })
 
-                .always(function(jqXHR, textStatus) {
-                    console.log("Fin de l'exécution.");
-                });
-            }
-        }
+            //     .always(function(jqXHR, textStatus) {
+            //         console.log("Fin de l'exécution.");
+            //     });
+            // }
+            // Fin AJAX
+        // }
 
-        function ponctueCaEnFrancais(quelleChaine) {
-            quelleChaine = quelleChaine.toString();
-            quelleChaine = quelleChaine.replace(".", ",");;
-            quelleChaine = quelleChaine.replace("-", "- ");;
-            console.log(`ponctueCaEnFrancais: ${quelleChaine}`);
-            return quelleChaine;
-        }
+        // function ponctueCaEnFrancais(quelleChaine) {
+        //     quelleChaine = quelleChaine.toString();
+        //     quelleChaine = quelleChaine.replace(".", ",");;
+        //     quelleChaine = quelleChaine.replace("-", "- ");;
+        //     console.log(`ponctueCaEnFrancais: ${quelleChaine}`);
+        //     return quelleChaine;
+        // }
 
-        function determineIconeAafficher(quelCode) {
-            // https://openweathermap.org/weather-conditions
-            adresseImage = `http://openweathermap.org/img/wn/${quelCode}@2x.png`;
-            return adresseImage;
-        }
+        // function determineIconeAafficher(quelCode) {
+        //     // https://openweathermap.org/weather-conditions
+        //     adresseImage = `http://openweathermap.org/img/wn/${quelCode}@2x.png`;
+        //     return adresseImage;
+        // }
 
-        // APPEL DE LA CLASSE POUR AFFICHER LA MÉTÉO DE QUÉBEC
-        const maMeteo = new Meteo(objetMeteoQC);
-        maMeteo.getMeteoInformations();
+        // // APPEL DE LA CLASSE POUR AFFICHER LA MÉTÉO DE QUÉBEC
+        // const maMeteo = new Meteo(objetMeteoQC);
+        // maMeteo.getMeteoInformations();
 
     </script>
 </body>
