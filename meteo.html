@@ -85,7 +85,7 @@
 <body class="container">
     <div class="div-pour-centrer">
         <header>
-            <h1>Météo</h1>
+            <h1>Météo (ne fonctionne qu'en local pour le moment)</h1>
         </header>
 
         <main>
@@ -225,7 +225,8 @@
                 // TEXTSTATUS RENSEIGNE SUR LA NATURE DE LA RÉPONSE DU SERVEUR
                 .fail(function(jqXHR, textStatus, errorThrown) {
                     console.log("errorThrown");
-                })
+                    console.log(errorThrown);
+                });
 
                 .always(function(jqXHR, textStatus) {
                     console.log("Fin de l'exécution.");
