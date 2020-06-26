@@ -10,10 +10,14 @@
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap" rel="stylesheet"> 
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <!-- https://developer.mozilla.org/fr/docs/Web/HTML/Pr%C3%A9charger_du_contenu
-    <link rel="preload" href="img/disquette.jpg" as="image" type="image/jpeg">
-    <link rel="preload" href="img/lune-pecheur.jpg" as="image" type="image/jpeg">
-    <link rel="preload" href="img/cherry-lin-caracteres-chinois-unsplash.jpg" as="image" type="image/jpeg"> -->
+    <!-- https://developer.mozilla.org/fr/docs/Web/HTML/Pr%C3%A9charger_du_contenu -->
+    <!-- préchargement des images -->
+
+    <!-- mandarin -->
+    <link rel="preload" as="image" href="./img/chinois/cherry-lin-caracteres-chinois-unsplash.jpg" type="image/jpg" crossorigin="anonymous">
+
+    <!-- apprendre par le jeu -->
+    <link rel="preload" as="image" href="https://steamcdn-a.akamaihd.net/steam/apps/228280/ss_4dc0ef8eba9e523913976b2988431d29e1589fb6.1920x1080.jpg" type="image/png" crossorigin="anonymous">
 
     <style>
         /*RÉINITIALISATION*/
@@ -254,7 +258,7 @@
                     <span id="croix-fermeture">X</span>
                 </div>
                 <div>
-                    <iframe src="20-20-20/index_v31.html"></iframe>
+                    <iframe src="20-20-20.html"></iframe>
                     <textarea>
 Le présent site vous montre quelques-uns de mes projets personnels et scolaires.
 
