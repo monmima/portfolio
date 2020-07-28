@@ -43,9 +43,18 @@
 			background-color: black;
 			cursor: pointer;
 		}
-		figcaption, h2, h3 {
+		h2, h3 {
 			text-align: center;
 		}
+        figcaption {
+            /* background-color: #4CAF50; */
+            min-height: 100px;
+
+            display: grid;
+            justify-content: center;
+            align-content: center;
+            text-align: center;
+        }
         footer {
             display: grid;
 			grid-gap: 60px;
@@ -152,7 +161,7 @@
             font-size: 0.9em;
 			grid-column-gap: 10px;
 			grid-row-gap: 20px;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
             grid-template-rows: auto;
             justify-items: center;
 		}
@@ -162,15 +171,13 @@
             transition: all 1s;
         }
         */
-		.image-6 figcaption, .image-6 img  { /*employer les deux pour que la légende respecte la largeur de l'image*/
+		.image-6 img  { /*employer les deux pour que la légende respecte la largeur de l'image*/
             height: auto;
-            max-width: 250px; /*taille maximale de l'image*/
+            max-width: 350px; /*taille maximale de l'image*/
             min-width: 150px;
             width: 100%;
         }
-        .image-6 figcaption {
-            height: 50px;
-        }
+
         .image-6 figure {
             box-shadow: 5px 10px 10px;
             padding: 10px;
@@ -251,6 +258,7 @@
 
 		/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_zoom_hover*/
 		.zoom {
+            background-color: white;
 			transition: transform 0.2s;
 			transition-timing-function: ease-in;
 			margin: 0 auto;
@@ -259,7 +267,7 @@
 		/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_zoom_hover*/
 		.zoom:hover {
             filter: brightness(150%);
-            transform: scale(1.05);
+            transform: scale(1.5);
             transition: all 0.3s ease-in-out;
 		}
 		
@@ -408,48 +416,48 @@
 
         </section>
         <!--IMAGES 6-->
-		<h3>Quelques classiques traduits par des fans</h3>
+		<h3><cite>The last of Us Part II</cite></h3>
 		<section class="image-6">
 			<div>
-				<figure>
-					<img src="https://www.romhacking.net/translations/nes/images/1492screenshot2.png" alt="Final Fantasy en latin">
-					<figcaption><cite>Final Fantasy</cite> en latin</figcaption>
+				<figure class="zoom">
+                    <img src="./img/apprendre_par_le_jeu_video/the-last-of-us-part-ii-1.png" alt="The last of Us Part II, image 1">
+                    <figcaption><q lang="it">Kit medico</q></figcaption>
 				</figure>
 			</div>
 			<div>
-				<figure>
-					<img src="https://www.romhacking.net/translations/nes/images/3766screenshot4.png" alt="Dragon Warrior en latin">
-					<figcaption><cite>Dragon Warrior</cite> en latin</figcaption>
+				<figure class="zoom">
+                    <img src="./img/apprendre_par_le_jeu_video/the-last-of-us-part-ii-2.png" alt="The last of Us Part II, image 2">
+                    <figcaption><q lang="it">Io sono qui...</q></figcaption>
 				</figure>
 			</div>
 			<div>
-				<figure>
-					<img src="https://www.romhacking.net/translations/snes/images/1200screenshot4.png" alt="Final Fantasy 3 en latin">
-					<figcaption><cite>Final Fantasy 3</cite> en latin</figcaption>
+				<figure class="zoom">
+                    <img src="./img/apprendre_par_le_jeu_video/the-last-of-us-part-ii-3.png" alt="The last of Us Part II, image 3">
+                    <figcaption><q lang="it">Tieni premuto R1 per estrarre la freccia</q></figcaption>
 				</figure>
 			</div>
 			<div>
-				<figure>
-					<img src="https://www.romhacking.net/translations/snes/images/1056screenshot3.png" alt="Secret of Mana en italien">
-					<figcaption><cite>Secret of Mana</cite> en italien</figcaption>
+				<figure class="zoom">
+                    <img src="./img/apprendre_par_le_jeu_video/the-last-of-us-part-ii-4.png" alt="The last of Us Part II, image 4">
+                    <figcaption><q lang="it">Serafita: Ma che?!</q></figcaption>
 				</figure>
 			</div>
 			<div>
-				<figure>
-					<img src="https://www.romhacking.net/translations/snes/images/1148screenshot1.gif" alt="Chrono Trigger en allemand">
-					<figcaption><cite>Chrono Trigger</cite> en allemand</figcaption>
+				<figure class="zoom">
+                    <img src="./img/apprendre_par_le_jeu_video/the-last-of-us-part-ii-5.png" alt="The last of Us Part II, image 5">
+                    <figcaption><q lang="it">Ci stanno attacando!</q></figcaption>
 				</figure>
 			</div>
 			<div>
-				<figure>
-					<img src="https://www.romhacking.net/translations/nes/images/3178screenshot4.png" alt="The Legend of Zelda en gaélique">
-					<figcaption><cite>The Legend of Zelda</cite> en gaélique</figcaption>
+				<figure class="zoom">
+                    <img src="./img/apprendre_par_le_jeu_video/the-last-of-us-part-ii-6.png" alt="The last of Us Part II, image 6">
+					<figcaption><q lang="it">Ellie: Va bene.</q></figcaption>
 				</figure>
 			</div>
 		</section>
 
         <!--IMAGE 3-->
-		<h3><cite>Resident Evil 7</cite>&nbsp;: L'apprentissage de l'italien par la terreur</h3>
+		<h3><cite>Resident Evil 7</cite></h3>
 		<section class="image-3">
 			<div class="outer-grid">
 				<img src="https://mcetv.fr/wp-content/uploads/2017/09/Resident-Evil-7-de%CC%81couvrez-les-7-jeux-de-Capcom-disponibles-au-TGS-.jpg" alt="Logo de Resident Evil 7">
