@@ -54,6 +54,8 @@
             justify-content: center;
             align-content: center;
             text-align: center;
+
+            max-width: 350px; /* taille maximale de la légende; même que l'image */
         }
         footer {
             display: grid;
@@ -131,6 +133,9 @@
             padding-bottom: 10px;
             padding-top: 10px;
         }
+        .bg img:hover {
+            transform: scale(1.1) !important;
+        }
         .bouton-vert {
             color: white;
             background-color: #4CAF50; /* Green */
@@ -143,20 +148,20 @@
         .cache {
             display: none;
         }
-		.image-4 {
+		.quatre-jeux {
             display: grid;
             grid-gap: 10px;
 			justify-items: center;
             grid-template-columns: 1fr 1fr 1fr 1fr;
             grid-template-rows: auto;
 		}
-		.image-4 img {
+		.quatre-jeux img {
             box-shadow: 5px 10px 10px;
             height: auto;
             max-width: 280px; /*taille maximale de l'image*/
             width: 100%;
         }
-		.image-6 {
+		.photos-avec-legende {
             display: grid;
 
             
@@ -168,40 +173,24 @@
             justify-items: center;
 		}
         /*
-        .image-6 img:hover {
+        .photos-avec-legende img:hover {
             filter: grayscale(90%);
             transition: all 1s;
         }
         */
-		.image-6 img  { /*employer les deux pour que la légende respecte la largeur de l'image*/
+		.photos-avec-legende img  { /*employer les deux pour que la légende respecte la largeur de l'image*/
             height: auto;
             max-width: 350px; /*taille maximale de l'image*/
             min-width: 150px;
             width: 100%;
         }
 
-        .image-6 figure {
+        .photos-avec-legende figure {
             box-shadow: 5px 10px 10px;
             padding: 10px;
         }
-		.image-3 {
-            display: grid;
-			justify-items: center;
-			grid-column-gap: 30px;
-			grid-row-gap: 20px;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto;
-		}
-        .image-3 figure {
-            box-shadow: 5px 10px 10px;
-        }
-		.image-3 img {
-            height: auto;
-            min-width: 200px;
-            max-width: 1000px; /*taille maximale de l'image*/
-            width: 100%;
-        }
-		.image-4-2 {
+
+		.jeux-specialises {
 			align-content: center;
 			/*background-color: lightgray;*/
 			/*background-color: #FFFDE0;*/
@@ -211,7 +200,7 @@
             grid-template-rows: auto;
             justify-items: center;          
 		}
-		.image-4-2 img {
+		.jeux-specialises img {
             box-shadow: 5px 10px 10px;
             height: auto;
             max-width: 250px; /*taille maximale de l'image*/
@@ -291,7 +280,7 @@
                 width: 100px;
             }
             /*PLUS DE COLONNES GRID ICI, QUE DU FLEX*/
-            .bg, .image-4, .image-6, .image-3, .inner-grid, footer {
+            .bg, .quatre-jeux, .photos-avec-legende, .inner-grid, footer {
                 align-items: center;
                 display: flex;
                 flex-direction: column;
@@ -299,7 +288,7 @@
                 justify-content: center;
             }
 
-            .image-4-2 {
+            .jeux-specialises {
                 align-items: center;
                 display: flex;
                 justify-content: center;
@@ -312,7 +301,7 @@
                 font-size: 1.1em;
             }
 
-            .bg, .image-3, .image-6, footer {
+            .bg, .photos-avec-legende, footer {
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
@@ -325,7 +314,7 @@
                 font-size: 1.2em;
             }
 
-            .bg, .image-6, footer {
+            .bg, .photos-avec-legende, footer {
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
@@ -402,7 +391,7 @@
 	<main>
         <!--IMAGES 4-1-->
 		<h3>Quelques exemples de jeux disponibles en italien (audio et texte)</h3>
-		<section class="image-4">
+		<section class="quatre-jeux">
 			<div>
 				<img src="https://images-na.ssl-images-amazon.com/images/I/51sPXgh026L._SY445_.jpg" alt="Dark Messiah of Might and Magic">
 			</div>
@@ -419,7 +408,7 @@
         </section>
         <!--IMAGES 6-->
 		<h3><cite>The last of Us Part II</cite> en italien</h3>
-		<section class="image-6">
+		<section class="photos-avec-legende">
 			<div>
 				<figure>
                     <img class="zoom" src="./img/apprendre_par_le_jeu_video/the-last-of-us-part-ii-1.png" alt="The last of Us Part II, image 1">
@@ -440,33 +429,35 @@
 			</div>
 			<div>
 				<figure>
-                    <img class="zoom" src="./img/apprendre_par_le_jeu_video/the-last-of-us-part-ii-6.png" alt="The last of Us Part II, image 6">
-					<figcaption><q lang="it">Ellie: Va bene.</q></figcaption>
+                    <img class="zoom" src="./img/apprendre_par_le_jeu_video/the-last-of-us-part-ii-4.png" alt="The last of Us Part II, image 4">
+					<figcaption><q lang="it">Ellie: Mani in alto!</q></figcaption>
 				</figure>
 			</div>
-		</section>
-
-        <!--IMAGE 3-->
+        </section>
+        
 		<h3><cite>Resident Evil 7</cite> en italien</h3>
-		<section class="image-3">
-			<div class="outer-grid">
-				<img src="https://mcetv.fr/wp-content/uploads/2017/09/Resident-Evil-7-de%CC%81couvrez-les-7-jeux-de-Capcom-disponibles-au-TGS-.jpg" alt="Logo de Resident Evil 7">
-			</div>
-			<div class="inner-grid">
+		<section class="photos-avec-legende">
+			<div>
 				<figure>
-					<div><img class="zoom" src="./img/apprendre_par_le_jeu_video/re-ita-image1.png" alt="Resident Evil 7, image 1"></div>
+                    <img class="zoom" src="./img/apprendre_par_le_jeu_video/re-ita-image1.png" alt="Resident Evil 7, image 1">
 					<figcaption><q lang="it">Stasera a Sewer Gators, un altro posto del cazzo inutile. Felice?</q></figcaption>
 				</figure>
+			</div>
+			<div>
 				<figure>
-					<div><img class="zoom" src="./img/apprendre_par_le_jeu_video/re-ita-image2.png" alt="Resident Evil 7, image 2"></div>
+					<img class="zoom" src="./img/apprendre_par_le_jeu_video/re-ita-image2.png" alt="Resident Evil 7, image 2">
 					<figcaption><q lang="it">Mia! Aspetta. Aspetta!</q></figcaption>
 				</figure>
+			</div>
+			<div>
 				<figure>
-					<div><img class="zoom" src="./img/apprendre_par_le_jeu_video/re-ita-image3.png" alt="Resident Evil 7, image 3"></div>
+					<img class="zoom" src="./img/apprendre_par_le_jeu_video/re-ita-image3.png" alt="Resident Evil 7, image 3">
 					<figcaption><q lang="it">Una fattoria abbandonata. Una famiglia scomparsa. E forse un delitto.</q></figcaption>
 				</figure>
+			</div>
+			<div>
 				<figure>
-					<div><img class="zoom" src="./img/apprendre_par_le_jeu_video/re-ita-image4.png" alt="Resident Evil 7, image 4"></div>
+					<img class="zoom" src="./img/apprendre_par_le_jeu_video/re-ita-image4.png" alt="Resident Evil 7, image 4">
 					<figcaption><q lang="it">Mia, noi dobbiamo parlare. Il messagio che hai mandato...</q></figcaption>
 				</figure>
 			</div>
@@ -474,7 +465,7 @@
 
         <!--https://www.youtube.com/watch?v=6kPIbVvGUEE-->
         <h3>Quelques jeux spécialisés</h3>
-		<section class="image-4-2">
+		<section class="jeux-specialises">
 			<div>
 				<img src="https://upload.wikimedia.org/wikipedia/en/d/d3/My_French_Coach_cover_art.jpg" alt="My French Coach">
 			</div>
@@ -526,63 +517,12 @@
                 <button id="xzar-fr">Français <i class="fa fa-volume-up"></i></button>
             </figure>
         </section>
-        <section class="jumbotron">
-            <p><time datetime="2019-08-16">16 août 2019</time></p>
-            <button id="button-2">Apprenez!</button>
-        </section>
     </main>
     <!--FIN MAIN-->
 
     <!--CE PIED DE PAGE EST UN PIED DE PAGE-->
     <footer class="margin">
-        <div>
-            <p>Multiclassés</p>
-            <ol>
-                <li>Coran</li>
-                <li>Jaheira</li>
-                <li>Montaron</li>
-                <li>Quayle</li>
-                <li>Tiax</li>
-                <li>Yeslick Orothiar</li>
-            </ol>
-        </div>
-        <div>
-            <p>Magiciens</p>
-            <ol>
-                <li>Dynaheir</li>
-                <li>Edwin Odesseiron</li>
-                <li>Mordaine</li>
-                <li>Xan</li>
-                <li>Xzar</li>
-            </ol>
-        </div>
-        <div>
-            <p>Voleurs</p>
-            <ol>
-                <li>Alora</li>
-                <li>Imoen</li>
-                <li>Safana</li>
-                <li>Skie Silvershield</li>
-            </ol>
-        </div>
-        <div>
-            <p>Guerriers</p>
-            <ol>
-                <li>Arkanis</li>
-                <li>Kagain</li>
-                <li>Khalid</li>
-                <li>Shar-Teel Dosan</li>
-            </ol>
-        </div>
-        <div>
-            <p>Druidesse</p>
-            <ol>
-                <li>Faldorn</li>
-            </ol>
-        </div>
-
-
-        <!--CETTE FIN DE PIED DE PAGE EST UNE FIN DE PIED DE PAGE-->
+        <p><small><time datetime="2019-08-16">16 août 2019</time></small></p>
     </footer>
 
 
