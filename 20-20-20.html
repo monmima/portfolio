@@ -5,91 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>20-20-20 Debussy</title>
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <!--<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">-->
-    <!--<link href="https://fonts.googleapis.com/css?family=Alex+Brush&display=swap" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Alex+Brush&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
     <style>
-        /*FONTES*/
+        /* RÉINITIALISATION */
         @font-face {
-            font-family: roboto;
-            src: url(./fonts/roboto-regular-webfont.woff);
-            src: url(./fonts/roboto-regular-webfont.woff2);
+            font-family: digital;
+            /* src: url(fonts/digital-7-webfont.woff); */
+            src: url(fonts/digital-7-webfont.woff2);
         }
-        @font-face {
-            font-family: alexbrush;
-            src: url(./fonts/alexbrush-regular-webfont.woff);
-            src: url(./fonts/alexbrush-regular-webfont.woff2);
-        }
-        /*RÉINITIALISATION*/
         body, figcaption, figure {
+            font-family: Roboto;
             margin: 0px;
             padding: 0px;
         }
-        /*HIÉRARCHIE*/
+        /* FIN DE LA RÉINITIALISATION */
+        
         a {
             text-decoration: underline;
         }
         a:link, a:visited, a:active {
-            color: #00529e;
+            color: #4545c8;
         }
         a:focus, a:hover {
             color: red;
         }
+        body {
+           background: linear-gradient(90deg, #312783 0%, #4545c8 50%, #312783 100%);
+           transition: all ease-in-out 3s;
+        }
         button {
-            background-color: lightgray;
-            border: none;
-            border-radius: 25px;
-            color: black;
-            font-size: 0.7em;
-            min-height: 44px;
-            min-width: 200px;
-            opacity: 0.8;
+            background-color: #fff;
+            color: #4e4e4e;
         }
         button:hover {
-            background-color: black;
-            color: white;
-            cursor: pointer;
+            background-color: #a3a3a3;
+            color: #242424;
         }
-        #info button:hover {
-            background-color: #00529e;
-        }
-        body {
-            /*
-            source de l'image: https://pxhere.com/en/photo/1446147
-            courriel associé: vesewix@click2mail.net
-            identifiant: vesewix
-            mot de passe: 1341324321432
-            */
-            background: url("./img/20-20-20/lune-pecheur.jpg") no-repeat left bottom fixed;
-            background-color: #00529e;
-            background-position: 75% center; /*pour voir le pêcheur et la lune autant que possible*/
-            background-size: cover;
-            font-family: roboto, sans-serif;
-            font-size: 100px;
-            height: 100%;
-            text-align: left;
-
+        button, #jai-compris {
+            margin-top: 20px;
+            padding: 15px 20px 15px 20px;
         }
         dd {
             display: inline;
             margin-left: 1em;
         }
-
         header {
             background-color: black;
             opacity: 0.8;
             width: 100%;
         }
         h1 {
-            font-family: alexbrush, cursive;
             font-size: 1.5em;
+        }
+        hr {
+            background-color: #fff;
+        }
+        small {
+            font-size: 0.7em;
         }
         strong {
             text-decoration: underline;
         }
         ul {
             list-style-type: square;
+        }
+        #jai-compris {
+            border-radius: 50px;
         }
         #info {
             background-color: black;
@@ -107,25 +91,52 @@
         }
         #temps-restant {
             line-height: 20px;
+            font-family: Digital;
+            font-size: 4em;
             margin: 50px 0px;
-            width: 200px;
+            width: 250px;
+            height: 250px;
+            border: 3px solid#fff;
             padding: 30px 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
         }
         .body-piano-pause {
-            /*LÉGER MOUVEMENT POUR DONNER UN SIGNAL VISUEL À LA PAUSE*/
-            background-position: 25% top;
+            /* img/lune-pixabay.jpg */
+            /* img/fisherman-moon-sea-falling-fishing-night-1446147-pxhere.com-petit.jpg */
+            background: black;
+            animation: all ease-in-out 5s;
         }
-        .piano {
-            /* https://pixabay.com/fr/vectors/piano-silhouette-black-instrument-3360423/ */
-            background: url("./img/20-20-20/piano-droit.png");
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: 200px 200px;
-            /* margin: 50px 0px; */
-            width: 200px;
-            padding: 30px 0px;
+        .bouton-gauche {
+            border-radius: 50% 0 0 50%;
+            width: 75px;
         }
-        /*MEDIA QUERIES*/
+        .bouton-droit {
+            border-radius: 0 50% 50% 0;
+            width: 75px;
+        }
+        .btn-group {
+            padding-bottom: 20px;
+        }
+        .container-icone {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .fa-question {
+            border: 2px solid #fff;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+        .fa-question:hover {
+            background-color: #686767;
+        }
+        /* MEDIA QUERIES */
         @media screen and (max-width: 759px) {
             body {
                 font-size: 1.1em;         
@@ -163,24 +174,24 @@
 <body class="d-flex flex-row flex-column justify-content-center align-items-center text-white">
 
         <!--CE HEADER EST UN HEADER-->
-        <header class="d-flex justify-content-around align-items-center">
-            <div></div>
-            <h1 class="pt-2">20-20-20 Debussy</h1>
-            <i class="fa fa-question" id="fa-question"></i>
+        <header class="d-flex justify-content-between align-items-center pl-3 pr-3">
+            <div><img src="img/20-20-20/logo-20.png" alt="" height="40" width="40"></div>
+            <h1 class="pt-2 text-center">Les trois 20</h1>
+            <div><i class="fa fa-question" id="fa-question"></i></div>
         </header>
         <!--FIN DU HEADER-->
 
         <!--CE MAIN EST UN MAIN-->
-        <main class="text-center">
-            <div id="info">
-                <h4>Pour ménager ses yeux à l'ordinateur</h4>
+        <main role="application" class="text-center">
+            <div id="info" class="w-80">
+                <h4>Ménagez vos yeux&nbsp;:</h4>
                 <p class="text-left">La règle du <a href="https://opto.ca/fr/health-library/la-regle-du-20-20-20" title="Lien vers le site de l'Association canadienne des optométristes">20-20-20</a></p>
                 
                 <div class="text-left">
                     <ul>
-                        <li>Toutes les <strong>20 minutes</strong></li>
-                        <li>Pendant <strong>20 secondes</strong></li>
-                        <li>Regarder à <strong>20 pieds</strong> au loin (soit&nbsp;: 6&nbsp;mètres ou 2 fois la hauteur d'une pièce normale)</li>
+                        <li>Toutes les <strong>20 minutes</strong> de travail</li>
+                        <li>Pendant <strong>20 secondes</strong> de pause</li>
+                        <li>Regardez à <strong>20 pieds</strong> devant vous</li>
                     </ul>
 
                     <p>Vos options</p>
@@ -188,42 +199,61 @@
                     <dl>
                         <dt>Mode musique <i class="fa fa-music"></i>&nbsp;:</dt>
                         <dd>durée de la pause</dd>
-                        <dt>Mode alarme <i class="fa fa-volume-up"></i>&nbsp;:</dt>
-                        <dd>début et fin de pause</dd>
                         <dt>Réinitialiser <i class="fas fa-sync-alt"></i>&nbsp;:</dt>
                         <dd>remise du compteur à zéro</dd>
-                    </dl> 
+                    </dl>
+
+                    <hr>
+
+                    <div>
+                        <small>Logo et amélioration du CSS: Fred.</small>
+                    </div>
+                    <div>
+                        <small>Le reste est de moi.</small>
+                    </div>
                 </div>
                     
-                <!--    
-                Pendant l'utilisation d'un ordinateur, il est préférable de regarder à <strong>20&nbsp;pieds</strong> au loin (soit à 6&nbsp;mètres ou à 3&nbsp;frigos de distance, si vous préférez <i class="far fa-smile"></i>) toutes les <strong>20 minutes</strong> pendant <strong>20&nbsp;secondes</strong> pour éviter la détérioration de sa vision. C'est ce que veut la règle du <a href="https://opto.ca/fr/health-library/la-regle-du-20-20-20" title="Lien vers le site de l'Association canadienne des optométristes">20-20-20</a>.</p>
-                -->
-
-                <!--
-                <p><strong>20-20-20 Debussy</strong> vous encourage dans cette saine habitude. Appuyez sur le bouton <em>Démarrer</em>. Vous recevrez des invitations au repos oculaire à intervalle de 20&nbsp;minutes.</p>
-                -->
-                <p><button id="jai-compris">J'ai compris!</button></p>
+                <button id="jai-compris">J'ai compris!</button>
             </div>
 
             <div id="application">
-                <div class="piano">
-                    <div id="temps-restant"></div>
+                <div class="containerpiano  d-flex justify-content-center">
+                    <div class="piano">
+                    </div>
+                    <div id="temps-restant">20:00</div>
+                </div>
+                <div class="icone-ordi-cafe">
+                    <i class="fas fa-desktop fa-5x pb-5"></i>
                 </div>
 
-                <p><button id="bouton-mode">Mode actuel&nbsp;: musique <i class="fa fa-music"></i></button></p>
-                <p><button id="bouton-reinitialiser">Réinitialiser <i class="fas fa-sync-alt"></i></button></p>
-                <p><button id="bouton-decompte">Démarrer <i class="fa fa-play"></i></button></p>
-            </div>
+                <div class="btn-group d-flex flex-row justify-content-center" role="group">
 
+                    <button id="bouton-reinitialiser" class="bouton-gauche">
+                            <div class="container-icone text-center">
+                                <i class="fa fa-sync-alt"></i>
+                            </div>
+                    </button>
+
+                    <button id="bouton-decompte" class="bouton-droit">
+                        <div class="container-icone text-center">
+                            <i class="fa fa-play"></i>
+                        </div>
+                    </button>
+
+                </div>
+            </div>
         </main>
+
         <footer class="text-white bg-dark p-1 d-none" aria-hidden="true">
-            <p><time datetime="2019-10-06">6 novembre 2019</time></p>
+            <p>
+                <time datetime="2019-12-18">18 décembre 2019</time>
+            </p>
         </footer>
 
     <!--bibliothèque bootstrap-->
-    <script src="./js/jquery-3.3.1.slim.min.js"></script>
-    <script src="./js/popper.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     
     <script>
         // FONCTION UTILITAIRE
@@ -234,21 +264,20 @@
         }
 
         // variables globales
-        var alarmeEntendue;
-        var modeActuel = "musique";
+
         ms = initialiseMs();
         var msp;
         var decompte;
         var appEnMarche = false;
         var tempsDePause = false;
-        var audio = new Audio(`./mp3/20-20-20/clair_de_lune.mp3`);
+        var audio = new Audio(`./mp3/20-20-20/clair-de-lune.mp3`);
 
         // logique du bouton à bascule marche/arrêt
         function activeDesactiveBoutonDecompte() {
             // si l'appli est en marche
             if (appEnMarche) {
                 appEnMarche = false;
-                court("#bouton-decompte").innerHTML = `Démarrer <i class="fa fa-play"></i>`;
+                court("#bouton-decompte").innerHTML = `<i class="fa fa-play"></i>`;
                 clearInterval(decompte);
                 // initialiseApplication(); // pour afficher les nouvelles valeurs réinitialisées dans l'app, même en mode Arrêt
                 stoppeAudio(); // quand on change le mode, l'audio arrête
@@ -256,7 +285,7 @@
             // si l'appli est en pause
             } else {
                 appEnMarche = true;
-                court("#bouton-decompte").innerHTML = `Arrêter <i class="fa fa-stop"></i>`;
+                court("#bouton-decompte").innerHTML = `<i class="fa fa-stop"></i>`;
                 decompte = setInterval(lanceDecompte, 1000);
             }
         }
@@ -266,7 +295,6 @@
             ms = initialiseMs();
             stoppeAudio();
             var affichageDuree = convertMS(ms); // pour injecter par défaut le temps restant avant la pause
-            court("#temps-restant").innerHTML = `${affichageDuree.minutes} min ${affichageDuree.seconds} s`;
             court("#info").style.display = "none"; // cache le bandeau d'explications #info
         }
 
@@ -274,13 +302,15 @@
         // https://gist.github.com/Erichain/6d2c2bf16fe01edfcffa
         function convertMS(milliseconds) {
             var days, hours, minutes, seconds;
-            seconds = Math.floor(milliseconds / 1000);
-            minutes = Math.floor(seconds / 60);
-            seconds = seconds % 60;
-            hours = Math.floor(minutes / 60);
-            minutes = minutes % 60;
-            days = Math.floor(hours / 24);
-            hours = hours % 24;
+            var seconds = Math.floor(milliseconds / 1000);
+            var minutes = Math.floor(seconds / 60);
+            var seconds = seconds % 60;
+            var hours = Math.floor(minutes / 60);
+            var minutes = minutes % 60;
+            var days = Math.floor(hours / 24);
+            var hours = hours % 24;
+            seconds = (!tempsDePause && seconds < 10) ? `0${seconds}` : `${seconds}`; // ajout d'un zéro devant les secondes pendant la période de travail
+
             return {
                 days: days,
                 hours: hours,
@@ -289,33 +319,18 @@
             };
         }
 
-        // https://stackoverflow.com/questions/9419263/playing-audio-with-javascript
-        // Le message ci-dessous signifie: "Ce fichier n'existe pas à l'adresse fournie."
-        // Firefox: "NotSupportedError: The media resource indicated by the src attribute or assigned media provider object was not suitable."
         function joueAudio() {
-            // voir ci-dessous pour utilisation dynamique d'un fondu audio à la fermeture
-            // https://ask.metafilter.com/comments.mefi/185874?s=Fading-volume-nicely-with-JS
-            if (alarmeEntendue === false && modeActuel === "alarme") { // mode alarme
-                audio.play();
-                alarmeEntendue = true;
-                // pour entendre la alarme à la fin de la pause aussi
-            } else if (modeActuel === "musique") { // mode musique
-                audio.play();
-                regleVolume(msp);
-            }
+            audio.play();
+            regleVolume(msp);
         }
 
         function regleVolume(quelVolume) {
-            // logique du changement de volume + fondu à la fermeture
-            // le volume change selon le temps restant à la pause
-            audio.volume = 1; // pour réinitialiser la valeur quand c'est pertinent
+
+            audio.volume = 0.6; // volume de base à 60 %
+
             switch(quelVolume) {
-                case 6000:
-                    audio.volume = 0.8;
-                    console.log(audio.volume);
-                    break;
                 case 5000:
-                    audio.volume = 0.6;
+                    audio.volume = 0.5;
                     console.log(audio.volume);
                     break;
                 case 4000:
@@ -338,14 +353,12 @@
         }
 
         function initialiseMs() {
-            var ms = 1200000; // 1200000 ms = 20 minutes;
+            var ms = 5000; // 1201000 ms = 20 minutes + 1 seconde
             return ms;
         }
 
         function stoppeAudio() {
-            // https://codetogo.io/how-to-stop-audio-in-javascript/
             audio.pause();
-            // audio.currentTime = 0; // pour revenir au début de la piste audio à la prochaine lecture
         }
 
         // logique du décompte
@@ -357,14 +370,14 @@
             // logique en période de travail
             // attention! avec «!tempsDePause && ms > 0», je règle un bogue qui permettait au décompte de se rendre dans les négatifs avec seulement «!tempsDePause»
             if (!tempsDePause && ms >= 0) {
-                alarmeEntendue = false; // réinitialisation de cette variable, on veut la alarme à la prochaine pause
                 stoppeAudio(); // on arrête la musique
                 msp = 20000 + 1000; // durée de la pause en ms
                 ms = ms - 1000; // décrémentation de la pause
                 // MAJ des ms tant qu'on est au-delà de 0
                 if (ms >= 0) {
                     affichageDuree = convertMS(ms);
-                    court("#temps-restant").innerHTML = `${affichageDuree.minutes} min ${affichageDuree.seconds} s`;
+                    court("#temps-restant").innerHTML = `${affichageDuree.minutes}:${affichageDuree.seconds}`;
+                    court(".icone-ordi-cafe").innerHTML = `<i class="fas fa-desktop fa-5x pb-5"></i>`;
                 // passage à la pause si ms est inférieur à 0, mais sans changer l'affichage
                 } else if (ms < 0) {
                     tempsDePause = true;
@@ -375,11 +388,10 @@
                 ms = initialiseMs();
                 msp = msp - 1000; // décrémentation de la période de travail
                 affichageDuree = convertMS(msp);
-                court("#temps-restant").innerHTML = `${affichageDuree.seconds} s`;
+                court("#temps-restant").innerHTML = `${affichageDuree.seconds}`;
+                court(".icone-ordi-cafe").innerHTML = `<i class="fas fa-stopwatch fa-5x pb-5"></i>`;
                 if (msp <= 0) {
                     tempsDePause = false;
-                } else if (msp === 3000) { // l'alarme se redéclenche à 3 secondes de la fin
-                    alarmeEntendue = false;
                 }
             }
         }
@@ -389,25 +401,6 @@
                 document.querySelector("body").classList.add("body-piano-pause");
             } else {
                 document.querySelector("body").classList.remove("body-piano-pause");
-            }
-        }
-
-        // logique bascule musique/alarme
-        function changeMode() {
-            initialiseApplication(); // pour afficher les nouvelles valeurs réinitialisées dans l'app, même en mode Arrêt
-            stoppeAudio(); // quand on change le mode, l'audio arrête
-            tempsDePause = false; // quand on change le mode, le compteur est réinitialisé
-
-            if (modeActuel === "musique") {
-                
-                modeActuel = "alarme";
-                court("#bouton-mode").innerHTML = `Mode actuel&nbsp;: alarme <i class="fa fa-volume-up"></i>`;
-                audio = new Audio(`./mp3/20-20-20/alarme.mp3`);
-            } else if (modeActuel === "alarme") {
-                
-                modeActuel = "musique";
-                court("#bouton-mode").innerHTML = `Mode actuel&nbsp;: musique <i class="fa fa-music"></i>`;
-                audio = new Audio(`assets/clair_de_lune.mp3`);
             }
         }
 
@@ -428,41 +421,31 @@
 
             // point d'interrogation
             court("#fa-question").addEventListener("click", function(){
-                console.log("fa-question");
                 afficheBandeauInfo();
             });
-
-
 
             // j'ai compris
             court("#jai-compris").addEventListener("click", function(){
-                console.log("jai-compris");
                 afficheBandeauInfo();
-            });
-            
-            // bouton mode
-            court("#bouton-mode").addEventListener("click", function(){
-                console.log("bouton mode");
-                changeMode();
             });
 
             // bouton décompte
             court("#bouton-decompte").addEventListener("click", function(){
-                console.log("bouton decompte");
                 activeDesactiveBoutonDecompte();
             });
 
             // bouton réinitialiser
             court("#bouton-reinitialiser").addEventListener("click", function(){
-                console.log("bouton reinitialiser");
                 initialiseApplication(); // pour afficher les nouvelles valeurs réinitialisées dans l'app, même en mode Arrêt
                 stoppeAudio(); // quand on change le mode, l'audio arrête
                 tempsDePause = false; // quand on change le mode, le compteur est réinitialisé
+                // location.reload();
             });
 
             initialiseApplication();
         });
 
     </script>
+
 </body>
 </html>
