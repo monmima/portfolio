@@ -322,38 +322,34 @@
         function joueAudio() {
             audio.play();
             regleVolume(msp);
+            console.log(audio.volume);
         }
 
         function regleVolume(quelVolume) {
 
-            audio.volume = 0.6; // volume de base à 60 %
-
             switch(quelVolume) {
                 case 5000:
                     audio.volume = 0.5;
-                    console.log(audio.volume);
                     break;
                 case 4000:
                     audio.volume = 0.4;
-                    console.log(audio.volume);
                     break;
                 case 3000:
                     audio.volume = 0.3;
-                    console.log(audio.volume);
                     break;
                 case 2000:
                     audio.volume = 0.2;
-                    console.log(audio.volume);
                     break;
                 case 1000:
                     audio.volume = 0.1;
-                    console.log(audio.volume);
                     break;
+                default:
+                    audio.volume = 0.6; // volume de base à 60 %
             }
         }
 
         function initialiseMs() {
-            var ms = 1201000; // 1201000 ms = 20 minutes + 1 seconde
+            var ms = 5000; // 1201000 ms = 20 minutes + 1 seconde
             return ms;
         }
 
