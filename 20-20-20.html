@@ -234,6 +234,12 @@
                             </div>
                     </button>
 
+                    <button id="bouton-zh">
+                        <div class="container-icone text-center">
+                            ZH
+                        </div>
+                    </button>
+
                     <button id="bouton-decompte" class="bouton-droit">
                         <div class="container-icone text-center">
                             <i class="fa fa-play"></i>
@@ -270,7 +276,7 @@
         var decompte;
         var appEnMarche = false;
         var tempsDePause = false;
-        var audio = new Audio(`./mp3/20-20-20/clair-de-lune.mp3`);
+        var audio = new Audio(`./mp3/20-20-20/musica.mp3`);
 
         // logique du bouton à bascule marche/arrêt
         function activeDesactiveBoutonDecompte() {
@@ -416,22 +422,28 @@
             // GESTIONNAIRES D'ÉVÉNEMENTS
 
             // point d'interrogation
-            court("#fa-question").addEventListener("click", function(){
+            court("#fa-question").addEventListener("click", function() {
                 afficheBandeauInfo();
             });
 
             // j'ai compris
-            court("#jai-compris").addEventListener("click", function(){
+            court("#jai-compris").addEventListener("click", function() {
                 afficheBandeauInfo();
             });
 
+            // bouton zh
+            court("#bouton-zh").addEventListener("click", function() {
+                console.log("Pause maintenant en chinois.");
+                audio = new Audio(`./mp3/20-20-20/zh.mp3`);
+            });
+
             // bouton décompte
-            court("#bouton-decompte").addEventListener("click", function(){
+            court("#bouton-decompte").addEventListener("click", function() {
                 activeDesactiveBoutonDecompte();
             });
 
             // bouton réinitialiser
-            court("#bouton-reinitialiser").addEventListener("click", function(){
+            court("#bouton-reinitialiser").addEventListener("click", function() {
                 initialiseApplication(); // pour afficher les nouvelles valeurs réinitialisées dans l'app, même en mode Arrêt
                 stoppeAudio(); // quand on change le mode, l'audio arrête
                 tempsDePause = false; // quand on change le mode, le compteur est réinitialisé
