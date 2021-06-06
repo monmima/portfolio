@@ -123,158 +123,78 @@
         </div>
     </main>
     <script>
-        // v. 039 - améliorations visuelles
-        // v. 038 - retour aux fonctionnalités de la v. 030
-        // v. 030 - programme tient compte de la différence entre l'anglais et le chinois avec questionChoisie.length
-        // v. 029 - questions de révision totalement fonctionnelles avec couleur arrière-plan qui change pour indiquer type de question posée
-        // v. 028 - questions de révision presque fonctionnelles
-        // v. 027 - amélioration du nom des variables
-        // v. 025 - ajout des erreurs à une liste/array temporaire
-        // v. 024 - indentation du code pour plus lisibilité
-        // v. 021 - retour à la version 21; ne marchait plus depuis la 17
-        // v. 017 - fonction créée mais non appelée pour le moment pour mémoriser les erreurs commises
-        // v. 016 - le main() lance lui-même les questions: afficheQuestion()
-        // v. 015 - on passe au chinois, améliorations dans le score (pourcentage)
-        // v. 014 - fichier de données enfin indépendant!
-        // v. 013 - améliorations des données; meilleures traductions
-        // v. 012 - remplacement du curseur par la petite main sur les zones cliquables
-        // v. 010 - maintenant avec du son!
-        // v. 008 - touchmove est trop sensible, je change pour touchend
-        // v. 007 - meilleur comportement de la zone de réponse au toucher
-        // v. 006 - différentes améliorations, dont un tableau des scores
-        // v. 005 - j'abandonne, je laisse tomber l'effacement progressif du tableau/array
-        // v. 004 - quelques améliorations du code
-        // v. 003 - retrait d'une fonction pour tâcher de déboguer le code
-        // v. 001 - version boguée fonctionnant à peine
 
         // VARIABLES GLOBALES
         var score = 0;
         var questions = 0;
         var reponseAffichee = false; // par défaut au début de la partie
-        var listeRevision = [];
         var questionChoisie = [];
 
         // FONCTIONS
 
         // VIDE TABLEAU
-            function videTableauHtml(){
-                document.querySelector(".reponse").innerHTML = "";
-            }
+        function videTableauHtml(){
+            document.querySelector(".reponse").innerHTML = "";
+        }
 
         // CHOIX QUESTION
-            function choisisQuestion() {
-                var chance1sur5 = Math.floor(Math.random() * 5);
-                console.log(`1 sur 5 = ${chance1sur5}; liste révision = ${listeRevision.length}`);
+        function choisisQuestion() {
+            questionChoisie = listeGenerale[Math.floor(Math.random()*listeGenerale.length)];
+        }
 
-                if (listeRevision.length > 0 && chance1sur5 === 0) {
-                    questionChoisie = listeRevision.shift();
-                    console.log(`Question de révision 1 + ${chance1sur5}`);
-                    // document.body.style.backgroundColor = "#D99058";
-                } else if (listeRevision.length > 5) {
-                    questionChoisie = listeRevision.shift();
-                    console.log(`Question de révision 2 + ${chance1sur5}`);
-                    // document.body.style.backgroundColor = "#D99058";
-                } else {
-                    questionChoisie = listeGenerale[Math.floor(Math.random()*listeGenerale.length)]; // bogue ici quand je déclare la variable correctement
-                    console.log("Question générale");
-                    // document.body.style.backgroundColor = "#cdc9c9";
-                }
+        // affichage question
+        function montreQuestion() {
+            videTableauHtml();
+            choisisQuestion();
+            // console.log("test" + questionChoisie.length);
+            if (questionChoisie.length === 3) { // comme pour le chinois
+                document.querySelector(".question").innerHTML = `${questionChoisie[0]}<br>${questionChoisie[1]}`;
+            } else { // comme pour l'anglais
+                document.querySelector(".question").innerHTML = `${questionChoisie[0]}`;
             }
-
-        // AFFICHE TOUT LE CONTENU DE L'ARRAY/TABLEAU
-        // essentiellement pour déboguer
-            function afficheContenuArray() {
-                for (var i in listeGenerale) {
-                    console.log(listeGenerale[i]);
-                }
-            }      
-
-        // MAIN + AFFICHAGE D'UNE QUESTION
-            function main() {
-                montreQuestion();
-            }
-
-            function montreQuestion() {
-                videTableauHtml();
-                choisisQuestion();
-                console.log("test" + questionChoisie.length);
-                if (questionChoisie.length === 3) { // comme pour le chinois
-                    document.querySelector(".question").innerHTML = `${questionChoisie[0]}<br>${questionChoisie[1]}`;
-                } else { // comme pour l'anglais
-                    document.querySelector(".question").innerHTML = `${questionChoisie[0]}`;
-                }
-            }
+        }
 
         // SCORE
-            function updateScore() {
-                document.querySelector("#score").innerHTML = `Question ${questions + 1}`; // plus un parce que l'index commence à 0
-                // pour afficher le rapport score/questions
-                // document.querySelector("#score").innerHTML = `${score} / ${questions}`;
-                // pour afficher le pourcentage de bonnes réponses
-                // document.querySelector("#percent").innerHTML = `${(score / questions * 100).toFixed(0)}&nbsp;%`;
-            }
+        function updateScore() {
+            document.querySelector("#score").innerHTML = `Question ${questions + 1}`; // plus un parce que l'index commence à 0
+        }
 
         // EVALUATION DE LA REPONSE
-            function evalueReponse(quelBouton) {
-                if (quelBouton === "bon") {
-                    console.log(quelBouton);
-                    score++;
-                    questions++;
-                } else {
-                    console.log(quelBouton);
-                    questions++;
-                }
-                updateScore();
-                reponseAffichee = false;
-                return reponseAffichee;
-            }
-
-        // AJOUT DE L'ERREUR À UNE LISTE D'ERREURS
-            function ajouteErreurListe() {
-                listeRevision.push(questionChoisie);
-                console.log(listeRevision.length);
-            }
+        function evalueReponse(quelBouton) {
+            score++;
+            questions++;
+            updateScore();
+            reponseAffichee = false;
+            return reponseAffichee;
+        }
 
         // DIV-REPONSE DEJA CLIQUÉ
-            function analyseDivReponse(quelBouton) {
-                if (reponseAffichee === false) {
-                    reponseAffichee = true;
-                    document.querySelector(".reponse").innerHTML = questionChoisie[questionChoisie.length - 1]; // questionChoisie[questionChoisie.length - 1] est toujours la chose à afficher, peu importe la longueur de la liste de questions (deux ou trois éléments)
-                } else if (quelBouton === "bon") {
-                    evalueReponse("bon");
-                    montreQuestion();
-                } else if (quelBouton === "afficher-la-reponse") {
-                    ajouteErreurListe();
-                    evalueReponse("afficher-la-reponse");
-                    montreQuestion();
-                    // temporairement placé ici *à améliorer/déboguer*
-                    console.log(`${listeRevision}`);
-                }
-            }
+        function analyseDivReponse() {
+            if (reponseAffichee === false) {
+                reponseAffichee = true;
+                document.querySelector(".reponse").innerHTML = questionChoisie[questionChoisie.length - 1]; // questionChoisie[questionChoisie.length - 1] est toujours la chose à afficher, peu importe la longueur de la liste de questions (deux ou trois éléments)
+            } else {
+                evalueReponse("bon");
+                montreQuestion();
+            } 
+        }
+
+        // MAIN + AFFICHAGE D'UNE QUESTION
+        function main() {
+            montreQuestion();
+        }
 
         // APPEL DE LA FONCTION MAIN
-            main();
-            console.log("appel de la fonction main()");
+        main();
+        console.log("appel de la fonction main()");
 
         // GESTIONNAIRES D'ÉVÉNEMENTS
 
-            // CLIC SUR LE BOUTON AFFICHER-LA-REPONSE
-                document.querySelector("#afficher-la-reponse").addEventListener("click", function() {
-                    analyseDivReponse("bon");
-                });
+        // CLIC SUR LE BOUTON AFFICHER-LA-REPONSE
+        document.querySelector("#afficher-la-reponse").addEventListener("click", function() {
+            analyseDivReponse();
+        });
 
-            // CLIC SUR LE BOUTON AFFICHER-LA-REPONSE, POUR LE SON
-            /*https://codepen.io/flenoir/pen/NbOdXZ*/
-                $(function (){  
-                    $('#afficher-la-reponse').on("click", function(e) {
-                        var text = questionChoisie[0]; // questionChoisie[0] est toujours la chose à prononcer, peu importe la longueur de la liste de questions (deux ou trois éléments)
-                        text = encodeURIComponent(text);
-                        var url = "https://translate.google.com/translate_tts?ie=UTF-8&q=" + text + "&tl=zh-TW&client=tw-ob";
-                        var res = $('audio').attr('src',url).get(0).play();
-                    })
-                });
-
-                // https://codepen.io/flenoir/pen/NbOdXZ
     </script>
 </body>
 </html>
