@@ -197,9 +197,11 @@
                     <p>Vos options</p>
 
                     <dl>
-                        <dt>Mode musique <i class="fa fa-music"></i>&nbsp;:</dt>
-                        <dd>durée de la pause</dd>
-                        <dt>Réinitialiser <i class="fas fa-sync-alt"></i>&nbsp;:</dt>
+                        <dt>Mode musique actif <i class="fa fa-music"></i>&nbsp;:</dt>
+                        <dd>musique pendant la pause</dd>
+                        <dt>Mode chinois ZH actif&nbsp;:</dt>
+                        <dd>chinois pendant la pause</dd>
+                        <dt>Réinitialisation <i class="fas fa-sync-alt"></i>&nbsp;:</dt>
                         <dd>remise du compteur à zéro</dd>
                     </dl>
 
@@ -235,9 +237,7 @@
                     </button>
 
                     <button id="bouton-zh">
-                        <div class="container-icone text-center">
-                            ZH
-                        </div>
+                        <div class="container-icone text-center"><i class="fa fa-music"></i></div>
                     </button>
 
                     <button id="bouton-decompte" class="bouton-droit">
@@ -293,6 +293,22 @@
                 appEnMarche = true;
                 court("#bouton-decompte").innerHTML = `<i class="fa fa-stop"></i>`;
                 decompte = setInterval(lanceDecompte, 1000);
+            }
+        }
+
+        // logique du bouton à bascule chinois/musique
+        function activeDesactiveBoutonChinois() {
+            // si l'appli est en marche
+            let contenuBoutonChinois = document.querySelector("#bouton-zh div").innerHTML;
+
+            if (contenuBoutonChinois === `<i class="fa fa-music"></i>`) {
+                console.log("Pause maintenant en chinois.");
+                audio = new Audio(`./mp3/20-20-20/zh.mp3`);
+                document.querySelector("#bouton-zh div").innerHTML = "ZH";
+            } else {
+                console.log("Pause maintenant en musique.");
+                audio = new Audio(`./mp3/20-20-20/musica.mp3`);
+                document.querySelector("#bouton-zh div").innerHTML = `<i class="fa fa-music"></i>`;
             }
         }
 
@@ -433,8 +449,9 @@
 
             // bouton zh
             court("#bouton-zh").addEventListener("click", function() {
-                console.log("Pause maintenant en chinois.");
-                audio = new Audio(`./mp3/20-20-20/zh.mp3`);
+                activeDesactiveBoutonChinois();
+
+
             });
 
             // bouton décompte
