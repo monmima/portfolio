@@ -169,14 +169,12 @@
             quelleChaine = quelleChaine.toString();
             quelleChaine = quelleChaine.replace(".", ",");;
             quelleChaine = quelleChaine.replace("-", "- ");;
-            // console.log(`ponctueCaEnFrancais: ${quelleChaine}`);
+
             return quelleChaine;
         }
 
         async function meteoAuj(quelleVille, quelleLangue) {
             const q = await fetch(`https://api.openweathermap.org/data/2.5/weather?id=${quelleVille}&lang=${quelleLangue}&units=metric&APPID=0c98af945c8169d1e0fb538cd4ff153f`).then(response => response.json());
-
-            console.log(q);
 
             injectDataInDOM (
                 "#div-temp-auj",
@@ -193,7 +191,6 @@
             const q = await fetch('https://api.openweathermap.org/data/2.5/forecast/daily?q=quebec&lang=fr&cnt=16&units=metric&appid=0c98af945c8169d1e0fb538cd4ff153f').then(response => response.json());
 
             // injections demain
-            // console.log(q.list[0]);
 
             injectDataInDOM (
                 "#div-temp-demain",
@@ -206,7 +203,6 @@
             )
 
             // injections après-demain
-            // console.log(q.list[1]);
 
             injectDataInDOM(
                 "#div-temp-a-demain",
@@ -236,7 +232,7 @@
             document.querySelector(divDesc).innerHTML = Desc;
 
             let lienIcone = genereLienIcone(icone);
-            console.log(lienIcone);
+
             $(DivIcone).attr("src", lienIcone);
 
             return;
