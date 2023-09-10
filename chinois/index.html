@@ -146,7 +146,7 @@
         function montreQuestion() {
             videTableauHtml();
             choisisQuestion();
-            // console.log("test" + questionChoisie.length);
+
             if (questionChoisie.length === 3) { // comme pour le chinois
                 document.querySelector(".question").innerHTML = `${questionChoisie[0]}<br>${questionChoisie[1]}`;
             } else { // comme pour l'anglais
@@ -186,7 +186,6 @@
 
         // APPEL DE LA FONCTION MAIN
         main();
-        console.log("appel de la fonction main()");
 
         // GESTIONNAIRES D'ÉVÉNEMENTS
 
