@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Portfolio de développeur Web</title>
+
+    <!--CHARGEMENT-->
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap" rel="stylesheet"> 
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- https://developer.mozilla.org/fr/docs/Web/HTML/Pr%C3%A9charger_du_contenu -->
+    <!-- préchargement des images -->
+
+    <style>
+        /*RÉINITIALISATION*/
+        body, figcaption, figure {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none;
+        }
+        /*HIÉRARCHIE*/
+        a:link, a:visited, a:active {
+            color: black;
+        }
+        a:focus, a:hover {
+            color: black;
+        }
+        body {
+            /*image de disquette vient d'Unsplash*/
+            /* background: url("./img/disquette.jpg") no-repeat left bottom fixed; */
+
+            /* https://www.needpix.com/photo/download/1687523/planner-evaluate-assessment-teamwork-consulting-estimate-discussion-equipment-business */
+            /* background: url("./img/travail-equipe.png") no-repeat left bottom fixed; */
+
+            background: url("./img/tux.png") no-repeat left bottom fixed;
+
+            background-position: center;
+            background-size: 25%;
+            font-family: 'IBM Plex Mono', monospace;
+            overflow: hidden; /*pour cacher la barre de défilement du navigateur si on descend la fenêtre modale*/
+            user-select: none; /*pour empêcher la sélection du texte*/
+        }
+        button {
+            background-color: lightgray;
+            border: none;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1em;
+            min-height: 24px;
+            min-width: 44px;
+            outline: 0;
+        }
+        button:hover {
+            appearance: none;
+            background-color: #ddd;
+
+            outline: none;
+        }
+        figure {
+            cursor: pointer;
+            text-align: center;
+            width: 90px;
+        }
+        figure img {
+            height: 48px;
+            width: 48px;
+        }
+        figcaption {
+            font-size: 0.7em;
+        }
+        /*https://www.w3schools.com/howto/howto_css_fixed_footer.asp*/
+        footer {
+            align-items: center;
+            background-color: #bbb;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            z-index: 20;
+        }
+        h2 {
+            display: none;
+        }
+        iframe, textarea {
+            /*pour ce qui est des tailles, je gère ça dans le JS*/
+            min-height: 500px;
+            min-width: 300px;
+        }
+        section > img {
+            height: 48px;
+            width: 48px;
+        }
+        textarea {
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        /*CLASSES*/
+        .div-heure {
+            cursor: default;
+            font-size: 0.8em;
+            padding-right: 0.5%;
+        }
+
+        .div-heure > div {
+            align-items: center;
+            background-color: lightgray;
+            box-shadow: inset 1px 1px 2px black;
+            display: flex;
+            min-height: 20px;
+            padding: 0 5px 0 5px;
+        }
+
+        .d-none {
+            display: none;
+        }
+
+        .icones {
+            /* background-color: yellow; */
+            display: grid;
+            justify-items: center;
+            grid-gap: 25px; 
+            grid-template-columns: repeat(3, 90px);
+            grid-template-rows: repeat(5, 90px);
+            margin: 25px 15px;
+        }
+
+        /*Draggable DIV Element*/
+        /*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_draggable*/
+        .fenetre-deplacable {
+            background-color: white;
+            top: 25px;
+            left: 200px;
+            border: 1px solid #d3d3d3;
+            display: none;
+            min-width: 300px;
+            position: absolute;
+            text-align: center;
+            z-index: 9;
+        }
+
+        /*Draggable DIV Element*/
+        /*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_draggable*/
+        .fenetre-deplacable-header {
+            background-color: lightgray;
+            display: grid;
+            cursor: default;
+            font-size: 0.7em;
+            grid-template-columns: 1fr 20px 20px;
+            min-width: 300px;
+            z-index: 10;
+        }
+
+        .menu-demarrer {
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        /*MEDIA QUERIES*/
+        @media screen and (max-width: 759px) {
+            figcaption {
+                background-color: white;
+                opacity: 0.7;
+            }
+
+            iframe, textarea {
+                height: 100vh;
+                min-width: 300px;
+                width: 100vw;
+            }
+
+            .fenetre-deplacable {
+                top: 0px;
+                left: 0px;
+            }
+        }
+        @media screen and (min-width: 760px) {
+            body {
+                font-size: 1em;
+            }
+        }
+        
+    </style>
+</head>
+<body class="preload">
+    <main>
+        <section class="icones">
+            <h2 aria-hidden="true">Liste d'icônes</h2>
+            <figure>
+                <img src="https://icons.iconarchive.com/icons/iconka/landmarks/256/chinese-wall-icon.png" alt="Icône quiz de mandarin" id="icone-mandarin">
+                <figcaption>
+                    <div>Mandarin</div>
+                    <div>(JS)</div>
+                </figcaption>
+            </figure>
+
+            <figure>
+                <img src="https://icons.iconarchive.com/icons/simpleicons-team/simple/256/pokemon-icon.png" alt="Icône Pokédex" id="icone-pokedex">
+                <figcaption>
+                    <div>Pokédex</div>
+                    <div>(VueJS, API)</div>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="https://icons.iconarchive.com/icons/bootstrap/bootstrap/256/Bootstrap-spellcheck-icon.png" alt="Correcteur stylistique" id="icone-corrector">
+                <figcaption>
+                    <div>Correcteur</div>
+                    <div>(JS)</div>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="https://icons.iconarchive.com/icons/iconoir-team/iconoir/256/language-icon.png" alt="Recherche dictionnaires" id="recherche-dictionnaires">
+                <figcaption>
+                    <div>Dicos</div>
+                    <div>(React)</div>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="http://icons.iconarchive.com/icons/3xhumed/mega-games-pack-25/256/Baldur-s-Gate-1-icon.png" alt="Icône Baldur's Gate" id="icone-baldurs-gate">
+                <figcaption>
+                    <div>Baldur's Gate</div>
+                    <div>(JS, CSS)</div>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="https://icons.iconarchive.com/icons/microsoft/fluentui-emoji-mono/256/Books-icon.png" alt="Image de dossier" id="icone-libratus">
+                <figcaption>
+                    <div>Librairie</div>
+                    <div>(JS, CSS)</div>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="https://icons.iconarchive.com/icons/custom-icon-design/mono-general-4/256/eye-icon.png" alt="Icône 20-20-20 Debussy" id="icone-20-20-20">
+                <figcaption>
+                    <div>20-20-20</div>
+                    <div>(JS, CSS)</div>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="https://icons.iconarchive.com/icons/pictogrammers/material/256/information-icon.png" alt="Icône Lisez-moi.txt" id="icone-lisez-moi">
+                <figcaption>Lisez-moi.txt</figcaption>
+            </figure>
+            <figure>
+                <img src="https://icons.iconarchive.com/icons/icons8/ios7/256/Weather-Rain-icon.png" alt="Icône Météo" id="icone-meteo">
+                <figcaption>
+                    <div>Météo</div>
+                    <div>(JS, API)</div>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="https://icons.iconarchive.com/icons/firstline1/tv-show-mega-pack-1/256/Game-of-Thrones-icon.png" alt="Icône Jeu des trônes" id="icone-jeu-des-trones">
+                <figcaption>
+                    <div>Jeu des trônes</div>
+                    <div>(CSS)</div>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="https://icons.iconarchive.com/icons/icons8/windows-8/256/Computer-Hardware-Monitor-icon.png" alt="Icône mock-up helper" id="icone-mockup-helper">
+                <figcaption>
+                    <div>Mockup helper</div>
+                    <div>(JS)</div>
+                </figcaption>
+            </figure>
+        </section>
+
+        <section>
+            <h2 aria-hidden="true">Fenêtre modale</h2>
+            <!--https://www.w3schools.com/howto/howto_js_draggable.asp-->
+            <div id="fenetre-deplacable" class="fenetre-deplacable">
+                <div id="fenetre-deplacable-header" class="fenetre-deplacable-header">
+                    <span id="libelle">20-20-20 Debussy</span>
+                    <span id="carre-redimensionnement">□</span>
+                    <span id="croix-fermeture">X</span>
+                </div>
+                <div>
+                    <iframe src="20-20-20/index.html"></iframe>
+                    <textarea>
+Le présent site vous montre quelques-uns de mes projets personnels et scolaires.
+
+Appuyez sur F11 pour utiliser le mode plein écran (recommandé).
+
+Cliquez sur les icônes du bureau pour découvrir différents contenus.
+
+Utilisez un casque d'écoute ou des haut-parleurs pour entendre certains contenus audio.
+                    </textarea>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <footer>
+        <button id="menu-demarrer">Démarrer <i class="fa fa-linux"></i></button>
+        <div class="div-heure">
+            <div id="heure"></div>
+        </div>
+    </footer>
+    <script>
+        window.addEventListener("load", function() {
+            ///////// VARIABLES GLOBALES
+            let fenetreDeplacablePetite = true;
+            const boutons = document.querySelectorAll(".icones > figure > img");
+            let derniereFenetreOuverte; // pour la touche à bascule
+            let fenetreVientEtreFermee = false; // pour la touche à bascule
+
+            // https://www.w3schools.com/js/tryit.asp?filename=tryjs_timing_clock
+            function startTime() {
+                var today = new Date();
+                var h = today.getHours();
+                var m = today.getMinutes();
+                var s = today.getSeconds();
+                m = checkTime(m);
+                s = checkTime(s);
+                document.querySelector('#heure').innerHTML =
+                h + ":" + m;
+                var t = setTimeout(startTime, 500);
+            }
+
+            // https://www.w3schools.com/js/tryit.asp?filename=tryjs_timing_clock
+            function checkTime(i) {
+                if (i < 10) {i = "0" + i}; // add zero in front of numbers < 10
+                return i;
+            }
+
+            /////////
+
+            // Make the DIV element draggagle:
+            // https://www.w3schools.com/howto/howto_js_draggable.asp
+
+            function dragElement(elmnt) {
+                var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+                if (document.getElementById(elmnt.id + "-header")) {
+                    /* if present, the header is where you move the DIV from:*/
+                    document.getElementById(elmnt.id + "-header").onmousedown = dragMouseDown;
+                } else {
+                    /* otherwise, move the DIV from anywhere inside the DIV:*/
+                    elmnt.onmousedown = dragMouseDown;
+                }
+
+                function dragMouseDown(e) {
+                    e = e || window.event;
+                    e.preventDefault();
+                    // get the mouse cursor position at startup:
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+                    document.onmouseup = closeDragElement;
+                    // call a function whenever the cursor moves:
+                    document.onmousemove = elementDrag;
+                }
+
+                function elementDrag(e) {
+                    e = e || window.event;
+                    e.preventDefault();
+                    // calculate the new cursor position:
+                    pos1 = pos3 - e.clientX;
+                    pos2 = pos4 - e.clientY;
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+                    // set the element's new position:
+                    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+                }
+
+                function closeDragElement() {
+                    /* stop moving when mouse button is released:*/
+                    document.onmouseup = null;
+                    document.onmousemove = null;
+                }
+            }
+
+            function reinitialiserTailleFenetreDeplacable() {
+                // c'est vraiment dans la boucle des boutons de gereBoucleOuvertureFenetre() que je dois placer cette fonction
+                fenetreDeplacablePetite = true;  // pour réinitialiser la taille de la fenêtre déplaçable
+                document.querySelector("iframe").style.width = "50vw"; // pour réinitialiser la taille de la fenêtre déplaçable
+                document.querySelector("textarea").style.width = "50vw"; // pour réinitialiser la taille de la fenêtre déplaçable
+                document.querySelector("iframe").style.width = "50vw";
+                document.querySelector("textarea").style.width = "50vw";
+            }
+
+            // redimensionnement de la fenêtre
+            function redimensionnerFenetreDeplacable() {
+                if (fenetreDeplacablePetite) {
+                    fenetreDeplacablePetite = false;
+                    document.querySelector("iframe").style.height = "70vh";
+                    document.querySelector("textarea").style.height = "70vh";
+                    document.querySelector("iframe").style.width = "70vw";
+                    document.querySelector("textarea").style.width = "70vw";
+                } else {
+                    reinitialiserTailleFenetreDeplacable()
+                }
+            }
+
+            function decideFenetreAOuvrir(quelleIcone) {
+                let objetFenetreAOuvrir;
+                document.querySelector("iframe").style.display = "block"; // afficher par défaut l'iframe
+                document.querySelector("textarea").style.display = "none"; // cacher par défaut la zone de texte
+
+                switch(quelleIcone) {
+                    case "icone-mandarin":
+                        return objetFenetreAOuvrir = {
+                            adresse: "chinois/index.html",
+                            libelle: "Quiz de mandarin"
+                        }
+                        break;
+                    case "icone-pokedex":
+                        return objetFenetreAOuvrir = {
+                            adresse: "https://effortless-empanada-0cda7d.netlify.app/",
+                            libelle: "Pokédex"
+                        }
+                        break;
+                    case "recherche-dictionnaires":
+                        return objetFenetreAOuvrir = {
+                            adresse: "https://fancy-semifreddo-221b45.netlify.app/",
+                            libelle: "Recherche dictionnaires"
+                        }
+                        break;
+                    case "icone-corrector":
+                        return objetFenetreAOuvrir = {
+                            adresse: "corrector.html",
+                            libelle: "Le corrector"
+                        }
+                        break;
+                    case "icone-baldurs-gate":
+                        return objetFenetreAOuvrir = {
+                            adresse: "baldurs-gate/index.html",
+                            libelle: "Baldur's Gate"
+                        }
+                        break;
+                    case "icone-20-20-20":
+                        return objetFenetreAOuvrir = {
+                            adresse: "20-20-20/index.html",
+                            libelle: "20-20-20 Debussy"
+                        }
+                        break;
+                    case "icone-libratus":
+                        return objetFenetreAOuvrir = {
+                            adresse: "libratus/index.html",
+                            libelle: "Librairie Libratus"
+                        }
+                        break;
+                    case "icone-lisez-moi":
+                        document.querySelector("iframe").style.display = "none";
+                        document.querySelector("textarea").style.display = "block";
+                        return objetFenetreAOuvrir = {
+                            adresse: "",
+                            libelle: "Lisez-moi.txt"
+                        }
+                        break;
+                    case "icone-meteo":
+                        return objetFenetreAOuvrir = {
+                            adresse: "meteo.html",
+                            libelle: "Météo"
+                        }
+                        break;
+                    case "icone-jeu-des-trones":
+                        return objetFenetreAOuvrir = {
+                            adresse: "jeu-des-trones/index.html",
+                            libelle: "Le jeu des trônes"
+                        }
+                        break;
+                    case "icone-mockup-helper":
+                        return objetFenetreAOuvrir = {
+                            adresse: "mockup-helper/index.html",
+                            libelle: "Mockup helper"
+                        }
+                        break;
+                    default:
+                        console.log("Sorry, there was a bug while trying to open the window.");
+                    }
+            }
+        
+            function gereBoucleOuvertureFenetre() {
+                for (let i = 0; i < boutons.length; i += 1) {
+                    boutons[i].addEventListener("click", function(e) {
+                        reinitialiserTailleFenetreDeplacable();
+                    
+                        let fenetreAOuvrir = decideFenetreAOuvrir(this.id);
+
+                        gereLogiqueOuvertureFenetre(fenetreAOuvrir.adresse, fenetreAOuvrir.libelle);
+
+                    });
+                }
+            }
+
+            function gereLogiqueFermetureFenetre() {
+                document.querySelector("#fenetre-deplacable").style.display = "none";
+                document.querySelector("iframe").setAttribute("src", ""); // sert simplement à stopper le son en déchargeant le contenu de l'iframe au moment de la fermeture
+            }
+
+            function gereLogiqueOuvertureFenetre(adresse, libelle) {
+                
+
+                /*si on ouvre une fenêtre déjà ouverte*/
+                if (derniereFenetreOuverte === libelle && !fenetreVientEtreFermee) {
+                    console.log(document.querySelector('#fenetre-deplacable').style.display);
+                    console.log("fermeture");
+                    gereLogiqueFermetureFenetre();
+                    fenetreVientEtreFermee = true;
+                } else {
+                    document.querySelector("#fenetre-deplacable").style.display = "block";
+                    document.querySelector("iframe").setAttribute("src", adresse);
+                    document.querySelector("#libelle").innerHTML = libelle;
+                    fenetreVientEtreFermee = false;
+                }
+
+                derniereFenetreOuverte = libelle;
+            }
+
+            // déplacement de la fenêtre
+            dragElement(document.querySelector("#fenetre-deplacable"));
+
+            // clic pour fermer la fenêtre
+            document.querySelector("#croix-fermeture").addEventListener("click", function() {
+                gereLogiqueFermetureFenetre();
+            });
+
+            // clic sur le menu démarrer
+            document.querySelector("#menu-demarrer").addEventListener("click", function() {
+                reinitialiserTailleFenetreDeplacable();
+                
+                let fenetreAOuvrir = decideFenetreAOuvrir("icone-lisez-moi");
+
+                gereLogiqueOuvertureFenetre(fenetreAOuvrir.adresse, fenetreAOuvrir.libelle);
+                
+            });
+            
+            document.querySelector("#carre-redimensionnement").addEventListener("click", function() {
+                redimensionnerFenetreDeplacable();
+            });
+
+            // INITIALISATION
+            startTime();
+            reinitialiserTailleFenetreDeplacable()
+            gereBoucleOuvertureFenetre();
+        });
+    </script>
+
+</body>
+</html>

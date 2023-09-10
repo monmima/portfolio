@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Appli météo</title>
+
+    <!--BOOTSTRAP-->
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    
+    <!--GOOGLE FONTS-->
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
+
+    <style>
+        /*HIÉRARCHIE*/
+        a:link, a:visited, a:active {
+            color: white;
+        }
+        a:focus, a:hover {
+            text-decoration: underline;
+        }
+        body {
+            background: url("img/meteo/paris-unsplash-mathilde-merlin.jpg") no-repeat left bottom fixed;
+            background-color: #F0B881;
+            background-position: 75% center; 
+            background-size: cover;
+            font-family: 'Inconsolata', monospace;
+            height: 100%;
+        }
+        button {
+            min-height: 44px;
+            min-width: 44px;
+        }
+        h1 {
+            text-align: center;
+        }
+        img {
+            opacity: 1;
+        }
+        /*CLASSES*/
+        .fond-noir {
+            background-color: rgba(0,0,0,0.8);
+            border-radius: 10px;
+            color: white;
+            /* opacity: 0.7; */
+            padding: 25px;
+            text-align: center;
+        }
+        .marge {
+            margin-bottom: 10px;
+        }
+        /*ID*/
+        .img-fluid {
+            /* background-color: lightblue; */
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        /*MEDIA QUERIES*/
+        @media screen and (max-width: 759px) {
+            body {
+                font-size: 1em;         
+            }
+        }
+        @media screen and (min-width: 760px) and (max-width: 960px) {
+            body {
+                font-size: 1.1em;
+            }
+        }
+        @media screen and (min-width: 961px) and (max-width: 1100px) {
+            body {
+                font-size: 1.2em;
+            }
+        }
+        @media screen and (min-width: 1100px) {
+            body {
+                font-size: 1.3em;
+            }
+        }
+    </style>
+</head>
+<body class="container">
+    <div class="div-pour-centrer">
+        <header>
+            <h1>Météo</h1>
+        </header>
+
+        <main>
+            <div>
+                <div id="div-ville" class="fond-noir marge">
+                    <a href="https://www.meteo.gc.ca/city/pages/qc-133_metric_f.html" title="Lien vers Météo Canada">Québec</a>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <!--DIV DE GAUCHE-->
+                <div class="col-sm">
+                    <div class="fond-noir marge">
+                        <div><strong>Aujourd'hui</strong></div>
+                        <div id="div-temp-auj"></div>
+
+                        <div>
+                            <img id="div-icon-auj" class="img-fluid" alt="Icône du temps qu'il fait" src="">
+                        </div>
+                        <div class="pt-3"><strong id="div-desc-auj"></strong></div>
+                    </div>
+
+                </div>
+                <!--FIN DIV DE GAUCHE-->
+
+                <!--DIV DE DROITE-->
+                <div class="col-sm">
+                    <!--DIV FOND-NOIR-->
+                    <div class="fond-noir marge">
+                        <div><strong>Demain</strong></div>
+                        <div id="div-temp-demain"></div>
+
+                        <div>
+                            <img id="div-icon-demain" class="img-fluid" alt="Icône du temps qu'il fait" src="">
+                        </div>
+                        <div class="pt-3"><strong id="div-desc-demain"></strong></div>
+                    </div>
+
+
+                </div>
+
+                <div class="col-sm">
+                    <!--DIV FOND-NOIR-->
+                    <div class="fond-noir marge">
+                        <div><strong>Après-demain</strong></div>
+                        <div id="div-temp-a-demain"></div>
+
+                        <div>
+                            <img id="div-icon-a-demain" class="img-fluid" alt="Icône du temps qu'il fait" src="">
+                        </div>
+                        <div class="pt-3"><strong id="div-desc-a-demain"></strong></div>
+                    </div>
+                </div>
+                <!--FIN DIV DE DROITE-->
+
+            </div>
+            <!-- FIN RANGÉE -->
+
+        </main>
+
+        <footer class="d-none">
+            <p><small><time datetime="2019-11-27">27 novembre 2019</time></small></p>
+        </footer>
+    </div>
+    <!--FIN DIV POUR CENTRER-->
+    <!--BOOTSTRAP-->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <script>
+        function genereLienIcone(quelCode) {
+            // https://openweathermap.org/weather-conditions
+            adresseImage = `http://openweathermap.org/img/wn/${quelCode}@2x.png`;
+            return adresseImage;
+        }
+
+        function ponctueCaEnFrancais(quelleChaine) {
+            quelleChaine = quelleChaine.toString();
+            quelleChaine = quelleChaine.replace(".", ",");;
+            quelleChaine = quelleChaine.replace("-", "- ");;
+            // console.log(`ponctueCaEnFrancais: ${quelleChaine}`);
+            return quelleChaine;
+        }
+
+        async function meteoAuj(quelleVille, quelleLangue) {
+            const q = await fetch(`https://api.openweathermap.org/data/2.5/weather?id=${quelleVille}&lang=${quelleLangue}&units=metric&APPID=0c98af945c8169d1e0fb538cd4ff153f`).then(response => response.json());
+
+            console.log(q);
+
+            injectDataInDOM (
+                "#div-temp-auj",
+                q.main.temp,
+                q.main.feels_like,
+                "#div-desc-auj",
+                q.weather[0].description,
+                "#div-icon-auj",
+                q.weather[0].icon
+            )
+        }
+
+        async function prevMeteo() {
+            const q = await fetch('https://api.openweathermap.org/data/2.5/forecast/daily?q=quebec&lang=fr&cnt=16&units=metric&appid=0c98af945c8169d1e0fb538cd4ff153f').then(response => response.json());
+
+            // injections demain
+            // console.log(q.list[0]);
+
+            injectDataInDOM (
+                "#div-temp-demain",
+                q.list[0].temp.day,
+                q.list[0].feels_like.day,
+                "#div-desc-demain",
+                q.list[0].weather[0].description,
+                "#div-icon-demain",
+                q.list[0].weather[0].icon
+            )
+
+            // injections après-demain
+            // console.log(q.list[1]);
+
+            injectDataInDOM(
+                "#div-temp-a-demain",
+                q.list[1].temp.day,
+                q.list[1].feels_like.day,
+                "#div-desc-a-demain",
+                q.list[1].weather[0].description,
+                "#div-icon-a-demain",
+                q.list[1].weather[0].icon
+            )
+        }
+
+        function injectDataInDOM(
+            divTemp,
+            temp,
+            feels_like,
+            divDesc,
+            Desc,
+            DivIcone,
+            icone
+        ) {
+            document.querySelector(divTemp).innerHTML = `
+                ${ponctueCaEnFrancais(temp)}&nbsp;°C
+                <br>
+                ${ponctueCaEnFrancais(feels_like)}&nbsp;°C (ressenti)
+            `;
+            document.querySelector(divDesc).innerHTML = Desc;
+
+            let lienIcone = genereLienIcone(icone);
+            console.log(lienIcone);
+            $(DivIcone).attr("src", lienIcone);
+
+            return;
+        }
+
+        function main() {
+            meteoAuj("6325494", "fr");
+            prevMeteo();
+        }
+
+        main();
+
+    </script>
+</body>
+</html>

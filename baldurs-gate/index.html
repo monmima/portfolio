@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Baldur's Gate</title>
+
+    <!-- <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet"> -->
+
+    <style>
+        /*FONTES*/
+        @font-face {
+            font-family: bree;
+            src: url(./fonts/breeserif-regular-webfont.woff);
+            src: url(./fonts/breeserif-regular-webfont.woff2);
+        }
+        /*GÉNÉRAL*/
+        body {
+            background-image: linear-gradient(#261A12, #D99133, lightgray, #D99133, #261A12);
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 20px 40px;
+            min-width: 350px;
+        }
+        figure { /*Ah "figure"! Ce garnement!*/
+            font-size: 2em;
+            margin: 10px;
+            padding: 0px;
+        }
+        footer {
+            text-align: center;
+        }
+
+        main {
+            /*border-bottom: 3px dotted #8c8b8b;*/
+            /*border-top: 3px dotted #8c8b8b;*/
+            font-size: 1em;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            min-width: 300px;
+        }
+        h1 {
+            font-family: bree, serif;
+            font-size: 1.5em;
+            height: 20px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        h3 {
+            display: flex;
+            justify-content: center;
+            font-size: 0.6em;
+            font-weight: bold;
+        }
+        /*MOINS GÉNÉRAL*/
+        .div-flex-footer > figure > img { /*pour les portraits*/
+            border-radius: 20px;
+            box-shadow: 5px 10px 10px;
+            height: 330px;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            width: 210px;
+        }
+        footer > p { /*endroit où j'ai écrit mon nom dans le pied de page*/
+            background-image: linear-gradient(#261A12, #D99133, lightgray, #D99133, #261A12);
+            border: 2px solid black;
+            border-radius: 20px;
+            box-shadow: 20px 20px 20px;
+            padding: 5px;
+            width: 210px;
+        }
+        h2 + p { /*premier paragraphe, qui est en gras*/
+            font-weight: bold;
+        }
+
+        /*CLASSES*/
+
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .logo {
+            display: flex;
+            align-self: center;
+            height: 179px;
+            justify-content: center;
+            padding-right: 20px;
+            width: 230px;
+        }
+        .imoen, .montaron, .xzar, .khalid, .jaheira, #winthrop { /*pour rapetisser progressivement*/
+            transition: all 0.3s ease-in-out;
+        }
+        .imoen:hover, .montaron:hover, .xzar:hover, .khalid:hover, .jaheira:hover {
+            color: darkgray;
+            cursor: pointer;
+            filter: brightness(150%);
+            transform: scale(1.05);
+            transition: all 0.3s ease-in-out;
+        }
+        .paragraphe {
+            flex-grow: 5;
+            margin-right: 10px; /*sinon, c'est collé à droite*/
+            width: 200px;
+        }
+        .div-flex-footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .lepee {
+            bottom: -100px;
+            height: 300px;
+            margin-left: 50px;
+            top: 50px; /*pour que la bestiole cache ses pattes*/
+            width: 400px;
+        }
+        .dans-lepee {
+            align-self: flex-end;
+            /*http://www.pngmart.com*/
+            background: url("./img/epee-3.png") -165px 0px;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: row;
+            height: 450px;
+            position: relative;
+            width: 350px;
+            z-index: -1; /*pour que l'épée se cache timidement*/
+        }
+    </style>
+</head>
+<body>
+    <!--HEADER-->
+    <!--CE HEADER EST UN HEADER.-->
+    <header>
+        <h1>À découvrir...</h1>
+    </header>
+
+    <!--MAIN-->
+    <!--CE MAIN EST UN MAIN.-->
+    <main class="flex-container">
+        <!--CSS ou <img> pour un logo? J'ai cherché. J'ai trouvé ceci: https://stackoverflow.com/questions/10125335/what-is-the-proper-way-to-display-a-logo-with-css.-->
+        <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Forig10.deviantart.net%2Fc3cc%2Ff%2F2011%2F282%2Ff%2Ff%2Fbaldur__s_gate_icon_by_kamizanon-d4c9rh1.png" alt="Logo de Baldur's Gate" class="logo">
+
+        <div class="paragraphe">
+            <p><strong><cite>Baldur's Gate Enhanced Edition</cite></strong> est un jeu de rôle dont la dernière extension est parue est 2016.</p>
+                
+            <p>Nous proposons au lecteur de ces lignes de découvrir ou de redécouvrir les mémorables voix françaises de quelques-uns de ses personnages, en cliquant sur leur portrait.</p>
+                
+            <p>Notez également qu'un ou plusieurs boutons vers des messages secrets sont cachés dans la page. Cliquez pour trouver!</p>
+        </div>
+
+        <div class="lepee">
+            <div class="dans-lepee"></div>
+        </div>
+    </main>
+
+    <!--FOOTER-->
+    <!--CE FOOTER EST UN FOOTER.-->
+    <!--Portraits : https://baldursgate.fandom.com/wiki/Portraits-->
+    <footer>
+        <div class="div-flex-footer">
+            <figure class="imoen">
+                <img src="https://vignette.wikia.nocookie.net/baldursgategame/images/6/64/Imoen_IMOEN_Portrait_BG1.png" alt="Portrait d'Imoen">
+                <figcaption>Imoen</figcaption>
+            </figure>
+            <figure class="montaron">
+                <img src="https://vignette.wikia.nocookie.net/baldursgategame/images/7/75/Montaron_MONTAR_Portrait_BG1.png" alt="Portrait de Montaron">
+                <figcaption>Montaron</figcaption>
+            </figure>
+            <figure class="xzar">
+                <img src="https://vignette.wikia.nocookie.net/baldursgategame/images/b/bf/Xzar_XZAR_Portrait_BG1.png" alt="Portrait de Xzar">
+                <figcaption>Xzar</figcaption>
+            </figure>
+            <figure class="khalid">
+                <img src="https://vignette.wikia.nocookie.net/baldursgategame/images/9/90/Khalid_KHALID_Portrait_BG1.png" alt="Portrait de Khalid">
+                <figcaption>Khalid</figcaption>
+            </figure>
+            <figure class="jaheira">
+                <img src="https://vignette.wikia.nocookie.net/baldursgategame/images/7/7e/Jaheira_JAHEIRA_Portrait_BG1.png" alt="Portrait de Jaheira">
+                <figcaption>Jaheira</figcaption>
+            </figure>
+        </div>
+        <p id="winthrop"><time datetime="2019-04-10">10 avril 2019</time></p>
+    </footer>
+
+    <script>
+        // VARIABLE GLOBALE
+        // oui, la déclaration avec "var" est voulue, on pourrait aussi déclarer avec "let"
+        // je fais cela pour des raisons de compatibilité avec mon téléphone
+        let audio = new Audio(`./mp3/imoen.mp3`); // parce qu'il faut bien un fichier par défaut dans cette variable
+
+        // voix françaises : https://www.youtube.com/watch?v=hhlCrKBxLQw
+        // voix anglaises : https://www.youtube.com/watch?v=OZlQCRwkeB8
+
+        function choisisVoixPerso(quelPerso) {
+
+            audio.pause();
+
+            // INPUT - permet différentes répliques pour un même perso
+            listeImoen = ["imoen.mp3", "imoen2.mp3", "imoen3.mp3", "imoen4.mp3", "imoen5.mp3", "imoen6.mp3", "imoen7.mp3", "imoen8.mp3", "imoen9.mp3"];
+            listeXzar = ["xzar.mp3", "xzar2.mp3", "xzar3.mp3", "xzar4.mp3", "xzar5.mp3", "xzar6.mp3"];
+            listeKhalid = ["khalid.mp3", "khalid2.mp3", "khalid3.mp3", "khalid4.mp3", "khalid5.mp3"];
+            listeJaheira = ["jaheira.mp3", "jaheira2.mp3", "jaheira3.mp3", "jaheira4.mp3", "jaheira5.mp3", "jaheira6.mp3", "jaheira7.mp3"];
+            listeMontaron = ["montaron.mp3", "montaron2.mp3", "montaron3.mp3", "montaron4.mp3", "montaron5.mp3", "montaron6.mp3"];
+
+            repliqueImoen = listeImoen[Math.floor(Math.random()*listeImoen.length)];
+            repliqueXzar = listeXzar[Math.floor(Math.random()*listeXzar.length)];
+            repliqueKhalid = listeKhalid[Math.floor(Math.random()*listeKhalid.length)];
+            repliqueJaheira = listeJaheira[Math.floor(Math.random()*listeJaheira.length)];
+            repliqueMontaron = listeMontaron[Math.floor(Math.random()*listeMontaron.length)];
+
+            audio.pause(); // pour empêcher la lecture simultanée de différents fichiers audio
+
+            // LOGIQUE
+            // chenapan de "let", c'est lui qui créait ce bogue et qui m'empêchait d'entendre des voix sur la tablette...
+            if (quelPerso === "imoen") {
+                console.log("Voix de...", repliqueImoen.toUpperCase());
+                audio = new Audio(`./mp3/${repliqueImoen}`);
+            } else if (quelPerso === "xzar") {
+                console.log("Voix de...", repliqueXzar.toUpperCase());
+                audio = new Audio(`./mp3/${repliqueXzar}`);
+            } else if (quelPerso === "khalid") {
+                console.log("Voix de...", repliqueKhalid.toUpperCase());
+                audio = new Audio(`./mp3/${repliqueKhalid}`);
+            } else if (quelPerso === "jaheira") {
+                console.log("Voix de...", repliqueJaheira.toUpperCase());
+                audio = new Audio(`./mp3/${repliqueJaheira}`);
+            } else if (quelPerso === "montaron") {
+                console.log("Voix de...", repliqueMontaron.toUpperCase());
+                audio = new Audio(`./mp3/${repliqueMontaron}`);
+            } else {
+                console.log("Voix de...", quelPerso.toUpperCase());
+                audio = new Audio("./mp3/" + quelPerso + ".mp3");
+            }
+            audio.play();
+        }
+
+        /////// OUTPUT IMOEN
+
+        document.querySelector(".imoen").addEventListener("click", function(){
+            choisisVoixPerso("imoen");
+        });
+
+        /////// OUTPUT MONTARON
+
+        document.querySelector(".montaron").addEventListener("click", function(){
+            choisisVoixPerso("montaron");
+        });
+
+        /////// OUTPUT XZAR
+
+        document.querySelector(".xzar").addEventListener("click", function(){
+            choisisVoixPerso("xzar");
+        });
+
+        /////// OUTPUT KHALID
+
+        document.querySelector(".khalid").addEventListener("click", function(){
+            choisisVoixPerso("khalid");
+        });
+
+        /////// OUTPUT JAHEIRA
+
+        document.querySelector(".jaheira").addEventListener("click", function(){
+            choisisVoixPerso("jaheira");
+        });
+
+        /////// OUTPUT MESSAGE SECRET GORION
+
+        document.querySelector(".logo").addEventListener("click", function(){
+            choisisVoixPerso("gorion");
+        });
+
+        /////// OUTPUT MESSAGE SECRET WINTHROP
+
+        document.querySelector("#winthrop").addEventListener("click", function(){
+            choisisVoixPerso("winthrop");
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mon Quiz</title>
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> -->
+    <style>
+        /*FONTES*/
+        /*JE VAIS CHERCHER DANS LE DOSSIER 20-20-20 LA MÊME POLICE*/
+        @font-face {
+            font-family: roboto;
+            src: url(./fonts/roboto-regular-webfont.woff);
+            src: url(./fonts/roboto-regular-webfont.woff2);
+        }
+        /*HIÉRARCHIE*/
+        body {
+            /*UNSPLASH*/
+            background: url("./img/cherry-lin-caracteres-chinois-unsplash.jpg") no-repeat fixed;
+            background-size: cover;
+            font-family: roboto, sans-serif;
+            margin: 0px;
+        }
+        button {
+            background-color: darkslategrey;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2em;
+            min-height: 44px;
+            min-width: 200px;
+            opacity: 0.9;
+        }
+        button:hover {
+            background-color: black;
+        }
+        header {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        /*CLASSES*/
+        .div-boutons {
+            background-color: white;
+            display: flex;
+            justify-content: space-around;
+
+            opacity: 0.8;
+            padding: 10px;
+        }
+        /*
+        .lanterne {
+            background: url("http://icons.iconarchive.com/icons/gcds/chinese-new-year/256/lantern-icon.png") no-repeat center;
+            height: auto;
+            width: 20%;
+        }
+        */
+        .div-gris {
+            align-items: center;
+            background-color: black;
+            display: flex;
+            height: 30px;
+            justify-content: space-between;
+            opacity: 0.95;
+            width: 275px;
+        }
+        .div-score {
+            align-items: center;
+            background-color: darkslategrey;
+            color: white;
+            display: flex;
+            height: 30px;
+            justify-content: center;
+            opacity: 0.8;
+            width: 100px;
+        }
+        .question, .reponse {
+            align-items: center;
+            display: flex;
+            background-color: white;
+            font-size: 1.5em;
+            height: 170px;
+            justify-content: center;
+            margin-bottom: 4px;
+            opacity: 0.8;
+            text-align: center;
+            width: 275px;
+        }
+        .reponse {
+            text-shadow: 2px 2px 2px gray;
+        }
+    </style>
+    <!--https://codepen.io/flenoir/pen/NbOdXZ-->
+    <script src="./js/jquery-3.3.1.slim.min.js"></script>
+    <script src="./js/hsk.js"></script>
+</head>
+<body>
+    <!--https://codepen.io/flenoir/pen/NbOdXZ-->
+    <audio src="" class="speech" hidden></audio>
+
+    <header>
+        <div class="div-gris">
+            <div></div>
+            <div class="div-score" id="score">Question 1</div>
+            <!--<div class="div-score" id="percent">0&nbsp;%</div>-->
+        </div>
+    </header>
+        
+    <main>
+        <div class="question">
+        </div>
+        <div class="reponse"></div>
+        <div class="div-boutons">
+            <button id="afficher-la-reponse">Continuer</button>
+        </div>
+    </main>
+    <script>
+
+        // VARIABLES GLOBALES
+        let score = 0;
+        let questions = 0;
+        let reponseAffichee = false; // par défaut au début de la partie
+        let questionChoisie = [];
+
+        // FONCTIONS
+
+        // VIDE TABLEAU
+        function videTableauHtml(){
+            document.querySelector(".reponse").innerHTML = "";
+        }
+
+        // CHOIX QUESTION
+        function choisisQuestion() {
+            questionChoisie = listeGenerale[Math.floor(Math.random()*listeGenerale.length)];
+        }
+
+        // affichage question
+        function montreQuestion() {
+            videTableauHtml();
+            choisisQuestion();
+            // console.log("test" + questionChoisie.length);
+            if (questionChoisie.length === 3) { // comme pour le chinois
+                document.querySelector(".question").innerHTML = `${questionChoisie[0]}<br>${questionChoisie[1]}`;
+            } else { // comme pour l'anglais
+                document.querySelector(".question").innerHTML = `${questionChoisie[0]}`;
+            }
+        }
+
+        // SCORE
+        function updateScore() {
+            document.querySelector("#score").innerHTML = `Question ${questions + 1}`; // plus un parce que l'index commence à 0
+        }
+
+        // EVALUATION DE LA REPONSE
+        function evalueReponse(quelBouton) {
+            score++;
+            questions++;
+            updateScore();
+            reponseAffichee = false;
+            return reponseAffichee;
+        }
+
+        // DIV-REPONSE DEJA CLIQUÉ
+        function analyseDivReponse() {
+            if (reponseAffichee === false) {
+                reponseAffichee = true;
+                document.querySelector(".reponse").innerHTML = questionChoisie[questionChoisie.length - 1]; // questionChoisie[questionChoisie.length - 1] est toujours la chose à afficher, peu importe la longueur de la liste de questions (deux ou trois éléments)
+            } else {
+                evalueReponse("bon");
+                montreQuestion();
+            } 
+        }
+
+        // MAIN + AFFICHAGE D'UNE QUESTION
+        function main() {
+            montreQuestion();
+        }
+
+        // APPEL DE LA FONCTION MAIN
+        main();
+        console.log("appel de la fonction main()");
+
+        // GESTIONNAIRES D'ÉVÉNEMENTS
+
+        // CLIC SUR LE BOUTON AFFICHER-LA-REPONSE
+        document.querySelector("#afficher-la-reponse").addEventListener("click", function() {
+            analyseDivReponse();
+        });
+
+    </script>
+</body>
+</html>

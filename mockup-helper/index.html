@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracy the Tracing Tool</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 12px;
+            padding-bottom: 20px;
+        }
+        
+        iframe {
+            overflow: visible;
+            /* width: 100%; */
+        }
+
+        input[type="file"] {
+            /* Hide the default text */
+            color: transparent;
+            /* Set a background color to the file input */
+            background-color: #eee;
+            /* Set a padding to make room for the custom text */
+            padding: 10px;
+        }
+
+        .controls {
+            padding: 25px;
+            
+            background-color: lightgray;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            z-index: 10;
+        }
+
+        .main {
+            position: relative;
+        }
+
+        .main__markup {
+            overflow: none;
+            position: absolute;
+            top: 0;
+        }
+
+        .main__mockup {
+            /* width: 100%; */
+            z-index: 20;
+        }
+
+        .main__mockup__image {
+            pointer-events: none;
+            /* width: 100%; */
+            z-index: 20;
+        }
+
+
+        
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <h1>Tracy the Tracing Tool</h1>
+
+        <!-- opacity selector -->
+        <input type="range" min="0" max="1" step="0.1" value="1" id="opacity-slider">
+
+        <!-- blink button -->
+        <div>
+            <button id="blinkButton">Blink for 10 seconds</button>
+        </div>
+
+        <!-- iframe url -->
+        <div>
+            <input type="url" id="iframe_url" placeholder="The URL of your site">
+        </div>
+
+        <!-- image selector -->
+        <div>
+            <label for="image_selector">Choose your mockup</label>
+        </div>
+
+        <div>
+            <input type="file" id="image_selector">
+        </div>
+    </div>
+
+    <main class="main">
+        <!-- mockup -->
+        <div class="main__mockup">
+            <img class="main__mockup__image" src="./img/mockup.png" alt="Maquette">
+        </div>
+
+        <!-- markup -->
+        <iframe class="main__markup" src="./markup.html" frameborder="0"></iframe>
+    </main>
+
+
+    <script>
+        // initiate slider
+        const opacitySlider = document.getElementById('opacity-slider');
+        const overlayImage = document.querySelector('.main__markup');
+
+        opacitySlider.addEventListener('input', () => {
+            changeOpacity();
+        });
+        
+        function changeOpacity() {
+            overlayImage.style.opacity = opacitySlider.value;
+        }
+
+        // make opacity mockup blink during 10 seconds
+        const blinkButton = document.querySelector('#blinkButton');
+
+        blinkButton.addEventListener('click', blinkForTenSeconds);
+
+        function blinkForTenSeconds() {
+            let opacity = 1;
+            const intervalId = setInterval(() => {
+                opacity = opacity === 1 ? 0 : 1;
+                overlayImage.style.opacity = opacity;
+            }, 1000);
+
+            setTimeout(() => {
+                clearInterval(intervalId);
+                overlayImage.style.opacity = 1;
+            }, 10000);
+        }
+
+        // change markup (iframe) src
+        const urlSelector = document.querySelector("#iframe_url");
+        const iframe = document.querySelector("iframe");
+        const srcAtStartUp = iframe.src;
+
+        urlSelector.addEventListener("input", function() {
+            if (urlSelector.value === "") {
+                iframe.src = srcAtStartUp;
+            } else {
+                iframe.src = urlSelector.value;
+            }
+
+            console.log(iframe.src);
+        });
+
+        // change mockup (image) src
+        const imgSelector = document.querySelector("#image_selector");
+        const mockup = document.querySelector(".main__mockup__image");
+
+        imgSelector.addEventListener("change", function() {
+            // Get the selected file from the input element
+            const file = imgSelector.files[0];
+
+            // Create a new FileReader object
+            const reader = new FileReader();
+
+            // Add an event listener to the FileReader object to listen for the 'load' event
+            reader.addEventListener("load", function() {
+                // Set the 'src' attribute of the 'mockup' image element to the result of the FileReader object
+                mockup.src = reader.result;
+            });
+
+            // Read the contents of the selected file as a data URL
+            reader.readAsDataURL(file);
+
+            // adjust the dimensions of the iframe to that of the mockup image
+            adjustIframeDimensions();
+        });
+
+        // adjust the dimensions of the iframe to those of the image
+        function adjustIframeDimensions() {
+            // the delay is necessary or else the first time the app/page load, the iframe won't have the right dimensions
+            setTimeout(function() {
+                iframe.style.height = `${mockup.naturalHeight}px`;
+                iframe.style.width = `${mockup.naturalWidth}px`;
+            }, 100);
+
+            return;
+        }
+
+        // main function
+        function main() {
+            // the first thing the app does is adjust the size of the iframe so it becomes the same as the mockup
+            adjustIframeDimensions();
+            changeOpacity(); // necessary to change the opacity after reloading the page
+        }
+
+        main();
+
+    </script>
+</body>
+</html>

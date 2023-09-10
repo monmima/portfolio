@@ -1,0 +1,158 @@
+
+
+// variables
+
+$spacing-small: 20px;
+$spacing-medium: 40px;
+$spacing-large: 80px;
+
+// mixins
+
+@mixin createGrid($nbColumns, $unit) {
+    display: grid;
+    grid-template-columns: repeat($nbColumns, $unit);
+}
+  
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: pink;
+    font-family: 'Roboto', sans-serif;
+}
+
+.footer {
+    background-color: #FCF3DD;
+    font-size: 7px;
+    letter-spacing: 3.5px;
+    height: 280px;
+    position: relative;
+    text-transform: uppercase;
+
+    h3 {
+        padding: calc($spacing-small / 1.2) 6px calc($spacing-small * 0.8);
+    }
+
+    img {
+        border-radius: calc($spacing-small * 0.6);
+    }
+
+    &__box {
+        background-color: #FEFEFE;
+        border-radius: calc($spacing-small * 1.5) calc($spacing-small * 1.5) 0 0;
+        bottom: 0;
+        margin: 0 0 0 calc($spacing-medium * 1.8);
+        position: absolute;
+        height: calc($spacing-large * 6.3);
+    }
+
+    &__box__content {
+        margin: calc($spacing-small * 1.1);
+    }
+
+    &__box__content__button {
+        background-color: #E0C19D;
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+    }
+
+    &__box__content__h3-nb2 {
+        padding: calc($spacing-small * 1.1) 6px calc($spacing-small * 0.3) !important;
+        text-align: center;
+    }
+}
+
+.header {
+    @include createGrid(3, auto);
+    align-items: center;
+    grid-template-columns: auto 1fr 1fr;
+
+    padding: calc($spacing-medium * 0.55) calc($spacing-small * 1.6) calc($spacing-medium * 0.6);
+    
+    background-color: white;
+
+    h1 {
+        font-size: 22.5px;
+        font-weight: 300;
+        letter-spacing: 1.5px;
+        text-transform: uppercase
+    }
+
+    .nav__left {
+        @include createGrid(2, 1fr);
+        align-items: center;
+        grid-template-columns: auto auto 1fr;
+        // justify-items: center;
+
+        & > * {
+            margin-left: $spacing-medium;
+        }
+    }
+
+    .nav__right {
+        background-color: orange;
+        @include createGrid(7, 1fr);
+        align-items: center;
+        justify-items: center;
+    }
+}
+
+.main {
+    @include createGrid(2, 1fr);
+
+    height: 670px;
+
+    align-items: center;
+    justify-items: center;
+
+    background-image: url("../img/background-main.png"), linear-gradient(to right, #E9CFAE, #D0B695);
+
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    &__box {
+        background-color: orange;
+        margin: calc($spacing-large * -1.75) 0 0 calc($spacing-large / 1.15);
+    }
+
+    &__box__button {
+        background-color: #E2BE8D;
+    }
+
+    &__box__subtitle {
+        font-size: 12px;
+        letter-spacing: 7px;
+        text-transform: uppercase;
+    }
+}
+
+// re-usable classes
+
+.mockup {
+    width: 100vw;
+}
+
+.mockup-absolute {
+    opacity: 0.5;
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.side-by-side {
+    @include createGrid(2, 100vw);
+}
+
+.wrapper {
+    box-shadow: 10px 10px black;
+    box-shadow: 12px 0 15px -4px rgba(0, 55, 162, 0.97), -12px 0 8px -4px rgba(0, 55, 162, 0.97);
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 calc($spacing-medium * 1);
+    position: relative;
+}

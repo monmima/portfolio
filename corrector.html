@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Corrector</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://icons.iconarchive.com/icons/visualpharm/green-emo/64/terminator-icon.png">
+
+    <style>
+        /* FONTES */
+        @font-face {
+            font-family: terminator;
+            src: url(./fonts/terminator_real_nfi-webfont.woff2);
+        }
+
+        body {
+            background: white;
+            font-family: roboto, sans-serif;
+        }
+
+        button {
+            margin-top: 25px;
+            width: 300px;
+        }
+
+        dfn {
+            font-style: normal;
+            border-bottom: 2px dotted gray;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        header {
+            margin-bottom: 50px;
+
+            display: flex;
+            align-items: center;
+        }
+
+        header img {
+            margin-right: 50px;
+            height: 64px;
+            width: 64px;
+        }
+
+        h1 {
+            font-family: terminator;
+        }
+
+        main {
+            margin: 0 10%;
+        }
+
+        textarea {
+            width: 100%;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .result {
+            background-color: lightgray;
+            margin-top: 25px;
+            padding: 20px;
+        }
+
+        .slogan {
+            margin-top: -20px;
+        }
+
+        @media screen and (max-width: 759px) {
+            h1 {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+
+        <header>
+            <img src="https://icons.iconarchive.com/icons/visualpharm/green-emo/64/terminator-icon.png" alt="Le Corrector">
+
+            <div>
+                <h1>Le Corrector</h1>
+
+                <small>
+                    <p>Je reviendrai...</p>
+                </small>
+            </div>
+
+        </header>
+
+        <div class="form">
+
+            <div>
+
+                <h2><dfn title="Familier. Qu'est-ce que c'est?">Quèsaco</dfn>?</h2>
+
+                <p><strong>Le Corrector</strong> est le correcteur informatique le plus violent de sa catégorie.</p> 
+
+                <p>D'ici à ce qu'il se retourne contre les humains, sème l'effroi et se mette à la recherche de John Connor, <strong>Le Corrector</strong> n'a qu'une mission&nbsp;: la recherche et la destruction des erreurs de <strong>stylistique</strong>.</p>
+
+                <p>Gagnez du temps en suivant le sillage de destruction du <strong>Corrector</strong> et évitez les pièges et les embûches de la langue française.</p>
+            </div>
+
+
+            <textarea name="" id="" cols="30" rows="10">
+Collez le texte à analyser ici.
+
+Appuyez sur le bouton ci-dessous pour voir l'analyse.
+
+===Exemples d'erreurs de stylistique===
+
+J'habite au 35 René-Lévesque.
+Mon numéro est le 418 111 1111.
+Rédaction & révision.
+Pourquoi donc ?
+Ça coûte 30$ ou 40$.
+            </textarea>
+            <button type="submit">Hasta la vista, baby!</button>
+        </div>
+
+        <div class="result">
+
+        </div>
+
+        <footer>
+            <p><small>Merci à Real NFI d'avoir créé la <a href="https://www.dafont.com/terminator-real-nfi.font" title="Lien vers www.dafont.com" rel="noreferrer noopener">fonte Terminator</a> et à <a href="https://www.dafont.com/terminator-real-nfi.font" title="Lien vers VisualPharm" rel="noreferrer noopener">VisualPharm</a> pour son icône.</small></p>
+        </footer>
+
+    </main>
+
+    <script>
+
+
+        const VERIFS = [
+            {
+                regexp: /[0-9|,|\.]+(\$|%|h)/gi,
+                explication: "Il faut que le nombre et le symbole soient séparés par une espace, et cette espace doit de préférence être insécable (20$ ===> 20&nbsp;$, 10h30 ===> 10&nbsp;h&nbsp;30, etc.).",
+                lien: "http://bdl.oqlf.gouv.qc.ca/bdl/gabarit_bdl.asp?t1=1&id=2039"
+            },
+            {
+                regexp: /[0-9]+\.[0-9][0-9]?\b/gi,
+                explication: "En français, le séparateur des décimales est la virgule (20.5 ===> 20,5).",
+                lien: "http://bdl.oqlf.gouv.qc.ca/bdl/gabarit_bdl.asp?T1=decimales&btn_chercher=CHERCHER&id=1584"
+            },
+            {
+                regexp: /(ste-foy|st-augustin|qc)/gi,
+                explication: "N'abrégez cette expression que si cela est absolument nécessaire en raison de contraintes d'espace (QC ===> Québec).",
+                lien: "http://bdl.oqlf.gouv.qc.ca/bdl/gabarit_bdl.asp?t1=1&id=1437"
+            },
+            {
+                regexp: /[0-9][0-9][0-9][0-9][0-9]+/gi,
+                explication: "À certaines exceptions près, il faut ajouter une espace entre les groupes de trois chiffres dans un nombre, et cette espace doit de préférence être insécable (20000 ===> 20 000, mais 3000 ===> 3000 ou encore 3&nbsp;000).",
+                lien: "http://bdl.oqlf.gouv.qc.ca/bdl/gabarit_bdl.asp?id=5447"
+            },
+            {
+                regexp: /[0-9]{3}( |\.)[0-9]{3}(\-| |\.)[0-9]{4}/gi,
+                explication: `Écrivez les numéros de téléphone avec <strong>deux</strong> traits d'union (418-111-1111).`,
+                lien: "https://www.btb.termiumplus.gc.ca/tpv2guides/guides/clefsfp/index-fra.html?lang=fra&lettr=indx_catlog_n&page=9-dV3RSx89fk.html"
+            },
+            {
+                regexp: /[0-9]+,? (des |du | de)?[A-Z|É][a-z|à|â|ä|é|è|ê|ë|î|ï|ô|ö|ù|û|ü|y].+/g,
+                explication: `Dans l'adresse, écrivez également le générique (35 René-Lévesque ===> 35<strong>,</strong> <strong>b</strong>oulevard René-Lévesque).`,
+                lien: "http://bdl.oqlf.gouv.qc.ca/bdl/gabarit_bdl.asp?t1=1&id=5046"
+            },
+            {
+                regexp: /[0-9]+,? (Boulevard|Chemin|Avenue|Rue|Autoroute|Route)/g,
+                explication: "Le générique s'écrit normalement avec une minuscule (35, Boulevard René-Lévesque ===> 35<strong>,</strong> boulevard René-Lévesque).</strong>",
+                lien: "http://bdl.oqlf.gouv.qc.ca/bdl/gabarit_bdl.asp?t1=1&id=5046"
+            },
+            {
+                regexp: /[0-9]+ (boulevard|chemin|avenue|rue|autoroute|route)/gi,
+                explication: "La présence de la virgule est obligatoire dans l'adresse (35 boulevard René-Lévesque ===> 35<strong>,</strong> boulevard René-Lévesque).</strong>",
+                lien: "http://bdl.oqlf.gouv.qc.ca/bdl/gabarit_bdl.asp?t1=1&id=5046"
+            },
+            {
+                regexp: /éligibles?/gi,
+                explication: `Éligible signifie «&nbsp;qui peut être élu&nbsp;» (éligible à un concours ===> admissible à un concours).`,
+                lien: "http://bdl.oqlf.gouv.qc.ca/bdl/gabarit_bdl.asp?id=994"
+            },
+            {
+                regexp: /[0-9]+\s?pc/gi,
+                explication: `L'abbréviation de «&nbsp;pieds cubes&nbsp;» est pi<sup>3</sup> (300 pc ===> 300 pi<sup>3</sup>).`,
+                lien: "http://gdt.oqlf.gouv.qc.ca/ficheOqlf.aspx?Id_Fiche=8363619"
+            },
+            {
+                regexp: /[0-9]+\s?p\b/gi,
+                explication: `L'abbréviation de «&nbsp;pieds&nbsp;» est pi (300 p ===> 300 pi).`,
+                lien: "http://gdt.oqlf.gouv.qc.ca/ficheOqlf.aspx?Id_Fiche=8361590"
+            },
+            {
+                regexp: /\b.*? (\?|\!)/gi,
+                explication: `En français canadien (ou québécois, si vous préférez), les caractères ! et ? ne sont pas précédés de l'espace. Cela dit, les gens emploient souvent sans trop le savoir l'option «&nbsp;français (France)&nbsp;» dans le traitement de texte (ce qui a pour effet d'insérer cette espace).<br><br>Ce qui importe le plus, c'est l'<strong>uniformité</strong> et la <strong>cohérence</strong> de l'ensemble.`,
+                lien: "http://bdl.oqlf.gouv.qc.ca/bdl/gabarit_bdl.asp?t1=1&id=2039"
+            },
+            {
+                regexp: /(«.*?»)/gi,
+                explication: `Les espaces (de préférence insécables) doivent s'employer avec les chevrons («&nbsp;framboise&nbsp;»).`,
+                lien: "http://bdl.oqlf.gouv.qc.ca/bdl/gabarit_bdl.asp?t1=1&id=2039"
+            },
+            {
+                regexp: /&/gi,
+                explication: `Évitez l'esperluette ailleurs que dans les raisons sociales («&nbsp;Ébénisterie Lessard, Tremblay & Côté&nbsp;»).`,
+                lien: "http://bdl.oqlf.gouv.qc.ca/bdl/gabarit_bdl.asp?id=3330"
+            },
+            {
+                regexp: /[0-9]+(ère|ème)s?\b/gi,
+                explication: `Les adjectif numéraux s'abrègent de cette manière&nbsp;: 1<sup>er</sup>, 1<sup>ers</sup>, 1<sup>re</sup>, 1<sup>res</sup>, 2<sup>e</sup>, 2<sup>es</sup>, etc. On mettra de préférence les caractères finaux en exposant.`,
+                lien: "https://www.academie-francaise.fr/abreviations-des-adjectifs-numeraux"
+            }
+        ];
+
+        function emptyResults() {
+            document.querySelector(".result").innerHTML = "";
+        }
+
+        function check() {
+            let count = 0;
+            emptyResults();
+
+            // get text to analyze
+            const textToAnalyze = document.querySelector("textarea").value;
+
+            // loop of all verications to perform
+            for (i of VERIFS) {
+
+                // look for regexp
+                let arr = (textToAnalyze.match(i.regexp) || []);
+
+                // creating the variables for storing the results
+                let toScreen = "";
+                let list = "";
+
+                // display result if there are more than 0 mistakes of this type
+                if (arr.length > 0) {
+                    count++;
+        
+                    const singOrPlural = arr.length > 1 ? "s" : "";
+
+                    toScreen += `<hr>`;
+                    toScreen += `<p>${i.explication}</p>`;
+
+                    if (i.lien) {
+                        toScreen += `<p><a title="Plus d'infos" href="${i.lien}" target="blank" rel="noreferrer noopener">Plus d'infos à ce sujet</a>.</p>`;
+                    }
+
+                    toScreen += `<p>${arr.length} alerte${singOrPlural} de ce type&nbsp;:</p>`;
+
+                    for (j of arr) {
+                        list += `<li>${j}</li>`;
+                    }
+
+
+                }
+
+                const textToReturn =
+                    `
+                        ${toScreen}
+                        
+                        <ul>
+                            ${list}
+                        </ul>
+                    `;
+
+                // console.log(textToReturn);
+                document.querySelector(".result").innerHTML += textToReturn;
+            }
+
+            return;
+        }
+
+        // event listeners
+        document.querySelector("button").addEventListener("click", function(event) {
+            event.preventDefault();
+            check();
+        });
+
+    </script>
+</body>
+</html>
