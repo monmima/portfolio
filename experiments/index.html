@@ -9,63 +9,28 @@
     <!-- Load Slick CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
 
+
     <style>
-        button {
-            background-color: black !important;
-            border-radius: 50%;
-            height: 50px;
-            width: 50px;
+        .svg-icon {
+            width: 100px;
+            height: 100px;
+            background-image: url('./hat-wizard-solid.svg');
+            background-size: cover;
         }
-
-        .slide {
-            aspect-ratio: 16 / 9;
+    
+        .svg-icon:hover {
+            filter: invert(46%) sepia(25%) saturate(4787%) hue-rotate(90deg) brightness(131%) contrast(115%);
         }
-        
-        .slick-dots {
-            background-color: pink;
-            display: flex;
-            justify-content: center;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            z-index: 100;
-        }
-
     </style>
+    
+
+    
 
 
 </head>
 <body>
 
-    <!-- start wrapper -->
-    <!-- https://kenwheeler.github.io/slick/ -->
-
-    <div class="max-w-3xl mx-auto relative">
-        <h1 class="bg-gray-500 text-white text-center">test</h1>
-
-        <!-- Slider container -->
-        <div class="slider flex justify-between items-center">
-            <div class="slider__slide bg-yellow-500">
-                <img src="https://cdn.akamai.steamstatic.com/steam/apps/257350/ss_e7b9946871e2b7554dabf67725ecaf3c48f831bd.600x338.jpg" alt="">
-            </div>
-            <div class="slider__slide">
-                <img src="https://cdn.akamai.steamstatic.com/steam/apps/257350/ss_02a9b01adfae21d29d9e7b4a01dd9e34b7dcdc10.600x338.jpg" alt="">
-            </div>
-            <div class="slider__slide">
-                <img src="https://cdn.akamai.steamstatic.com/steam/apps/257350/ss_c30db251e3267a26669840c2a7eef455669204ad.600x338.jpg" alt="">
-            </div>
-        </div>
-
-        <div>test</div>
-
-        <div class="custom-arrows-container absolute flex justify-between w-full top-1/2 transform -translate-y-5"></div>
-    </div>
-    <!-- end wrapper -->
-
-
-
-    
+    <svg class="svg-icon"></div>
 
     <!-- load libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -80,10 +45,9 @@
                 autoplaySpeed: 2000,
                 dots: true,
                 // infinite: false,
-                prevArrow: '<button type="button" class="bg-green-100 p-2 z-10">(===</button>',
-                nextArrow: '<button type="button" class="bg-green-100 p-2 z-10">===)</button>',
+                prevArrow: '<button type="button" class="right-arrow bg-green-100 p-2 z-10">(===</button>',
+                nextArrow: '<button type="button" class="left-arrow bg-green-100 p-2 z-10">===)</button>',
                 slidesToShow: 2,
-                slidesToScroll: 2,
             });
         });
     </script>
