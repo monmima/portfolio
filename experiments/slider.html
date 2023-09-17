@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- load libraries -->
+    <!-- Load Slick CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+
+
+    <style>
+        .svg-icon {
+            width: 100px;
+            height: 100px;
+            background-image: url('./hat-wizard-solid.svg');
+            background-size: cover;
+        }
+    
+        .svg-icon:hover {
+            filter: invert(46%) sepia(25%) saturate(4787%) hue-rotate(90deg) brightness(131%) contrast(115%);
+        }
+
+        .test:after {
+            content: attr(class);
+        }
+    </style>
+    
+
+    
+
+
+</head>
+<body>
+
+    <svg class="svg-icon"></svg>
+
+    <p class="test">abc</p>
+
+    <!-- load libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+    <!-- Initialize Slick -->
+    <script>
+        $(document).ready(function(){
+            $('.slider').slick({
+                appendArrows: $('div.custom-arrows-container'),
+                autoplaySpeed: 2000,
+                dots: true,
+                // infinite: false,
+                prevArrow: '<button type="button" class="right-arrow bg-green-100 p-2 z-10">(===</button>',
+                nextArrow: '<button type="button" class="left-arrow bg-green-100 p-2 z-10">===)</button>',
+                slidesToShow: 2,
+            });
+        });
+    </script>
+</body>
+</html>
