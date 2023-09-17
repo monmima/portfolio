@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .arrow {
+            animation: pulse 6s, fade 6s;
+            animation-direction: alternate;
+            opacity: 0;
+            transform: rotate(-45deg);
+
+            left: 80px;
+            top: -80px;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(.5);
+                transform: rotate(-45deg);
+
+                /* background-color: yellow; */
+                width: 100px;
+            }
+            25% {
+                transform: scale(2.0);
+                transform: rotate(-45deg);
+
+                /* background-color: pink; */
+                width: 80px;
+            }
+            50% {
+                transform: scale(.5);
+                transform: rotate(-45deg);
+
+                /* background-color: yellow; */
+                width: 100px;
+            }
+            75% {
+                transform: scale(2.0);
+                transform: rotate(-45deg);
+
+                /* background-color: pink; */
+                width: 80px;
+            }
+            100% {
+                transform: scale(0.5);
+                transform: rotate(-45deg);
+
+                /* background-color: yellow; */
+                width: 100px;
+            }
+        }
+        
+        @keyframes fade {
+            0% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sticky top-0 w-full bg-green-100">
+        <img class="h-20" src="./svg/arrow.svg" alt="">
+    </div>
+    
+    <div class="h-screen">test</div>
+
+    <div class="relative">
+        <div class="w-20 arrow animate-pulse-grow absolute">
+            <img class="h-20" src="./svg/arrow.svg" alt="">
+        </div>
+        <img class="h-20" src="./svg/arrow.svg" alt="">
+    </div>
+
+    <!-- load libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</body>
+</html>

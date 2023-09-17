@@ -14,36 +14,84 @@
     <!-- préchargement des images -->
 
     <style>
+        @keyframes pulse {
+            0% {
+                transform: rotate(-45deg);
+
+                /* background-color: yellow; */
+                height: 100px;
+                width: 100px;
+            }
+            25% {
+                transform: rotate(-45deg);
+
+                /* background-color: pink; */
+                height: 80px;
+                width: 80px;
+            }
+            50% {
+                transform: rotate(-45deg);
+
+                /* background-color: yellow; */
+                height: 100px;
+                width: 100px;
+            }
+            75% {
+                transform: rotate(-45deg);
+
+                /* background-color: pink; */
+                height: 80px;
+                width: 80px;
+            }
+            100% {
+                transform: rotate(-45deg);
+
+                /* background-color: yellow; */
+                height: 100px;
+                width: 100px;
+            }
+        }
+        
+        @keyframes fade {
+            0% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
         /*RÉINITIALISATION*/
         body, figcaption, figure {
             margin: 0;
             padding: 0;
         }
+
         a {
             text-decoration: none;
         }
+
         /*HIÉRARCHIE*/
         a:link, a:visited, a:active {
             color: black;
         }
+
         a:focus, a:hover {
             color: black;
         }
+
         body {
-            /*image de disquette vient d'Unsplash*/
-            /* background: url("./img/disquette.jpg") no-repeat left bottom fixed; */
-
-            /* https://www.needpix.com/photo/download/1687523/planner-evaluate-assessment-teamwork-consulting-estimate-discussion-equipment-business */
-            /* background: url("./img/travail-equipe.png") no-repeat left bottom fixed; */
-
             background: url("./img/tux.png") no-repeat left bottom fixed;
-
             background-position: center;
             background-size: 25%;
             font-family: 'IBM Plex Mono', monospace;
             overflow: hidden; /*pour cacher la barre de défilement du navigateur si on descend la fenêtre modale*/
             user-select: none; /*pour empêcher la sélection du texte*/
         }
+
         button {
             background-color: lightgray;
             border: none;
@@ -53,24 +101,28 @@
             min-width: 44px;
             outline: 0;
         }
+
         button:hover {
             appearance: none;
             background-color: #ddd;
-
             outline: none;
         }
+
         figure {
             cursor: pointer;
             text-align: center;
             width: 90px;
         }
+
         figure img {
             height: 48px;
             width: 48px;
         }
+
         figcaption {
             font-size: 0.7em;
         }
+
         /*https://www.w3schools.com/howto/howto_css_fixed_footer.asp*/
         footer {
             align-items: center;
@@ -85,23 +137,42 @@
             text-align: center;
             z-index: 20;
         }
+
+        figure > img {
+            height: 48px;
+            width: 48px;
+        }
+
         h2 {
             display: none;
         }
+
         iframe, textarea {
             /*pour ce qui est des tailles, je gère ça dans le JS*/
             min-height: 500px;
             min-width: 300px;
         }
-        section > img {
-            height: 48px;
-            width: 48px;
-        }
+
         textarea {
             font-family: 'IBM Plex Mono', monospace;
         }
 
         /*CLASSES*/
+        .absolute {
+            position: absolute;
+        }
+
+        .animated-arrow {
+            /* animation: pulse 6s, fade 6s; */
+            animation: pulse 6s infinite, fade 6s;
+            animation-direction: alternate;
+            opacity: 0;
+            transform: rotate(-45deg);
+
+            left: 70px;
+            top: -70px;
+        }
+
         .div-heure {
             cursor: default;
             font-size: 0.8em;
@@ -119,20 +190,6 @@
 
         .d-none {
             display: none;
-        }
-
-        .gray {
-            filter: grayscale(100%);
-        }
-
-        .icones {
-            /* background-color: yellow; */
-            display: grid;
-            justify-items: center;
-            grid-gap: 25px; 
-            grid-template-columns: repeat(3, 90px);
-            grid-template-rows: repeat(5, 90px);
-            margin: 25px 15px;
         }
 
         /*Draggable DIV Element*/
@@ -161,8 +218,26 @@
             z-index: 10;
         }
 
+        .gray {
+            filter: grayscale(100%);
+        }
+
+        .icones {
+            /* background-color: yellow; */
+            display: grid;
+            justify-items: center;
+            grid-gap: 25px; 
+            grid-template-columns: repeat(3, 90px);
+            grid-template-rows: repeat(5, 90px);
+            margin: 25px 15px;
+        }
+
         .menu-demarrer {
             font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .relative {
+            position: relative;
         }
 
         /*MEDIA QUERIES*/
@@ -183,6 +258,7 @@
                 left: 0px;
             }
         }
+
         @media screen and (min-width: 760px) {
             body {
                 font-size: 1em;
@@ -246,10 +322,6 @@
                 </figcaption>
             </figure>
             <figure>
-                <img src="https://icons.iconarchive.com/icons/pictogrammers/material/256/information-icon.png" alt="Icône Lisez-moi.txt" id="icone-lisez-moi">
-                <figcaption>Lisez-moi.txt</figcaption>
-            </figure>
-            <figure>
                 <img src="https://icons.iconarchive.com/icons/icons8/ios7/256/Weather-Rain-icon.png" alt="Icône Météo" id="icone-meteo">
                 <figcaption>
                     <div>Météo</div>
@@ -275,6 +347,11 @@
                 <figcaption>
                     <div>Experiments</div>
                 </figcaption>
+            </figure>
+            <figure class="relative">
+                <img class="animated-arrow absolute" src="./img/arrow-left.svg" alt="Animated arrow">
+                <img src="https://icons.iconarchive.com/icons/pictogrammers/material/256/information-icon.png" alt="Icône Lisez-moi.txt" id="icone-lisez-moi">
+                <figcaption>Lisez-moi.txt</figcaption>
             </figure>
         </section>
 
