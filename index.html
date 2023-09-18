@@ -104,6 +104,10 @@
             width: 100%;
         }
 
+        figure img:hover {
+            filter: invert(45%) sepia(100%) saturate(4948%) hue-rotate(207deg) brightness(98%) contrast(104%);
+        }
+
         figcaption {
             font-size: 0.7em;
         }
@@ -236,6 +240,7 @@
         /*MEDIA QUERIES*/
         @media screen and (max-width: 759px) {
             .animated-arrow {
+                pointer-events: none;
                 transform: rotate(-90deg);
                 z-index: 10;
             }
