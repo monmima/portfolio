@@ -288,7 +288,7 @@
             </figure>
 
             <figure>
-                <img src="https://icons.iconarchive.com/icons/simpleicons-team/simple/256/pokemon-icon.png" alt="Icône Pokédex" id="icone-pokedex">
+                <img src="img/pikachu.svg" alt="Icône Pokédex" id="icone-pokedex">
                 <figcaption>
                     <div>Pokédex</div>
                     <div>(VueJS, API)</div>
@@ -483,10 +483,15 @@ Utilisez un casque d'écoute ou des haut-parleurs pour entendre certains contenu
             function redimensionnerFenetreDeplacable() {
                 if (fenetreDeplacablePetite) {
                     fenetreDeplacablePetite = false;
-                    document.querySelector("iframe").style.height = "100vh";
-                    document.querySelector("textarea").style.height = "100vh";
-                    document.querySelector("iframe").style.width = "99.5vw";
-                    document.querySelector("textarea").style.width = "99.5vw";
+
+                    const windowHeight = window.innerHeight;
+                    const newHeight = windowHeight - 45;
+
+                    document.querySelector("iframe").style.height = `${newHeight}px`;
+                    document.querySelector("textarea").style.height = `${newHeight}px`;
+                    document.querySelector("iframe").style.width = "100vw";
+                    document.querySelector("textarea").style.width = "100vw";
+
                     const fenetreDeplacable = document.querySelector("#fenetre-deplacable");
 
                     fenetreDeplacable.style.top = 0;
