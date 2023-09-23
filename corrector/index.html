@@ -16,7 +16,7 @@
 
 <body class="gradient">
 
-    <div class="wrapper box-shadow">
+    <div class="wrapper box-shadow padding-container">
 
         <header class="grid">
             <!-- image -->
@@ -40,9 +40,9 @@
 
         </header>
 
-        <div class="form-container flex col"> <!-- start form -->
+        <div class="flex col"> <!-- start form -->
 
-            <h3 class="terminator-font">Collez votre texte ici.</h3>
+            <h3 class="terminator-font mt-2">Collez votre texte ici.</h3>
 
             <textarea name="" id="" cols="30" rows="10">
 
@@ -55,7 +55,7 @@ Pourquoi donc ?
 Ça coûte 30$ ou 40$.
             </textarea>
 
-            <h3 class="terminator-font mt-1">Appuyez sur le bouton pour voir l'analyse.</h3>
+            <h3 class="terminator-font mt-2">Appuyez sur le bouton pour voir l'analyse.</h3>
             <button type="submit">Hasta la vista, baby!</button>
 
             <div class="result">
@@ -64,7 +64,7 @@ Pourquoi donc ?
 
         </div> <!-- end form -->
 
-        <footer class="flex justify-center">
+        <footer class="flex justify-center mt-2">
             <p><small>Merci à Real NFI d'avoir créé la <a href="https://www.dafont.com/terminator-real-nfi.font" title="Lien vers www.dafont.com" rel="noreferrer noopener">fonte Terminator</a> et à <a href="https://www.dafont.com/terminator-real-nfi.font" title="Lien vers VisualPharm" rel="noreferrer noopener">VisualPharm</a> pour son icône.</small></p>
         </footer>
 
@@ -210,10 +210,22 @@ Pourquoi donc ?
             return;
         }
 
+        function showResultBox() {
+            const resultBox = document.querySelector(".result");
+            resultBox.style.display = "block";
+        }
+
         // event listeners
         document.querySelector("button").addEventListener("click", function(event) {
             event.preventDefault();
+            showResultBox();
             check();
+        });
+
+        document.addEventListener("DOMContentLoaded", function(event) {
+            console.log("test");
+            const resultBox = document.querySelector(".result");
+            resultBox.style.display = "none";
         });
 
     </script>

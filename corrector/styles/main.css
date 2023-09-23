@@ -1,9 +1,9 @@
 a {
-  color: var(--gradientTeal);
+  color: var(--bodyTeal);
 }
 
 body {
-  background: linear-gradient(to top right, var(--gradientBlack), var(--gradientBlack), var(--gradientBlack), var(--gradientTeal));
+  background-color: var(--bodyBlack);
   color: var(--white);
   font-family: roboto;
   margin: var(--spacing-medium);
@@ -28,7 +28,7 @@ h1 {
 }
 
 hr {
-  color: var(--orange);
+  color: var(--bodyTeal);
   height: 3px;
   margin: var(--spacing-small);
 }
@@ -40,8 +40,8 @@ img {
 
 input, textarea {
   color: var(--white);
-  background-color: var(--black);
-  border: 4px solid var(--orange);
+  background-color: var(--formBlack);
+  border: 4px solid var(--bodyTeal);
 }
 
 .description {
@@ -51,10 +51,15 @@ input, textarea {
   padding: var(--spacing-small) 0 0 0;
 }
 
-.form-container {
-  padding: 5vh 5vw;
+.padding-container {
+  padding: 5vw 5vw;
 }
 
+.result {
+  background-color: var(--formBlack);
+  border: 4px solid var(--bodyTeal);
+  padding: var(--spacing-small);
+}
 .result li {
   padding-left: 20px;
   margin-left: 20px;
@@ -68,16 +73,17 @@ input, textarea {
 }
 
 .wrapper {
-  background-color: var(--black);
+  background-color: var(--wrapperBlack);
 }
 
 :root {
-  --black: #131C22;
   --orange: #df7d58;
   --white: white;
-  --buttonGray: #202933;
-  --gradientBlack: #131C22;
-  --gradientTeal: #3E9792;
+  --bodyTeal: #3E9792;
+  --buttonGray: #202932;
+  --formBlack: #131A21;
+  --bodyBlack: #ADADAD; /* Adjusted for higher contrast */
+  --wrapperBlack: #131A21; /* Adjusted for higher contrast */
 }
 
 @font-face {
@@ -116,6 +122,10 @@ input, textarea {
 
 .mt-1 {
   margin-top: var(--spacing-small);
+}
+
+.mt-2 {
+  margin-top: var(--spacing-medium);
 }
 
 .neon-text {
