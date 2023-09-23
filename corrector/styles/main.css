@@ -1,0 +1,140 @@
+a {
+  color: var(--gradientTeal);
+}
+
+body {
+  background: linear-gradient(to top right, var(--gradientBlack), var(--gradientBlack), var(--gradientBlack), var(--gradientTeal));
+  color: var(--white);
+  font-family: roboto;
+  margin: var(--spacing-medium);
+}
+
+button {
+  background-color: var(--buttonGray);
+  border: 0;
+  color: var(--white);
+  padding: var(--spacing-small) 0;
+}
+button:hover {
+  cursor: pointer;
+}
+
+footer {
+  padding: var(--spacing-small);
+}
+
+h1 {
+  font-size: clamp(15px, 3vw, 25px);
+}
+
+hr {
+  color: var(--orange);
+  height: 3px;
+  margin: var(--spacing-small);
+}
+
+img {
+  height: auto;
+  width: 100%;
+}
+
+input, textarea {
+  color: var(--white);
+  background-color: var(--black);
+  border: 4px solid var(--orange);
+}
+
+.description {
+  padding: var(--spacing-small);
+}
+.description p {
+  padding: var(--spacing-small) 0 0 0;
+}
+
+.form-container {
+  padding: 5vh 5vw;
+}
+
+.result li {
+  padding-left: 20px;
+  margin-left: 20px;
+}
+.result p {
+  padding: 0 0 20px;
+}
+
+.textarea {
+  width: 100%;
+}
+
+.wrapper {
+  background-color: var(--black);
+}
+
+:root {
+  --black: #131C22;
+  --orange: #df7d58;
+  --white: white;
+  --buttonGray: #202933;
+  --gradientBlack: #131C22;
+  --gradientTeal: #3E9792;
+}
+
+@font-face {
+  font-family: terminator;
+  src: url("../fonts/terminator_real_nfi-webfont.woff2");
+}
+@font-face {
+  font-family: roboto;
+  src: url("../fonts/roboto-regular-webfont.woff2");
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.box-shadow {
+  box-shadow: 0 0 50px 20px rgba(0, 0, 0, 0.5);
+}
+
+.col {
+  flex-direction: column;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.mt-1 {
+  margin-top: var(--spacing-small);
+}
+
+.neon-text {
+  color: #fff;
+  text-shadow: 0 0 3px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #3E9792, 0 0 82px #3E9792, 0 0 92px #3E9792, 0 0 102px #3E9792, 0 0 151px #3E9792;
+}
+
+.terminator-font {
+  font-family: terminator;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 80%;
+}
+
+:root {
+  --spacing-small: 20px;
+  --spacing-medium: 40px;
+  --spacing-large: 80px;
+}/*# sourceMappingURL=main.css.map */

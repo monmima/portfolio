@@ -4,47 +4,122 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Corrector</title>
+    <title>Le Corrector</title>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="./styles/main.css">
-    
     <link rel="icon" type="image/png" href="https://icons.iconarchive.com/icons/visualpharm/green-emo/64/terminator-icon.png">
 
+    <style>
+        /* FONTES */
+        @font-face {
+            font-family: terminator;
+            src: url(./fonts/terminator_real_nfi-webfont.woff2);
+        }
+
+        body {
+            background: white;
+            font-family: roboto, sans-serif;
+        }
+
+        button {
+            margin-top: 25px;
+            width: 300px;
+        }
+
+        dfn {
+            font-style: normal;
+            border-bottom: 2px dotted gray;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        header {
+            margin-bottom: 50px;
+
+            display: flex;
+            align-items: center;
+        }
+
+        header img {
+            margin-right: 50px;
+            height: 64px;
+            width: 64px;
+        }
+
+        h1 {
+            font-family: terminator;
+        }
+
+        main {
+            margin: 0 10%;
+        }
+
+        textarea {
+            width: 100%;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .result {
+            background-color: lightgray;
+            margin-top: 25px;
+            padding: 20px;
+        }
+
+        .slogan {
+            margin-top: -20px;
+        }
+
+        @media screen and (max-width: 759px) {
+            h1 {
+                font-size: 1em;
+            }
+        }
+    </style>
 </head>
+<body>
 
-<body class="gradient">
+    <main>
 
-    <div class="wrapper box-shadow">
+        <header>
+            <img src="https://icons.iconarchive.com/icons/visualpharm/green-emo/64/terminator-icon.png" alt="Le Corrector">
 
-        <header class="grid">
-            <!-- image -->
-            <img src="./img/terminator.png" alt="El Corrector">
+            <div>
+                <h1>Le Corrector</h1>
 
-            <!-- text -->
-            <div class="description">
-                <div>
-                    <h1 class="terminator-font neon-text">El Corrector</h1>
-                </div>
-    
-                <div>   
-                    <p><strong>El Corrector</strong> est le correcteur informatique le plus implacable de sa catégorie.</p> 
-    
-                    <p>D'ici à ce qu'il se retourne contre les humains, sème l'effroi et se mette à la recherche de John Connor, <strong>Le Corrector</strong> n'a qu'une mission&nbsp;: la recherche et la destruction des erreurs de <strong>stylistique</strong>.</p>
-    
-                    <p>Gagnez du temps en suivant le sillage de destruction du <strong>Corrector</strong> et évitez les pièges et les embûches de la langue française.</p>
-                </div>
+                <small>
+                    <p>Je reviendrai...</p>
+                </small>
             </div>
-
 
         </header>
 
-        <div class="form-container flex col"> <!-- start form -->
+        <div class="form">
 
-            <h3 class="terminator-font">Collez votre texte ici.</h3>
+            <div>
+
+                <h2><dfn title="Familier. Qu'est-ce que c'est?">Quèsaco</dfn>?</h2>
+
+                <p><strong>Le Corrector</strong> est le correcteur informatique le plus violent de sa catégorie.</p> 
+
+                <p>D'ici à ce qu'il se retourne contre les humains, sème l'effroi et se mette à la recherche de John Connor, <strong>Le Corrector</strong> n'a qu'une mission&nbsp;: la recherche et la destruction des erreurs de <strong>stylistique</strong>.</p>
+
+                <p>Gagnez du temps en suivant le sillage de destruction du <strong>Corrector</strong> et évitez les pièges et les embûches de la langue française.</p>
+            </div>
+
 
             <textarea name="" id="" cols="30" rows="10">
+Collez le texte à analyser ici.
+
+Appuyez sur le bouton ci-dessous pour voir l'analyse.
 
 ===Exemples d'erreurs de stylistique===
 
@@ -54,21 +129,18 @@ Rédaction & révision.
 Pourquoi donc ?
 Ça coûte 30$ ou 40$.
             </textarea>
-
-            <h3 class="terminator-font mt-1">Appuyez sur le bouton pour voir l'analyse.</h3>
             <button type="submit">Hasta la vista, baby!</button>
+        </div>
 
-            <div class="result">
+        <div class="result">
 
-            </div>
+        </div>
 
-        </div> <!-- end form -->
-
-        <footer class="flex justify-center">
+        <footer>
             <p><small>Merci à Real NFI d'avoir créé la <a href="https://www.dafont.com/terminator-real-nfi.font" title="Lien vers www.dafont.com" rel="noreferrer noopener">fonte Terminator</a> et à <a href="https://www.dafont.com/terminator-real-nfi.font" title="Lien vers VisualPharm" rel="noreferrer noopener">VisualPharm</a> pour son icône.</small></p>
         </footer>
 
-    </div> <!-- end wrapper -->
+    </main>
 
     <script>
 

@@ -1,0 +1,78 @@
+a {
+    color: var(--gradientTeal);
+}
+
+body {
+    background: linear-gradient(to top right, var(--gradientBlack), var(--gradientBlack), var(--gradientBlack), var(--gradientTeal));
+    color: var(--white);
+    font-family: roboto;
+    margin: var(--spacing-medium);
+}
+
+button {
+    background-color: var(--buttonGray);
+    border: 0;
+    color: var(--white);
+    padding: var(--spacing-small) 0;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+footer {
+    padding: var(--spacing-small);
+}
+
+h1 {
+    font-size: clamp(15px, 3vw, 25px);
+}
+
+hr {
+    color: var(--orange);
+    height: 3px;
+    margin: var(--spacing-small);
+}
+
+img {
+    height: auto;
+    width: 100%;
+}
+
+input, textarea {
+    color: var(--white);
+    background-color: var(--black);
+    border: 4px solid var(--orange);
+}
+
+.description {
+    padding: var(--spacing-small);
+
+    p {
+        padding: var(--spacing-small) 0 0 0;
+    }
+
+}
+
+.form-container {
+    padding: 5vh 5vw;
+}
+
+.result {
+    li {
+        padding-left: 20px;
+        margin-left: 20px;
+    }
+
+    p {
+        padding: 0 0 20px;
+    }
+}
+
+.textarea {
+    width: 100%;
+}
+
+.wrapper {
+    background-color: var(--black);
+}
