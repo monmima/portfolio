@@ -21,10 +21,6 @@ button {
     }
 }
 
-footer {
-    padding: var(--spacing-small);
-}
-
 h1 {
     font-size: clamp(15px, 3vw, 25px);
 }
@@ -47,12 +43,9 @@ input, textarea {
 }
 
 .description {
-    padding: var(--spacing-small);
-
     p {
         padding: var(--spacing-small) 0 0 0;
     }
-
 }
 
 .padding-container {

@@ -1,6 +1,9 @@
-@import './components';
+// stuff that must be loaded from the get-go
+@import './variables';
 @import './colors';
+
+// other stuff
+@import './components';
 @import './fonts';
 @import './reset';
 @import './utilities';
-@import './variables';

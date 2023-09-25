@@ -17,6 +17,17 @@
 .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-medium);
+
+    // on mobile
+    @media screen and (max-width: $lg) {
+        grid-template-columns: 1fr;
+
+        // reverse photo and text order on mobile
+        :nth-child(1) {
+            order: 2;
+        }
+    }
 }
 
 .mt-1 {

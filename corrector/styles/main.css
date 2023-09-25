@@ -1,3 +1,19 @@
+:root {
+  --spacing-small: 20px;
+  --spacing-medium: 40px;
+  --spacing-large: 80px;
+}
+
+:root {
+  --orange: #df7d58;
+  --white: white;
+  --bodyTeal: #3E9792;
+  --buttonGray: #202932;
+  --formBlack: #131A21;
+  --bodyBlack: #ADADAD; /* Adjusted for higher contrast */
+  --wrapperBlack: #131A21; /* Adjusted for higher contrast */
+}
+
 a {
   color: var(--bodyTeal);
 }
@@ -17,10 +33,6 @@ button {
 }
 button:hover {
   cursor: pointer;
-}
-
-footer {
-  padding: var(--spacing-small);
 }
 
 h1 {
@@ -44,9 +56,6 @@ input, textarea {
   border: 4px solid var(--bodyTeal);
 }
 
-.description {
-  padding: var(--spacing-small);
-}
 .description p {
   padding: var(--spacing-small) 0 0 0;
 }
@@ -74,16 +83,6 @@ input, textarea {
 
 .wrapper {
   background-color: var(--wrapperBlack);
-}
-
-:root {
-  --orange: #df7d58;
-  --white: white;
-  --bodyTeal: #3E9792;
-  --buttonGray: #202932;
-  --formBlack: #131A21;
-  --bodyBlack: #ADADAD; /* Adjusted for higher contrast */
-  --wrapperBlack: #131A21; /* Adjusted for higher contrast */
 }
 
 @font-face {
@@ -118,6 +117,15 @@ input, textarea {
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-medium);
+}
+@media screen and (max-width: 992px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .grid :nth-child(1) {
+    order: 2;
+  }
 }
 
 .mt-1 {
@@ -141,10 +149,4 @@ input, textarea {
   margin: 0 auto;
   max-width: 1200px;
   width: 80%;
-}
-
-:root {
-  --spacing-small: 20px;
-  --spacing-medium: 40px;
-  --spacing-large: 80px;
 }/*# sourceMappingURL=main.css.map */

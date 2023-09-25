@@ -1,4 +1,4 @@
-# Notes on El Corrector
+# Notes on the Corrector
 
 ## SCSS
 
