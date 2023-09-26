@@ -3,7 +3,6 @@ a {
 }
 
 body {
-    // background: linear-gradient(to top right, var(--bodyBlack), var(--bodyBlack), var(--bodyBlack), var(--bodyTeal));
     background-color: var(--bodyBlack);
     color: var(--white);
     font-family: roboto;
@@ -13,6 +12,7 @@ body {
 button {
     background-color: var(--buttonGray);
     border: 0;
+    border-radius: $borderRadius;
     color: var(--white);
     padding: var(--spacing-small) 0;
 
@@ -36,10 +36,19 @@ img {
     width: 100%;
 }
 
-input, textarea {
+input, textarea, .result {
+    border: 4px solid var(--formBlack);
+    padding: var(--spacing-small);
+}
+
+hr, input, textarea, .result {
     color: var(--white);
-    background-color: var(--formBlack);
-    border: 4px solid var(--bodyTeal);
+    // background-color: var(--formBlack);
+    background: linear-gradient(to right, #1A2027, #1A2027, #151F23) !important;
+    // background-color: pink !important;
+    border-radius: $borderRadius;
+
+    box-shadow: inset 0 0 5px var(--bodyBlack), 0 0 5px var(--bodyBlack);
 }
 
 .description {
@@ -53,10 +62,6 @@ input, textarea {
 }
 
 .result {
-    background-color: var(--formBlack);
-    border: 4px solid var(--bodyTeal);
-    padding: var(--spacing-small);
-
     li {
         padding-left: 20px;
         margin-left: 20px;
@@ -69,8 +74,6 @@ input, textarea {
 
 .textarea {
     width: 100%;
-
-
 }
 
 .wrapper {

@@ -11,7 +11,7 @@
   --buttonGray: #202932;
   --formBlack: #131A21;
   --bodyBlack: #ADADAD; /* Adjusted for higher contrast */
-  --wrapperBlack: #131A21; /* Adjusted for higher contrast */
+  --wrapperBlack: #192026; /* Adjusted for higher contrast */
 }
 
 a {
@@ -28,6 +28,7 @@ body {
 button {
   background-color: var(--buttonGray);
   border: 0;
+  border-radius: 5px;
   color: var(--white);
   padding: var(--spacing-small) 0;
 }
@@ -50,10 +51,16 @@ img {
   width: 100%;
 }
 
-input, textarea {
+input, textarea, .result {
+  border: 4px solid var(--formBlack);
+  padding: var(--spacing-small);
+}
+
+hr, input, textarea, .result {
   color: var(--white);
-  background-color: var(--formBlack);
-  border: 4px solid var(--bodyTeal);
+  background: linear-gradient(to right, #1A2027, #1A2027, #151F23) !important;
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px var(--bodyBlack), 0 0 5px var(--bodyBlack);
 }
 
 .description p {
@@ -64,11 +71,6 @@ input, textarea {
   padding: 5vw 5vw;
 }
 
-.result {
-  background-color: var(--formBlack);
-  border: 4px solid var(--bodyTeal);
-  padding: var(--spacing-small);
-}
 .result li {
   padding-left: 20px;
   margin-left: 20px;
