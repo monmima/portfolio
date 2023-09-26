@@ -7,32 +7,34 @@
 :root {
   --orange: #df7d58;
   --white: white;
-  --bodyTeal: #3E9792;
-  --buttonGray: #202932;
+  --teal: #3E9792;
   --formBlack: #131A21;
   --bodyBlack: #ADADAD; /* Adjusted for higher contrast */
   --wrapperBlack: #192026; /* Adjusted for higher contrast */
 }
 
 a {
-  color: var(--bodyTeal);
+  color: var(--teal);
 }
 
 body {
   background-color: var(--bodyBlack);
   color: var(--white);
   font-family: roboto;
-  margin: var(--spacing-medium);
+  margin: 5vw;
 }
 
 button {
-  background-color: var(--buttonGray);
+  background-color: var(--teal);
   border: 0;
   border-radius: 5px;
   color: var(--white);
+  font-size: clamp(12px, 3vw, 16px);
   padding: var(--spacing-small) 0;
 }
 button:hover {
+  background-color: var(--bodyBlack);
+  color: var(--formBlack);
   cursor: pointer;
 }
 
@@ -40,8 +42,16 @@ h1 {
   font-size: clamp(15px, 3vw, 25px);
 }
 
+h3 {
+  font-size: clamp(12px, 2vw, 20px);
+}
+
 hr {
-  color: var(--bodyTeal);
+  color: var(--white);
+  background: var(--formBlack);
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px var(--bodyBlack), 0 0 5px var(--bodyBlack);
+  color: var(--teal);
   height: 3px;
   margin: var(--spacing-small);
 }
@@ -51,16 +61,13 @@ img {
   width: 100%;
 }
 
-input, textarea, .result {
-  border: 4px solid var(--formBlack);
-  padding: var(--spacing-small);
-}
-
-hr, input, textarea, .result {
+textarea {
   color: var(--white);
-  background: linear-gradient(to right, #1A2027, #1A2027, #151F23) !important;
+  background: var(--formBlack);
   border-radius: 5px;
   box-shadow: inset 0 0 5px var(--bodyBlack), 0 0 5px var(--bodyBlack);
+  border: 4px solid var(--formBlack);
+  padding: var(--spacing-small);
 }
 
 .description p {
@@ -71,6 +78,14 @@ hr, input, textarea, .result {
   padding: 5vw 5vw;
 }
 
+.result {
+  border: 4px solid var(--formBlack);
+  padding: var(--spacing-small);
+  color: var(--white);
+  background: var(--formBlack);
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px var(--bodyBlack), 0 0 5px var(--bodyBlack);
+}
 .result li {
   padding-left: 20px;
   margin-left: 20px;

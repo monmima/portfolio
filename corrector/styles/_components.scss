@@ -1,22 +1,37 @@
+@mixin styleBox {
+    color: var(--white);
+    background: var(--formBlack);
+    border-radius: $borderRadius;
+    box-shadow: inset 0 0 5px var(--bodyBlack), 0 0 5px var(--bodyBlack);
+}
+
+@mixin styleHr {
+    border: 4px solid var(--formBlack);
+    padding: var(--spacing-small);
+}
+
 a {
-    color: var(--bodyTeal);
+    color: var(--teal);
 }
 
 body {
     background-color: var(--bodyBlack);
     color: var(--white);
     font-family: roboto;
-    margin: var(--spacing-medium);
+    margin: 5vw;
 }
 
 button {
-    background-color: var(--buttonGray);
+    background-color: var(--teal);
     border: 0;
     border-radius: $borderRadius;
     color: var(--white);
+    font-size: clamp(12px, 3vw, 16px);
     padding: var(--spacing-small) 0;
 
     &:hover {
+        background-color: var(--bodyBlack);
+        color: var(--formBlack);
         cursor: pointer;
     }
 }
@@ -25,8 +40,14 @@ h1 {
     font-size: clamp(15px, 3vw, 25px);
 }
 
+h3 {
+    font-size: clamp(12px, 2vw, 20px);
+}
+
 hr {
-    color: var(--bodyTeal);
+    @include styleBox();
+
+    color: var(--teal);
     height: 3px;
     margin: var(--spacing-small);
 }
@@ -36,19 +57,9 @@ img {
     width: 100%;
 }
 
-input, textarea, .result {
-    border: 4px solid var(--formBlack);
-    padding: var(--spacing-small);
-}
-
-hr, input, textarea, .result {
-    color: var(--white);
-    // background-color: var(--formBlack);
-    background: linear-gradient(to right, #1A2027, #1A2027, #151F23) !important;
-    // background-color: pink !important;
-    border-radius: $borderRadius;
-
-    box-shadow: inset 0 0 5px var(--bodyBlack), 0 0 5px var(--bodyBlack);
+textarea {
+    @include styleBox();
+    @include styleHr();
 }
 
 .description {
@@ -62,6 +73,9 @@ hr, input, textarea, .result {
 }
 
 .result {
+    @include styleHr();
+    @include styleBox();
+
     li {
         padding-left: 20px;
         margin-left: 20px;
