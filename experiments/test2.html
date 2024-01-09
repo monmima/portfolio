@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Styled Input Text Field</title>
+  <style>
+    /* Style for the input text field */
+    .styled-input {
+        width: 300px;
+        padding: 10px;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3), 0 0 5px rgba(0, 0, 0, 0.3);
+        outline: none;
+    }
+
+    /* Style for the input text field when focused */
+    .styled-input:focus {
+        border-color: #ccc;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3), 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <input type="text" class="styled-input" placeholder="Enter text here">
+</body>
+</html>
