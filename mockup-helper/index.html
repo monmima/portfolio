@@ -40,6 +40,18 @@
             z-index: 10;
         }
 
+        .controls__slider-container {
+            display: flex;
+        }
+
+        .controls__slider-container > p:first-child {
+            margin: 0 20px 0 0;
+        }
+
+        .controls__slider-container > p:last-child {
+            margin: 0 0 0 20px;
+        }
+
         .main {
             position: relative;
         }
@@ -70,7 +82,11 @@
         <h1>Tracy the Tracing Tool</h1>
 
         <!-- opacity selector -->
-        <input type="range" min="0" max="1" step="0.1" value="1" id="opacity-slider">
+        <div class="controls__slider-container">
+            <p>Mock-up</p>
+            <input type="range" min="0" max="1" step="0.1" value="1" id="opacity-slider">
+            <p>HTML</p>
+        </div>
 
         <!-- blink button -->
         <div>
