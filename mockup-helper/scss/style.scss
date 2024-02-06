@@ -140,7 +140,9 @@ body {
 
     &__box {
         background-color: orange;
-        margin: calc($spacing-large * -1.75) 0 0 calc($spacing-large / 1.15);
+        margin: -175px 0 0 calc($spacing-large / 8.15);
+        height: 200px;
+        width: 340px;
     }
 
     &__box__button {
@@ -150,7 +152,12 @@ body {
     &__box__subtitle {
         font-size: 12px;
         letter-spacing: 7px;
+        // margin: calc($spacing-small) 0 0 0;
         text-transform: uppercase;
+    }
+
+    &__box__title {
+        margin-top: 25px;
     }
 }
 

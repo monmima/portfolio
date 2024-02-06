@@ -110,7 +110,9 @@ body {
 }
 .main__box {
   background-color: orange;
-  margin: -140px 0 0 69.5652173913px;
+  margin: -175px 0 0 9.8159509202px;
+  height: 200px;
+  width: 340px;
 }
 .main__box__button {
   background-color: #E2BE8D;
@@ -119,6 +121,9 @@ body {
   font-size: 12px;
   letter-spacing: 7px;
   text-transform: uppercase;
+}
+.main__box__title {
+  margin-top: 25px;
 }
 
 .mockup {
