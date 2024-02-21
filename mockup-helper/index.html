@@ -81,6 +81,11 @@
     <div class="controls">
         <h1>Tracy the Tracing Tool</h1>
 
+        <div class="button-container">
+            <button onClick="selectHtmlAndImageCombination('./img/mockup.png', './markup.html')">Mockup 1</button>
+            <button  onClick="selectHtmlAndImageCombination('./img/test.jpg', './markup2.html')">Mockup 2</button>
+        </div>
+
         <!-- opacity selector -->
         <div class="controls__slider-container">
             <p>Mock-up</p>
@@ -188,6 +193,21 @@
             // adjust the dimensions of the iframe to that of the mockup image
             adjustIframeDimensions();
         });
+
+        
+
+        // Function called when a mockup button is clicked
+        function selectHtmlAndImageCombination(imgSrc, htmlSrc) {
+        //     <div class="main__mockup">
+        //     <img class="main__mockup__image" src="./img/mockup.png" alt="Maquette">
+        // </div>
+
+        // <!-- markup -->
+        // <iframe class="main__markup" src="./markup.html" frameborder="0"></iframe>
+
+            document.querySelector(".main__mockup__image").src = imgSrc;
+            document.querySelector(".main__markup").src = htmlSrc;
+        }
 
         // adjust the dimensions of the iframe to those of the image
         function adjustIframeDimensions() {
