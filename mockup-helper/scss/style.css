@@ -27,6 +27,9 @@ body {
 .footer h3 {
   padding: 16.6666666667px 6px 16px;
 }
+.footer hr {
+  margin: 20px;
+}
 .footer img {
   border-radius: 12px;
 }
@@ -44,12 +47,22 @@ body {
 .footer__box__content__button {
   background-color: #E0C19D;
   display: inline-block;
+  height: 50px;
   text-align: center;
   width: 100%;
 }
 .footer__box__content__h3-nb2 {
   padding: 22px 6px 6px !important;
   text-align: center;
+}
+.footer__bullet-container {
+  display: flex;
+}
+.footer__bullet-content {
+  aspect-ratio: 1/1;
+  background-color: gray;
+  border-radius: 50%;
+  height: 10px;
 }
 .footer__image {
   display: flex;

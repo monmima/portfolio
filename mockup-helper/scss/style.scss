@@ -44,6 +44,10 @@ body {
         padding: calc($spacing-small / 1.2) 6px calc($spacing-small * 0.8);
     }
 
+    hr {
+        margin: 20px;
+    }
+
     img {
         border-radius: calc($spacing-small * 0.6);
     }
@@ -64,6 +68,7 @@ body {
     &__box__content__button {
         background-color: #E0C19D;
         display: inline-block;
+        height: 50px;
         text-align: center;
         width: 100%;
     }
@@ -71,6 +76,17 @@ body {
     &__box__content__h3-nb2 {
         padding: calc($spacing-small * 1.1) 6px calc($spacing-small * 0.3) !important;
         text-align: center;
+    }
+
+    &__bullet-container {
+        display: flex;
+    }
+
+    &__bullet-content {
+        aspect-ratio: 1 / 1;
+        background-color: gray;
+        border-radius: 50%;
+        height: 10px;
     }
 
     &__image {
