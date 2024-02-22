@@ -45,11 +45,15 @@ body {
     }
 
     hr {
-        margin: 20px;
+        margin: 20px 0;
     }
 
     img {
         border-radius: calc($spacing-small * 0.6);
+    }
+
+    &__bottom {
+        margin: 0 10px;
     }
 
     &__box {
@@ -67,10 +71,14 @@ body {
 
     &__box__content__button {
         background-color: #E0C19D;
-        display: inline-block;
+        border-radius: 25px;
         height: 50px;
         text-align: center;
         width: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     &__box__content__h3-nb2 {
@@ -80,6 +88,7 @@ body {
 
     &__bullet-container {
         display: flex;
+        padding: calc($spacing-small * 0.2) 0  calc($spacing-small * 0.8);
     }
 
     &__bullet-content {
@@ -87,6 +96,7 @@ body {
         background-color: gray;
         border-radius: 50%;
         height: 10px;
+        margin: 0 3px 0;
     }
 
     &__image {
