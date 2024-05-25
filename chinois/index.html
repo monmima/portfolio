@@ -142,19 +142,20 @@
             questionChoisie = listeGenerale[Math.floor(Math.random()*listeGenerale.length)];
         }
 
-        // affichage question
+        // show and play question
         function montreQuestion() {
             videTableauHtml();
             choisisQuestion();
 
+            // inject question
             if (questionChoisie.length === 3) { // comme pour le chinois
                 document.querySelector(".question").innerHTML = `${questionChoisie[0]}<br>${questionChoisie[1]}`;
             } else { // comme pour l'anglais
                 document.querySelector(".question").innerHTML = `${questionChoisie[0]}`;
             }
 
-            question = document.querySelector(".question").innerHTML;
-            speakChinese(question);
+            // speak question
+            speakText(questionChoisie[0][0], "zh-CN");
         }
 
         // SCORE
@@ -175,20 +176,26 @@
         function analyseDivReponse() {
             if (reponseAffichee === false) {
                 reponseAffichee = true;
-                document.querySelector(".reponse").innerHTML = questionChoisie[questionChoisie.length - 1]; // questionChoisie[questionChoisie.length - 1] est toujours la chose à afficher, peu importe la longueur de la liste de questions (deux ou trois éléments)
+                const textAnswer = questionChoisie[questionChoisie.length - 1][0];
+
+                document.querySelector(".reponse").innerHTML = textAnswer; // questionChoisie[questionChoisie.length - 1] est toujours la chose à afficher, peu importe la longueur de la liste de questions (deux ou trois éléments)
+                speakText(textAnswer, "fr-FR");
             } else {
                 evalueReponse("bon");
                 montreQuestion();
             } 
         }
 
-        function speakChinese(text) {
+        function speakText(text, lang) {
+            console.log(lang);
             const cleanText = text.replace(/<br>.*?$/g, "");
 
             const audio = new SpeechSynthesisUtterance();
             const voices = window.speechSynthesis.getVoices();
 
-            audio.voice = voices.filter(function(voice) { return voice.lang == 'zh-CN'; })[0];
+            const selectedVoice = voices.filter(function(voice) { return voice.lang == lang; })[0];
+
+            audio.voice = selectedVoice;
             audio.text = cleanText;
 
             speechSynthesis.speak(audio);
