@@ -187,7 +187,6 @@
         }
 
         function speakText(text, lang) {
-            console.log(lang);
             const cleanText = text.replace(/<br>.*?$/g, "");
 
             const audio = new SpeechSynthesisUtterance();
