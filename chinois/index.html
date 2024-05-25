@@ -152,6 +152,9 @@
             } else { // comme pour l'anglais
                 document.querySelector(".question").innerHTML = `${questionChoisie[0]}`;
             }
+
+            question = document.querySelector(".question").innerHTML;
+            speakChinese(question);
         }
 
         // SCORE
@@ -177,6 +180,18 @@
                 evalueReponse("bon");
                 montreQuestion();
             } 
+        }
+
+        function speakChinese(text) {
+            const cleanText = text.replace(/<br>.*?$/g, "");
+
+            const audio = new SpeechSynthesisUtterance();
+            const voices = window.speechSynthesis.getVoices();
+
+            audio.voice = voices.filter(function(voice) { return voice.lang == 'zh-CN'; })[0];
+            audio.text = cleanText;
+
+            speechSynthesis.speak(audio);
         }
 
         // MAIN + AFFICHAGE D'UNE QUESTION
