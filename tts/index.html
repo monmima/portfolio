@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text-to-Speech App</title>
+</head>
+<body>
+    <h1>Text-to-Speech App</h1>
+    <form id="speechForm">
+        <label for="voices">Choose a voice:</label>
+        <select id="voices"></select>
+        <br>
+        <label for="text">Enter text:</label>
+        <textarea id="text" placeholder="Type your text here" rows="4" cols="50"></textarea>
+        <br>
+        <input type="submit" value="Speak">
+    </form>
+
+    <script>
+        let voicesDropdown = document.getElementById('voices');
+        let textArea = document.getElementById('text');
+        let speechForm = document.getElementById('speechForm');
+
+        function populateVoices() {
+            let voices = speechSynthesis.getVoices();
+
+            voices.forEach(voice => {
+                let option = document.createElement('option');
+                option.textContent = `${voice.name} (${voice.lang})`;
+                option.setAttribute('data-lang', voice.lang);
+                option.setAttribute('data-name', voice.name);
+                voicesDropdown.appendChild(option);
+            });
+        }
+
+        function speakText(event) {
+            event.preventDefault();
+            let utterance = new SpeechSynthesisUtterance(textArea.value);
+            let selectedOption = voicesDropdown.selectedOptions[0]?.getAttribute('data-name');
+            let voices = speechSynthesis.getVoices();
+            for(let i = 0; i < voices.length ; i++){
+                if(voices[i].name === selectedOption){
+                    utterance.voice = voices[i];
+                }
+            }
+            speechSynthesis.speak(utterance);
+        }
+
+        speechSynthesis.onvoiceschanged = populateVoices;
+        speechForm.onsubmit = speakText;
+    </script>
+</body>
+</html>
