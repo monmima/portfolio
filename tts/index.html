@@ -2,18 +2,36 @@
 <html>
 <head>
     <title>Text-to-Speech App</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <h1>Text-to-Speech App</h1>
-    <form id="speechForm">
-        <label for="voices">Choose a voice:</label>
-        <select id="voices"></select>
-        <br>
-        <label for="text">Enter text:</label>
-        <textarea id="text" placeholder="Type your text here" rows="4" cols="50"></textarea>
-        <br>
-        <input type="submit" value="Speak">
-    </form>
+    <main>
+        <h1>Text-to-Speech App</h1>
+        <form id="speechForm">
+            <div>
+                <label for="voices">Select a voice:</label>
+            </div>
+
+            <select id="voices"></select>
+
+            <div>
+                <textarea id="text">Type your text here.
+
+The app is front-end but might send data over the Internet depending on your OS and browser.
+
+The available voices also vary depending on your OS and browser.
+
+To find out if you can use the app privately, you can try to disconnect momentarily from the Internet and see if the app is still working.
+                
+                </textarea>
+            </div>
+
+            <div>
+                <button type="submit">Speak</button>
+            </div>
+
+        </form>
+    </main>
 
     <script>
         let voicesDropdown = document.getElementById('voices');
