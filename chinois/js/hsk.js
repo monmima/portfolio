@@ -221,7 +221,7 @@ var listeGenerale = [
     [["上"], ["shàng"], ["sur"]],
     [["下"], ["xià"], ["sous"]],
     [["手"], ["shǒu"], ["main"]],
-    [["右首"], ["yòu shǒu"], ["main droite"]],
+    [["右手"], ["yòu shǒu"], ["main droite"]],
     [["左手"], ["zuǒ shǒu"], ["main gauche"]],
     [["收音机"], ["shōu yīn jī"], ["radio"]],
     [["房間"], ["fáng jiān"], ["pièce"]],
