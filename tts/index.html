@@ -28,15 +28,18 @@ To find out if you can use the app privately, you can try to disconnect momentar
 
             <div>
                 <button type="submit">Speak</button>
+                <button id="stop-speaking" type="button">Stop speaking</button>
             </div>
 
         </form>
+
     </main>
 
     <script>
         let voicesDropdown = document.getElementById('voices');
         let textArea = document.getElementById('text');
-        let speechForm = document.getElementById('speechForm');
+        let speakButton = document.getElementById('speechForm');
+        const stopButton = document.getElementById('stop-speaking');
 
         function populateVoices() {
             let voices = speechSynthesis.getVoices();
@@ -50,21 +53,28 @@ To find out if you can use the app privately, you can try to disconnect momentar
             });
         }
 
+        // Function to speak the text
         function speakText(event) {
-            event.preventDefault();
-            let utterance = new SpeechSynthesisUtterance(textArea.value);
-            let selectedOption = voicesDropdown.selectedOptions[0]?.getAttribute('data-name');
-            let voices = speechSynthesis.getVoices();
-            for(let i = 0; i < voices.length ; i++){
-                if(voices[i].name === selectedOption){
-                    utterance.voice = voices[i];
+            event.preventDefault(); // Prevent the default action of the event
+            let utterance = new SpeechSynthesisUtterance(textArea.value); // Create a new SpeechSynthesisUtterance object with the text from the textArea
+            let selectedOption = voicesDropdown.selectedOptions[0]?.getAttribute('data-name'); // Get the selected voice option from the dropdown
+            let voices = speechSynthesis.getVoices(); // Get the available voices
+                for (let i = 0; i < voices.length; i++) {
+                    if (voices[i].name === selectedOption) {
+                        utterance.voice = voices[i]; // Set the selected voice for the utterance
+                    }
                 }
-            }
-            speechSynthesis.speak(utterance);
+            speechSynthesis.speak(utterance); // Start speaking the text
+        }
+
+        // Function to stop speaking
+        function stopSpeaking() {
+            speechSynthesis.cancel(); // Cancel the speech synthesis process
         }
 
         speechSynthesis.onvoiceschanged = populateVoices;
-        speechForm.onsubmit = speakText;
+        speakButton.onsubmit = speakText;
+        stopButton.onclick = stopSpeaking;
     </script>
 </body>
 </html>
