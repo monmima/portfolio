@@ -1,259 +1,259 @@
-        @keyframes pulse {
-            0% {
-                height: 100px;
-                /* width: 100px; */
-            }
-            25% {
-                height: 80px;
-                /* width: 80px; */
-            }
-            50% {
-                height: 100px;
-                /* width: 100px; */
-            }
-            75% {
-                height: 80px;
-                /* width: 80px; */
-            }
-            100% {
-                height: 100px;
-                /* width: 100px; */
-            }
-        }
-        
-        @keyframes fade {
-            0% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-            }
-        }
-        
-        @font-face {
-            font-family: 'IBMPlexMono';
-            src: url('./fonts/ibm-plex-mono/IBMPlexMono-Regular.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
+@keyframes pulse {
+    0% {
+        height: 100px;
+        /* width: 100px; */
+    }
+    25% {
+        height: 80px;
+        /* width: 80px; */
+    }
+    50% {
+        height: 100px;
+        /* width: 100px; */
+    }
+    75% {
+        height: 80px;
+        /* width: 80px; */
+    }
+    100% {
+        height: 100px;
+        /* width: 100px; */
+    }
+}
 
-        /*RÉINITIALISATION*/
-        body, figcaption, figure {
-            margin: 0;
-            padding: 0;
-        }
+@keyframes fade {
+    0% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
 
-        a {
-            text-decoration: none;
-        }
+@font-face {
+    font-family: 'IBMPlexMono';
+    src: url('./fonts/ibm-plex-mono/IBMPlexMono-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
-        /*HIÉRARCHIE*/
-        a:link, a:visited, a:active {
-            color: black;
-        }
+/*RÉINITIALISATION*/
+body, figcaption, figure {
+    margin: 0;
+    padding: 0;
+}
 
-        a:focus, a:hover {
-            color: black;
-        }
+a {
+    text-decoration: none;
+}
 
-        body {
-            background: url("img/pinguin.svg") no-repeat left bottom fixed;
-            background-position: center;
-            background-size: 25%;
-            font-family: "IBMPlexMono", "monospace";
-            overflow: hidden; /*pour cacher la barre de défilement du navigateur si on descend la fenêtre modale*/
-            user-select: none; /*pour empêcher la sélection du texte*/
-        }
+/*HIÉRARCHIE*/
+a:link, a:visited, a:active {
+    color: black;
+}
 
-        button {
-            background-color: lightgray;
-            border: none;
-            font-size: 1em;
-            min-height: 24px;
-            min-width: 44px;
-            outline: 0;
-        }
+a:focus, a:hover {
+    color: black;
+}
 
-        button:hover {
-            appearance: none;
-            background-color: #ddd;
-            outline: none;
-        }
+body {
+    background: url("img/pinguin.svg") no-repeat left bottom fixed;
+    background-position: center;
+    background-size: 25%;
+    font-family: "IBMPlexMono", "monospace";
+    overflow: hidden; /*pour cacher la barre de défilement du navigateur si on descend la fenêtre modale*/
+    user-select: none; /*pour empêcher la sélection du texte*/
+}
 
-        figure {
-            cursor: pointer;
-            text-align: center;
-            width: 90px;
-        }
+button {
+    background-color: lightgray;
+    border: none;
+    font-size: 1em;
+    min-height: 24px;
+    min-width: 44px;
+    outline: 0;
+}
 
-        figure img {
-            height: 60px;
-            width: 100%;
-        }
+button:hover {
+    appearance: none;
+    background-color: #ddd;
+    outline: none;
+}
 
-        figure img:hover {
-            filter: invert(45%) sepia(100%) saturate(4948%) hue-rotate(207deg) brightness(98%) contrast(104%);
-        }
+figure {
+    cursor: pointer;
+    text-align: center;
+    width: 90px;
+}
 
-        figcaption {
-            font-size: 0.7em;
-        }
+figure img {
+    height: 60px;
+    width: 100%;
+}
 
-        /*https://www.w3schools.com/howto/howto_css_fixed_footer.asp*/
-        footer {
-            align-items: center;
-            background-color: #bbb;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            z-index: 20;
-        }
+figure img:hover {
+    filter: invert(45%) sepia(100%) saturate(4948%) hue-rotate(207deg) brightness(98%) contrast(104%);
+}
 
-        figure > img {
-            height: 60px;
-            width: 60px;
-        }
+figcaption {
+    font-size: 0.7em;
+}
 
-        h2 {
-            display: none;
-        }
+/*https://www.w3schools.com/howto/howto_css_fixed_footer.asp*/
+footer {
+    align-items: center;
+    background-color: #bbb;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 20;
+}
 
-        iframe, textarea {
-            /*pour ce qui est des tailles, je gère ça dans le JS*/
-            min-height: 500px;
-            min-width: 300px;
-        }
+figure > img {
+    height: 60px;
+    width: 60px;
+}
 
-        textarea {
-            font-family: "IBMPlexMono", "monospace";
-        }
+h2 {
+    display: none;
+}
 
-        /*CLASSES*/
-        .animated-arrow {
-            /* animation: pulse 6s, fade 6s; */
-            animation: pulse 2s infinite, fade 6s;
-            animation-direction: alternate;
-            opacity: 0;
-            transform: rotate(-45deg);
-        }
+iframe, textarea {
+    /*pour ce qui est des tailles, je gère ça dans le JS*/
+    min-height: 500px;
+    min-width: 300px;
+}
 
-        .blue {
-            filter: invert(45%) sepia(100%) saturate(4948%) hue-rotate(207deg) brightness(98%) contrast(104%);
-        }
+textarea {
+    font-family: "IBMPlexMono", "monospace";
+}
 
-        .div-heure {
-            cursor: default;
-            font-size: 0.8em;
-            padding-right: 0.5%;
-        }
+/*CLASSES*/
+.animated-arrow {
+    /* animation: pulse 6s, fade 6s; */
+    animation: pulse 2s infinite, fade 6s;
+    animation-direction: alternate;
+    opacity: 0;
+    transform: rotate(-45deg);
+}
 
-        .div-heure > div {
-            align-items: center;
-            background-color: lightgray;
-            box-shadow: inset 1px 1px 2px black;
-            display: flex;
-            min-height: 20px;
-            padding: 0 5px 0 5px;
-        }
+.blue {
+    filter: invert(45%) sepia(100%) saturate(4948%) hue-rotate(207deg) brightness(98%) contrast(104%);
+}
 
-        .d-none {
-            display: none;
-        }
+.div-heure {
+    cursor: default;
+    font-size: 0.8em;
+    padding-right: 0.5%;
+}
 
-        /*Draggable DIV Element*/
-        /*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_draggable*/
-        .fenetre-deplacable {
-            background-color: white;
-            top: 25px;
-            left: 200px;
-            border: 1px solid #d3d3d3;
-            display: none;
-            min-width: 300px;
-            position: absolute;
-            text-align: center;
-            z-index: 9;
-        }
+.div-heure > div {
+    align-items: center;
+    background-color: lightgray;
+    box-shadow: inset 1px 1px 2px black;
+    display: flex;
+    min-height: 20px;
+    padding: 0 5px 0 5px;
+}
 
-        /*Draggable DIV Element*/
-        /*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_draggable*/
-        .fenetre-deplacable-header {
-            background-color: lightgray;
-            display: grid;
-            cursor: default;
-            font-size: 0.7em;
-            grid-template-columns: 1fr 20px 20px;
-            min-width: 300px;
-            z-index: 10;
-        }
+.d-none {
+    display: none;
+}
 
-        .gray {
-            filter: grayscale(100%);
-        }
+/*Draggable DIV Element*/
+/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_draggable*/
+.fenetre-deplacable {
+    background-color: white;
+    top: 25px;
+    left: 200px;
+    border: 1px solid #d3d3d3;
+    display: none;
+    min-width: 300px;
+    position: absolute;
+    text-align: center;
+    z-index: 9;
+}
 
-        .icones {
-            /* background-color: yellow; */
-            display: grid;
-            justify-items: center;
-            grid-gap: 25px; 
-            grid-template-columns: repeat(3, 90px);
-            grid-template-rows: repeat(5, 90px);
-            margin: 25px 15px;
-        }
+/*Draggable DIV Element*/
+/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_draggable*/
+.fenetre-deplacable-header {
+    background-color: lightgray;
+    display: grid;
+    cursor: default;
+    font-size: 0.7em;
+    grid-template-columns: 1fr 20px 20px;
+    min-width: 300px;
+    z-index: 10;
+}
 
-        .menu-demarrer {
-            font-family: 'IBM Plex Mono', monospace;
-        }
+.gray {
+    filter: grayscale(100%);
+}
 
-        .move-up-arrow {
-            pointer-events: none;
-            position: absolute;
-            top: -100px;
-        }
+.icones {
+    /* background-color: yellow; */
+    display: grid;
+    justify-items: center;
+    grid-gap: 25px; 
+    grid-template-columns: repeat(3, 90px);
+    grid-template-rows: repeat(5, 90px);
+    margin: 25px 15px;
+}
 
-        .relative {
-            position: relative;
-        }
+.menu-demarrer {
+    font-family: 'IBM Plex Mono', monospace;
+}
 
-        .row {
-            display: flex;
-            justify-content: center;
-        }
+.move-up-arrow {
+    pointer-events: none;
+    position: absolute;
+    top: -100px;
+}
 
-        /*MEDIA QUERIES*/
-        @media screen and (max-width: 759px) {
-            .animated-arrow {
-                pointer-events: none;
-                transform: rotate(-90deg);
-                z-index: 10;
-            }
+.relative {
+    position: relative;
+}
 
-            figcaption {
-                background-color: white;
-                opacity: 0.7;
-            }
+.row {
+    display: flex;
+    justify-content: center;
+}
 
-            iframe, textarea {
-                height: 100vh;
-                min-width: 300px;
-                width: 100vw;
-            }
-            
-        }
+/*MEDIA QUERIES*/
+@media screen and (max-width: 759px) {
+    .animated-arrow {
+        pointer-events: none;
+        transform: rotate(-90deg);
+        z-index: 10;
+    }
 
-        @media screen and (min-width: 760px) {
-            body {
-                font-size: 1em;
-            }
+    figcaption {
+        background-color: white;
+        opacity: 0.7;
+    }
 
-            .animated-arrow {
-                margin-left: 60px;
-            }
-        }
+    iframe, textarea {
+        height: 100vh;
+        min-width: 300px;
+        width: 100vw;
+    }
+    
+}
+
+@media screen and (min-width: 760px) {
+    body {
+        font-size: 1em;
+    }
+
+    .animated-arrow {
+        margin-left: 60px;
+    }
+}

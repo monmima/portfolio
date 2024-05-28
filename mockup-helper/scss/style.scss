@@ -6,6 +6,14 @@ $spacing-small: 20px;
 $spacing-medium: 40px;
 $spacing-large: 80px;
 
+// fonts
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/roboto-regular-webfont.woff2') format('woff2');
+    src: url('../fonts/roboto-regular-webfont.woff2') format('woff');
+}
+
 // mixins
 
 @mixin createGrid($nbColumns, $unit) {
