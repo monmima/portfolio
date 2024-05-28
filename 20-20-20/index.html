@@ -314,11 +314,11 @@
             let contenuBoutonChinois = document.querySelector("#bouton-zh div").innerHTML;
 
             if (contenuBoutonChinois === `<i class="fa fa-music"></i>`) {
-                console.log("Pause maintenant en chinois.");
-                audio = new Audio(`./mp3/zh.mp3`);
+                console.log("Birdsong break on.");
+                audio = new Audio(`./mp3/option-2.mp3`);
                 document.querySelector("#bouton-zh div").innerHTML = "🐦";
             } else {
-                console.log("Pause maintenant en musique.");
+                console.log("Music break on.");
                 audio = new Audio(`./mp3/musica.mp3`);
                 document.querySelector("#bouton-zh div").innerHTML = `<i class="fa fa-music"></i>`;
             }
