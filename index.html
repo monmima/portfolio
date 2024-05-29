@@ -34,13 +34,6 @@
                 </figcaption>
             </figure>
             <figure>
-                <img src="https://icons.iconarchive.com/icons/bootstrap/bootstrap/256/Bootstrap-spellcheck-icon.png" alt="Correcteur stylistique" id="icone-corrector">
-                <figcaption>
-                    <div>Correcteur</div>
-                    <div>(JS)</div>
-                </figcaption>
-            </figure>
-            <figure>
                 <img src="https://icons.iconarchive.com/icons/iconoir-team/iconoir/256/language-icon.png" alt="Recherche dictionnaires" id="recherche-dictionnaires">
                 <figcaption>
                     <div>Dicos</div>
@@ -62,7 +55,7 @@
                 </figcaption>
             </figure>
             <figure>
-                <img src="https://icons.iconarchive.com/icons/custom-icon-design/mono-general-4/256/eye-icon.png" alt="Icône 20-20-20 Debussy" id="icone-20-20-20">
+                <img src="https://icons.iconarchive.com/icons/custom-icon-design/mono-general-4/256/eye-icon.png" alt="Icône 20-20-20" id="icone-20-20-20">
                 <figcaption>
                     <div>20-20-20</div>
                     <div>(JS, CSS)</div>
@@ -76,10 +69,10 @@
                 </figcaption>
             </figure>
             <figure>
-                <img src="https://icons.iconarchive.com/icons/icons8/windows-8/256/Computer-Hardware-Monitor-icon.png" alt="Icône mock-up helper" id="icone-mockup-helper">
+                <img src="./img/book.svg" alt="Icône mock-up helper" id="icone-book">
                 <figcaption>
-                    <div>Mockup helper</div>
-                    <div>(JS)</div>
+                    <div>Teach Me a Language</div>
+                    <div>(WordPress)</div>
                 </figcaption>
             </figure>
             <figure>
@@ -103,7 +96,7 @@
             <!--https://www.w3schools.com/howto/howto_js_draggable.asp-->
             <div id="fenetre-deplacable" class="fenetre-deplacable">
                 <div id="fenetre-deplacable-header" class="fenetre-deplacable-header">
-                    <span id="libelle">20-20-20 Debussy</span>
+                    <span id="libelle">20-20-20</span>
                     <span id="carre-redimensionnement">□</span>
                     <span id="croix-fermeture">X</span>
                 </div>
@@ -244,6 +237,12 @@ Utilisez un casque d'écoute ou des haut-parleurs pour entendre certains contenu
                 document.querySelector("textarea").style.display = "none"; // cacher par défaut la zone de texte
 
                 switch(quelleIcone) {
+                    case "icone-book":
+                        return objetFenetreAOuvrir = {
+                            adresse: "https://www.teach-me-a-language.help",
+                            libelle: "teach-me-a-language.help"
+                        }
+                        break;
                     case "icone-mandarin":
                         return objetFenetreAOuvrir = {
                             adresse: "chinois/index.html",
@@ -262,12 +261,6 @@ Utilisez un casque d'écoute ou des haut-parleurs pour entendre certains contenu
                             libelle: "Recherche dictionnaires"
                         }
                         break;
-                    case "icone-corrector":
-                        return objetFenetreAOuvrir = {
-                            adresse: "corrector/index.html",
-                            libelle: "Le corrector"
-                        }
-                        break;
                     case "icone-baldurs-gate":
                         return objetFenetreAOuvrir = {
                             adresse: "baldurs-gate/index.html",
@@ -277,7 +270,7 @@ Utilisez un casque d'écoute ou des haut-parleurs pour entendre certains contenu
                     case "icone-20-20-20":
                         return objetFenetreAOuvrir = {
                             adresse: "20-20-20/index.html",
-                            libelle: "20-20-20 Debussy"
+                            libelle: "20-20-20"
                         }
                         break;
                     case "icone-tts":
@@ -298,12 +291,6 @@ Utilisez un casque d'écoute ou des haut-parleurs pour entendre certains contenu
                         return objetFenetreAOuvrir = {
                             adresse: "meteo/index.html",
                             libelle: "Météo"
-                        }
-                        break;
-                    case "icone-mockup-helper":
-                        return objetFenetreAOuvrir = {
-                            adresse: "mockup-helper/index.html",
-                            libelle: "Mockup helper"
                         }
                         break;
                     case "icone-experiments":
