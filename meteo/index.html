@@ -5,21 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Appli météo</title>
-
-    <!--BOOTSTRAP-->
-
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
     
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
         a:link, a:visited, a:active {
             color: #333;
+            text-decoration: none;
         }
         a:focus, a:hover {
             text-decoration: underline;
-        }
-
-        body {
-
         }
 
         .weather-app {
@@ -98,11 +96,10 @@
             align-content: center;
             gap: 20px;
             min-height: 100vh;
-            padding: 20px;
         }
 
         /* Mobile styles */
-        @media (max-width: 767px) {
+        @media (max-width: 1350px) {
             main {
                 display: flex;
                 flex-direction: column;
@@ -111,9 +108,6 @@
                 gap: 20px;
             }
         }
-
-
-        
     </style>
 </head>
 <body>
@@ -207,12 +201,8 @@
         </div>
     </main>
 
-
-
-    <script src="./js/bootstrap.min.js"></script>
     <script src="./js/jquery-3.3.1.slim.min.js"></script>
-    <script src="./js/popper.min.js"></script>
-    
+   
     <script>
         function genereLienIcone(quelCode) {
             // https://openweathermap.org/weather-conditions
