@@ -60,7 +60,7 @@ a:focus, a:hover {
 }
 
 body {
-    background: url("img/pinguin.svg") no-repeat left bottom fixed;
+    background: url("img/tux.png") no-repeat left bottom fixed;
     background-position: center;
     background-size: 25%;
     font-family: "IBMPlexMono", "monospace";
@@ -86,7 +86,7 @@ button:hover {
 figure {
     cursor: pointer;
     text-align: center;
-    width: 90px;
+    width: 100px;
 }
 
 figure img {
@@ -119,6 +119,7 @@ footer {
 
 figure > img {
     height: 60px;
+    margin: 10px;
     width: 60px;
 }
 
@@ -202,9 +203,10 @@ textarea {
     /* background-color: yellow; */
     display: grid;
     justify-items: center;
-    grid-gap: 25px; 
-    grid-template-columns: repeat(3, 90px);
-    grid-template-rows: repeat(5, 90px);
+    grid-column-gap: 25px; 
+    grid-row-gap: 40px; 
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(5, 100px);
     margin: 25px 15px;
 }
 
@@ -235,9 +237,8 @@ textarea {
         z-index: 10;
     }
 
-    figcaption {
-        background-color: white;
-        opacity: 0.7;
+    figcaption, figure {
+        background-color: rgb(255, 255, 255, 0.9);    
     }
 
     iframe, textarea {
