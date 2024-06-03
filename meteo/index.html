@@ -20,6 +20,11 @@
             text-decoration: underline;
         }
 
+        body {
+            background: linear-gradient(to bottom, #87ceeb, #f0f8ff);
+            font-family: 'Arial', sans-serif;
+        }
+
         .weather-app {
             background: rgba(255, 255, 255, 0.8);
             border-radius: 15px;
@@ -87,118 +92,156 @@
             color: #777;
         }
 
-        main {
-            background: linear-gradient(to bottom, #87ceeb, #f0f8ff);
-            display: grid;
-            font-family: 'Arial', sans-serif;
-            grid-template-columns: repeat(3, 1fr);
-            justify-content: center;
-            align-content: center;
-            gap: 20px;
-            min-height: 100vh;
+        /* slider rules and classes */
+        .slider-container {
+            display: flex;
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
         }
 
-        /* Mobile styles */
-        @media (max-width: 1350px) {
-            main {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 20px;
-            }
+        .slide {
+            scroll-snap-align: start;
+            flex: 0 0 100vw;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .nav {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav a {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: #333;
+            border-radius: 50%;
+            text-indent: -9999px;
+        }
+
+        .nav a:hover, .nav a:focus {
+            background-color: gray;
         }
     </style>
 </head>
 <body>
 
-    <main>
-        <!-- today -->
-        <div class="weather-app">
-            <div class="location">
-                <h1 id="city-today">
-                    <a href="https://www.meteo.gc.ca/city/pages/qc-133_metric_f.html" title="Lien vers Météo Canada">Québec</a>
-                </h1>
-                <p id="date-today">Aujourd'hui</p>
-            </div>
-            <div class="weather-info">
-                <img id="div-icon-today" src="weather-icon.png" alt="Weather Icon">
-                <h2 id="div-temp-today">25°C</h2>
-                <p id="div-desc-today">Partly Cloudy</p>
-            </div>
-            <div class="details">
-                <div class="detail">
-                    <p>Humidité</p>
-                    <p id="div-humidity-today">60%</p>
+
+    <div class="slider-container">
+
+        <div class="slide" id="slide1">
+            <div class="weather-app">
+                <div class="location">
+                    <h1 id="city-today">
+                        <a href="https://www.meteo.gc.ca/city/pages/qc-133_metric_f.html" title="Lien vers Météo Canada">Québec</a>
+                    </h1>
+                    <p id="date-today">Aujourd'hui</p>
                 </div>
-                <div class="detail">
-                    <p>Vent</p>
-                    <p id="div-wind-today">15 km/h</p>
+                <div class="weather-info">
+                    <img id="div-icon-today" src="weather-icon.png" alt="Weather Icon">
+                    <h2 id="div-temp-today">25°C</h2>
+                    <p id="div-desc-today">Partly Cloudy</p>
                 </div>
-                <div class="detail">
-                    <p>Feels like</p>
-                    <p id="div-feels-like-today">24°C</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- tomorrow -->
-        <div class="weather-app">
-            <div class="location">
-                <h1 id="city-tomorrow">
-                    <a href="https://www.meteo.gc.ca/city/pages/qc-133_metric_f.html" title="Lien vers Météo Canada">Québec</a>
-                </h1>
-                <p id="date-tomorrow">Demain</p>
-            </div>
-            <div class="weather-info">
-                <img id="div-icon-tomorrow" src="weather-icon.png" alt="Weather Icon">
-                <h2 id="div-temp-tomorrow">25°C</h2>
-                <p id="div-desc-tomorrow">Partly Cloudy</p>
-            </div>
-            <div class="details">
-                <div class="detail">
-                    <p>Humidité</p>
-                    <p id="div-humidity-tomorrow">60%</p>
-                </div>
-                <div class="detail">
-                    <p>Vent</p>
-                    <p id="div-wind-tomorrow">15 km/h</p>
-                </div>
-                <div class="detail">
-                    <p>Feels like</p>
-                    <p id="div-feels-like-tomorrow">24°C</p>
+                <div class="details">
+                    <div class="detail">
+                        <p>Humidité</p>
+                        <p id="div-humidity-today">60%</p>
+                    </div>
+                    <div class="detail">
+                        <p>Vent</p>
+                        <p id="div-wind-today">15 km/h</p>
+                    </div>
+                    <div class="detail">
+                        <p>Feels like</p>
+                        <p id="div-feels-like-today">24°C</p>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <!-- day after tomorrow -->
-        <div class="weather-app">
-            <div class="location">
-                <h1 id="city-day-after-tomorrow">
-                    <a href="https://www.meteo.gc.ca/city/pages/qc-133_metric_f.html" title="Lien vers Météo Canada">Québec</a>
-                </h1>
-                <p id="date-day-after-tomorrow">Après-demain</p>
-            </div>
-            <div class="weather-info">
-                <img id="div-icon-day-after-tomorrow" src="weather-icon.png" alt="Weather Icon">
-                <h2 id="div-temp-day-after-tomorrow">25°C</h2>
-                <p id="div-desc-day-after-tomorrow">Partly Cloudy</p>
-            </div>
-            <div class="details">
-                <div class="detail">
-                    <p>Humidité</p>
-                    <p id="div-humidity-day-after-tomorrow">60%</p>
+
+
+        <div class="slide" id="slide2">
+            <!-- tomorrow -->
+            <div class="weather-app">
+                <div class="location">
+                    <h1 id="city-tomorrow">
+                        <a href="https://www.meteo.gc.ca/city/pages/qc-133_metric_f.html" title="Lien vers Météo Canada">Québec</a>
+                    </h1>
+                    <p id="date-tomorrow">Demain</p>
                 </div>
-                <div class="detail">
-                    <p>Vent</p>
-                    <p id="div-wind-day-after-tomorrow">15 km/h</p>
+                <div class="weather-info">
+                    <img id="div-icon-tomorrow" src="weather-icon.png" alt="Weather Icon">
+                    <h2 id="div-temp-tomorrow">25°C</h2>
+                    <p id="div-desc-tomorrow">Partly Cloudy</p>
                 </div>
-                <div class="detail">
-                    <p>Feels like</p>
-                    <p id="div-feels-like-day-after-tomorrow">24°C</p>
+                <div class="details">
+                    <div class="detail">
+                        <p>Humidité</p>
+                        <p id="div-humidity-tomorrow">60%</p>
+                    </div>
+                    <div class="detail">
+                        <p>Vent</p>
+                        <p id="div-wind-tomorrow">15 km/h</p>
+                    </div>
+                    <div class="detail">
+                        <p>Feels like</p>
+                        <p id="div-feels-like-tomorrow">24°C</p>
+                    </div>
                 </div>
             </div>
         </div>
+
+
+        <div class="slide" id="slide3">
+            <!-- day after tomorrow -->
+            <div class="weather-app">
+                <div class="location">
+                    <h1 id="city-day-after-tomorrow">
+                        <a href="https://www.meteo.gc.ca/city/pages/qc-133_metric_f.html" title="Lien vers Météo Canada">Québec</a>
+                    </h1>
+                    <p id="date-day-after-tomorrow">Après-demain</p>
+                </div>
+                <div class="weather-info">
+                    <img id="div-icon-day-after-tomorrow" src="weather-icon.png" alt="Weather Icon">
+                    <h2 id="div-temp-day-after-tomorrow">25°C</h2>
+                    <p id="div-desc-day-after-tomorrow">Partly Cloudy</p>
+                </div>
+                <div class="details">
+                    <div class="detail">
+                        <p>Humidité</p>
+                        <p id="div-humidity-day-after-tomorrow">60%</p>
+                    </div>
+                    <div class="detail">
+                        <p>Vent</p>
+                        <p id="div-wind-day-after-tomorrow">15 km/h</p>
+                    </div>
+                    <div class="detail">
+                        <p>Feels like</p>
+                        <p id="div-feels-like-day-after-tomorrow">24°C</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="nav">
+        <a href="#slide1">1</a>
+        <a href="#slide2">2</a>
+        <a href="#slide3">3</a>
+    </div>
+
+
     </main>
 
     <script src="./js/jquery-3.3.1.slim.min.js"></script>
