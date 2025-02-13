@@ -105,64 +105,70 @@ To find out if you can use the app privately, you can try to disconnect momentar
         </form>
     </main>
 
-<script>
-    let voicesDropdown = document.getElementById('voices');
-    let textArea = document.getElementById('text');
-    let speakButton = document.getElementById('speechForm');
-    const stopButton = document.getElementById('stop-speaking');
-    const pauseCheckbox = document.getElementById('pauseCheckbox');
+    <script>
+        let voicesDropdown = document.getElementById('voices');
+        let textArea = document.getElementById('text');
+        let speakButton = document.getElementById('speechForm');
+        const stopButton = document.getElementById('stop-speaking');
+        const pauseCheckbox = document.getElementById('pauseCheckbox');
+        let voicesLoaded = false; // Flag to check if voices are loaded
 
-    function populateVoices() {
-        let voices = speechSynthesis.getVoices();
-        voices.forEach(voice => {
-            let option = document.createElement('option');
-            option.textContent = `${voice.name} (${voice.lang})`;
-            option.setAttribute('data-lang', voice.lang);
-            option.setAttribute('data-name', voice.name);
-            voicesDropdown.appendChild(option);
-        });
-    }
-
-    async function speakText(event) {
-        event.preventDefault();
-        let textChunks = textArea.value.split(/(?<=[。！？:.\?\!])/); // Split text into chunks
-        let pauseDuration = parseInt(document.getElementById('pauseDuration').value) * 1000; 
-
-        for (let chunk of textChunks) {
-            if (chunk.trim()) { // Check if the chunk is not empty
-                let utterance = new SpeechSynthesisUtterance(chunk);
-                let selectedOption = voicesDropdown.selectedOptions[0]?.getAttribute('data-name');
-                let voices = speechSynthesis.getVoices();
-                for (let i = 0; i < voices.length; i++) {
-                    if (voices[i].name === selectedOption) {
-                        utterance.voice = voices[i]; // Set the selected voice for the utterance
-                    }
-                }
-
-                speechSynthesis.speak(utterance); // Start speaking the text
-
-                // Wait for the utterance to finish
-                await new Promise(resolve => {
-                    utterance.onend = resolve; // Resolve the promise when speaking ends
+        function populateVoices() {
+            let voices = speechSynthesis.getVoices();
+            
+            // Only populate if voices are loaded and not already populated
+            if (voices.length > 0 && !voicesLoaded) {
+                voices.forEach(voice => {
+                    let option = document.createElement('option');
+                    option.textContent = `${voice.name} (${voice.lang})`;
+                    option.setAttribute('data-lang', voice.lang);
+                    option.setAttribute('data-name', voice.name);
+                    voicesDropdown.appendChild(option);
                 });
+                voicesLoaded = true; // Set the flag to true after populating
+            }
+        }
 
-                // Pause if the checkbox is checked
-                if (pauseCheckbox.checked) {
-                    await new Promise(resolve => setTimeout(resolve, pauseDuration)); // Pause
+        async function speakText(event) {
+            event.preventDefault();
+            let textChunks = textArea.value.split(/(?<=[。！？:.\?\!])/); // Split text into chunks
+            let pauseDuration = parseInt(document.getElementById('pauseDuration').value) * 1000; 
+
+            for (let chunk of textChunks) {
+                if (chunk.trim()) { // Check if the chunk is not empty
+                    let utterance = new SpeechSynthesisUtterance(chunk);
+                    let selectedOption = voicesDropdown.selectedOptions[0]?.getAttribute('data-name');
+                    let voices = speechSynthesis.getVoices();
+                    for (let i = 0; i < voices.length; i++) {
+                        if (voices[i].name === selectedOption) {
+                            utterance.voice = voices[i]; // Set the selected voice for the utterance
+                        }
+                    }
+
+                    speechSynthesis.speak(utterance); // Start speaking the text
+
+                    // Wait for the utterance to finish
+                    await new Promise(resolve => {
+                        utterance.onend = resolve; // Resolve the promise when speaking ends
+                    });
+
+                    // Pause if the checkbox is checked
+                    if (pauseCheckbox.checked) {
+                        await new Promise(resolve => setTimeout(resolve, pauseDuration)); // Pause
+                    }
                 }
             }
         }
-    }
 
-    function stopSpeaking() {
-        speechSynthesis.cancel(); // Cancel the speech synthesis process
-    }
+        function stopSpeaking() {
+            speechSynthesis.cancel(); // Cancel the speech synthesis process
+        }
 
-    document.addEventListener('DOMContentLoaded', populateVoices); // Call populateVoices on page load so voices are visible on Firefox/Linux too
-    speechSynthesis.onvoiceschanged = populateVoices; // Populate voices when they change
-    speakButton.onsubmit = speakText; // Handle form submission
-    stopButton.onclick = stopSpeaking; // Handle stop button click
-</script>
+        document.addEventListener('DOMContentLoaded', populateVoices); // Call populateVoices on page load so voices are visible on Firefox/Linux too
+        speechSynthesis.onvoiceschanged = populateVoices; // Populate voices when they change
+        speakButton.onsubmit = speakText; // Handle form submission
+        stopButton.onclick = stopSpeaking; // Handle stop button click
+    </script>
 
 </body>
 </html>
