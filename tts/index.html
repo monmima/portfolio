@@ -1,80 +1,169 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text-to-Speech App</title>
-    <link rel="stylesheet" href="./style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        main {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #4CAF50;
+            text-align: center;
+        }
+        label {
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        textarea {
+            width: calc(100% - 22px); /* Adjust width to match other inputs */
+            height: 150px;
+            resize: none;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        button#stop-speaking {
+            background-color: #f44336;
+        }
+        button#stop-speaking:hover {
+            background-color: #e53935;
+        }
+    </style>
 </head>
 <body>
     <main>
         <h1>Text-to-Speech App</h1>
         <form id="speechForm">
-            <div>
-                <label for="voices">Select a voice:</label>
-            </div>
-
+            <label for="voices">Select a voice:</label>
             <select id="voices"></select>
 
-            <div>
-                <textarea id="text">Type your text here.
+            <label for="text">Type your text here:</label>
+            <textarea id="text">Type your text here.
 
 The app is front-end but might send data over the Internet depending on your OS and browser.
 
 The available voices also vary depending on your OS and browser.
 
 To find out if you can use the app privately, you can try to disconnect momentarily from the Internet and see if the app is still working.
-                
-                </textarea>
+            </textarea>
+
+            <div>
+                <label>
+                    <input type="checkbox" id="pauseCheckbox"> Pause between sentences
+                </label>
+            </div>
+
+            <div>
+                <label for="pauseDuration">Pause Duration (seconds):</label>
+                <input type="number" id="pauseDuration" value="1" min="0" style="width: 60px;">
             </div>
 
             <div>
                 <button type="submit">Speak</button>
                 <button id="stop-speaking" type="button">Stop speaking</button>
             </div>
-
         </form>
-
     </main>
 
-    <script>
-        let voicesDropdown = document.getElementById('voices');
-        let textArea = document.getElementById('text');
-        let speakButton = document.getElementById('speechForm');
-        const stopButton = document.getElementById('stop-speaking');
+<script>
+    let voicesDropdown = document.getElementById('voices');
+    let textArea = document.getElementById('text');
+    let speakButton = document.getElementById('speechForm');
+    const stopButton = document.getElementById('stop-speaking');
+    const pauseCheckbox = document.getElementById('pauseCheckbox');
 
-        function populateVoices() {
-            let voices = speechSynthesis.getVoices();
+    function populateVoices() {
+        let voices = speechSynthesis.getVoices();
+        voices.forEach(voice => {
+            let option = document.createElement('option');
+            option.textContent = `${voice.name} (${voice.lang})`;
+            option.setAttribute('data-lang', voice.lang);
+            option.setAttribute('data-name', voice.name);
+            voicesDropdown.appendChild(option);
+        });
+    }
 
-            voices.forEach(voice => {
-                let option = document.createElement('option');
-                option.textContent = `${voice.name} (${voice.lang})`;
-                option.setAttribute('data-lang', voice.lang);
-                option.setAttribute('data-name', voice.name);
-                voicesDropdown.appendChild(option);
-            });
-        }
+    async function speakText(event) {
+        event.preventDefault();
+        let textChunks = textArea.value.split(/(?<=[。！？:.\?\!])/); // Split text into chunks
+        let pauseDuration = parseInt(document.getElementById('pauseDuration').value) * 1000; 
 
-        // Function to speak the text
-        function speakText(event) {
-            event.preventDefault(); // Prevent the default action of the event
-            let utterance = new SpeechSynthesisUtterance(textArea.value); // Create a new SpeechSynthesisUtterance object with the text from the textArea
-            let selectedOption = voicesDropdown.selectedOptions[0]?.getAttribute('data-name'); // Get the selected voice option from the dropdown
-            let voices = speechSynthesis.getVoices(); // Get the available voices
+        for (let chunk of textChunks) {
+            if (chunk.trim()) { // Check if the chunk is not empty
+                let utterance = new SpeechSynthesisUtterance(chunk);
+                let selectedOption = voicesDropdown.selectedOptions[0]?.getAttribute('data-name');
+                let voices = speechSynthesis.getVoices();
                 for (let i = 0; i < voices.length; i++) {
                     if (voices[i].name === selectedOption) {
                         utterance.voice = voices[i]; // Set the selected voice for the utterance
                     }
                 }
-            speechSynthesis.speak(utterance); // Start speaking the text
-        }
 
-        // Function to stop speaking
-        function stopSpeaking() {
-            speechSynthesis.cancel(); // Cancel the speech synthesis process
-        }
+                speechSynthesis.speak(utterance); // Start speaking the text
 
-        speechSynthesis.onvoiceschanged = populateVoices;
-        speakButton.onsubmit = speakText;
-        stopButton.onclick = stopSpeaking;
-    </script>
+                // Wait for the utterance to finish
+                await new Promise(resolve => {
+                    utterance.onend = resolve; // Resolve the promise when speaking ends
+                });
+
+                // Pause if the checkbox is checked
+                if (pauseCheckbox.checked) {
+                    await new Promise(resolve => setTimeout(resolve, pauseDuration)); // Pause
+                }
+            }
+        }
+    }
+
+    function stopSpeaking() {
+        speechSynthesis.cancel(); // Cancel the speech synthesis process
+    }
+
+    document.addEventListener('DOMContentLoaded', populateVoices); // Call populateVoices on page load so voices are visible on Firefox/Linux too
+    speechSynthesis.onvoiceschanged = populateVoices; // Populate voices when they change
+    speakButton.onsubmit = speakText; // Handle form submission
+    stopButton.onclick = stopSpeaking; // Handle stop button click
+</script>
+
 </body>
 </html>
+
