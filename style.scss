@@ -91,6 +91,10 @@ figure {
     cursor: pointer;
     text-align: center;
     width: 100px;
+
+    @media screen and (max-width: 759px) {
+        background-color: rgb(255, 255, 255, 0.9);
+    }
 }
 
 figure img {
@@ -104,6 +108,10 @@ figure img:hover {
 
 figcaption {
     font-size: 0.7em;
+
+    @media screen and (max-width: 759px) {
+        background-color: rgb(255, 255, 255, 0.9);
+    }
 }
 
 /*https://www.w3schools.com/howto/howto_css_fixed_footer.asp*/
@@ -139,6 +147,12 @@ iframe, textarea {
     /*pour ce qui est des tailles, je gère ça dans le JS*/
     min-height: 500px;
     min-width: 300px;
+
+    @media screen and (max-width: 759px) {
+        height: 100vh;
+        min-width: 300px;
+        width: 100vw;
+    }
 }
 
 textarea {
@@ -155,6 +169,12 @@ textarea {
 
     @media screen and (min-width: 760px) {
         margin-left: 60px;
+    }
+
+    @media screen and (max-width: 759px) {
+        pointer-events: none;
+        transform: rotate(-90deg);
+        z-index: 10;
     }
 }
 
@@ -239,23 +259,4 @@ textarea {
 .row {
     display: flex;
     justify-content: center;
-}
-
-/*MEDIA QUERIES*/
-@media screen and (max-width: 759px) {
-    .animated-arrow {
-        pointer-events: none;
-        transform: rotate(-90deg);
-        z-index: 10;
-    }
-
-    figcaption, figure {
-        background-color: rgb(255, 255, 255, 0.9);    
-    }
-
-    iframe, textarea {
-        height: 100vh;
-        min-width: 300px;
-        width: 100vw;
-    }
 }

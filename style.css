@@ -95,6 +95,11 @@ figure {
   text-align: center;
   width: 100px;
 }
+@media screen and (max-width: 759px) {
+  figure {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+}
 
 figure img {
   height: 60px;
@@ -107,6 +112,11 @@ figure img:hover {
 
 figcaption {
   font-size: 0.7em;
+}
+@media screen and (max-width: 759px) {
+  figcaption {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
 }
 
 /*https://www.w3schools.com/howto/howto_css_fixed_footer.asp*/
@@ -143,6 +153,13 @@ iframe, textarea {
   min-height: 500px;
   min-width: 300px;
 }
+@media screen and (max-width: 759px) {
+  iframe, textarea {
+    height: 100vh;
+    min-width: 300px;
+    width: 100vw;
+  }
+}
 
 textarea {
   font-family: "IBMPlexMono", "monospace";
@@ -159,6 +176,13 @@ textarea {
 @media screen and (min-width: 760px) {
   .animated-arrow {
     margin-left: 60px;
+  }
+}
+@media screen and (max-width: 759px) {
+  .animated-arrow {
+    pointer-events: none;
+    transform: rotate(-90deg);
+    z-index: 10;
   }
 }
 
@@ -242,21 +266,4 @@ textarea {
 .row {
   display: flex;
   justify-content: center;
-}
-
-/*MEDIA QUERIES*/
-@media screen and (max-width: 759px) {
-  .animated-arrow {
-    pointer-events: none;
-    transform: rotate(-90deg);
-    z-index: 10;
-  }
-  figcaption, figure {
-    background-color: rgba(255, 255, 255, 0.9);
-  }
-  iframe, textarea {
-    height: 100vh;
-    min-width: 300px;
-    width: 100vw;
-  }
 }/*# sourceMappingURL=style.css.map */
