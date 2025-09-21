@@ -66,6 +66,10 @@ body {
     font-family: "IBMPlexMono", "monospace";
     overflow: hidden; /*pour cacher la barre de défilement du navigateur si on descend la fenêtre modale*/
     user-select: none; /*pour empêcher la sélection du texte*/
+
+    @media screen and (min-width: 760px) {
+        font-size: 1em;
+    }
 }
 
 button {
@@ -148,6 +152,10 @@ textarea {
     animation-direction: alternate;
     opacity: 0;
     transform: rotate(-45deg);
+
+    @media screen and (min-width: 760px) {
+        margin-left: 60px;
+    }
 }
 
 .blue {
@@ -177,26 +185,26 @@ textarea {
 /*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_draggable*/
 .fenetre-deplacable {
     background-color: white;
-    top: 25px;
-    left: 200px;
+    top: 0;
+    left: 0;
     border: 1px solid #d3d3d3;
     display: none;
     min-width: 300px;
     position: absolute;
     text-align: center;
     z-index: 9;
-}
 
-/*Draggable DIV Element*/
-/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_draggable*/
-.fenetre-deplacable-header {
-    background-color: lightgray;
-    display: grid;
-    cursor: default;
-    font-size: 0.7em;
-    grid-template-columns: 1fr 20px 20px;
-    min-width: 300px;
-    z-index: 10;
+    /*Draggable DIV Element*/
+    /*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_draggable*/
+    .fenetre-deplacable-header {
+        background-color: lightgray;
+        display: grid;
+        cursor: default;
+        font-size: 0.7em;
+        grid-template-columns: 1fr 20px 20px;
+        min-width: 300px;
+        z-index: 10;
+    }
 }
 
 .gray {
@@ -249,16 +257,5 @@ textarea {
         height: 100vh;
         min-width: 300px;
         width: 100vw;
-    }
-    
-}
-
-@media screen and (min-width: 760px) {
-    body {
-        font-size: 1em;
-    }
-
-    .animated-arrow {
-        margin-left: 60px;
     }
 }

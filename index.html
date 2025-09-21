@@ -192,7 +192,7 @@ Utilisez un casque d'écoute ou des haut-parleurs pour entendre certains contenu
                     pos4 = e.clientY;
                     // set the element's new position:
 
-                    // prevent draggable window from going to far up or to the left
+                    // prevent draggable window from going too far up or to the left
                     if ((elmnt.offsetTop - pos2) >= 0) {
                         elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
                     }
@@ -208,12 +208,17 @@ Utilisez un casque d'écoute ou des haut-parleurs pour entendre certains contenu
             }
 
             function reinitialiserTailleFenetreDeplacable() {
-                // c'est vraiment dans la boucle des boutons de gereBoucleOuvertureFenetre() que je dois placer cette fonction
-                fenetreDeplacablePetite = true;  // pour réinitialiser la taille de la fenêtre déplaçable
-                document.querySelector("iframe").style.width = "50vw"; // pour réinitialiser la taille de la fenêtre déplaçable
-                document.querySelector("textarea").style.width = "50vw"; // pour réinitialiser la taille de la fenêtre déplaçable
-                document.querySelector("iframe").style.width = "50vw";
-                document.querySelector("textarea").style.width = "50vw";
+                // Réinitialiser la taille de la fenêtre déplaçable
+                fenetreDeplacablePetite = true;  
+
+                // Vérifier la largeur de la fenêtre
+                if (window.innerWidth < 760) {
+                    document.querySelector("iframe").style.width = "100vw"; // 100% de la largeur de la fenêtre
+                    document.querySelector("textarea").style.width = "100vw"; // 100% de la largeur de la fenêtre
+                } else {
+                    document.querySelector("iframe").style.width = "50vw"; // 50% de la largeur de la fenêtre
+                    document.querySelector("textarea").style.width = "50vw"; // 50% de la largeur de la fenêtre
+                }
             }
 
             // redimensionnement de la fenêtre
